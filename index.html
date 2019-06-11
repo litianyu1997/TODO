@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>TODO</title>
+    <style>
+        h1{
+            text-align: center;
+            font-size: 36px;
+            color:rgb(228, 124, 124);
+            opacity: 0.5;
+        }
+        #diva{
+            margin: 0 25%;
+            width: 100%;
+            height: 72.8px;
+            border: white 2.4px solid; /* 设置外边框 */
+            opacity: 0.5;  /* 设置透明度 */
+        }
+        #main{
+            width: 50%;
+            height: 68px;
+            border: gray solid;
+            float: left; /* 去除input和bottom元素间距 */
+        }
+        #input{
+            padding-left: 5%;
+            padding-top: 17px;
+            padding-bottom: 17px;
+            width: 95%;
+            height: 34px;
+            font-size: 34px;
+            border:none; /* 去掉输入框边框 */
+        }
+        #btn-add{
+            width: 50px;
+            height: 72.8px; /* 使高度和div元素相同 */
+        }
+        span,p{
+            margin: 0;
+            line-height: 24.4px;
+            font-size: 18px;
+            display: inline-block;
+        }
+        .complete,.clean,.delete{
+            display: inline-block;
+            height: 24px;
+        }
+    </style>
+</head>
+<body>
+    <h1>todos</h1>
+    <div id="diva">
+        <div id="main">
+            <input type="text" placeholder="What needs to be done?" id="input">
+        </div>
+        <input type="button" value="Add" onclick="addList()" id="btn-add">
+        <div id="list"></div>
+    </div>
+</body>
+    <script>
+        var num = 0;
+        function addList(){
+            num++;
+            // 创建一个div
+            var div = document.createElement("div");
+            //添加自增id
+            div.id = num;
+            // 为div创建class="dclass"
+            var divclass = document.createAttribute("class")
+            divclass.value = "dclass"
+            // 把属性class="dclass"添加到div
+            div.setAttributeNode(divclass);
+            // 将创建的div追加到id="list"的div中
+            document.getElementById("list").appendChild(div);
+
+
+            // 创建一个span标签
+            var span = document.createElement("span");
+            // 将span标签添加到div
+            div.appendChild(span);
+            // 将输入框内容添加到标签内
+            var value = document.getElementById("input").value;
+            var text = document.createTextNode(value);
+            span.appendChild(text);
+
+            // 清空输入框
+            document.getElementById("input").value = "";
+
+            // 创建一个按钮
+            var input = document.createElement("input");
+            var inputclassc = document.createAttribute("type");
+            inputclassc.value = "button";
+            input.setAttributeNode(inputclassc);
+            // 设置值为Complete
+            var inputclassc1 = document.createAttribute("value");
+            inputclassc1.value = "Complete";
+            //添加父级相同id
+            input.id = num;
+            input.setAttributeNode(inputclassc1);
+            // 设置class="complete"
+            var inputclassc2 = document.createAttribute("class");
+            inputclassc2.value = "complete"
+            input.setAttributeNode(inputclassc2);
+            // 设置一个onclick方法
+            var inputclassc3 = document.createAttribute("onclick");
+            //传入event获取目标元素的id
+            inputclassc3.value = "complete(event)";
+            input.setAttributeNode(inputclassc3);
+            // 将按钮追加到div
+            div.appendChild(input)
+
+
+            // 创建第二个按钮
+            var input = document.createElement("input");
+            var inputclassclean = document.createAttribute("type");
+            inputclassclean.value = "button";
+            input.setAttributeNode(inputclassclean);
+            // 设置值为Clean
+            var inputclassclean1 = document.createAttribute("value");
+            inputclassclean1.value = "Clean";
+            //添加父级相同id
+            input.id = num;
+            input.setAttributeNode(inputclassclean1);
+            // 设置class="clean"
+            var inputclassclean2 = document.createAttribute("class");
+            inputclassclean2.value = "clean"
+            input.setAttributeNode(inputclassclean2);  
+            // 设置一个onclick方法
+            var inputclassclean3 = document.createAttribute("onclick");
+            inputclassclean3.value = "clean(event)";
+            //传入event获取目标元素的id
+            inputclassclean3.value = "clean(event)";
+            input.setAttributeNode(inputclassclean3);
+            // 将按钮追加到div
+            div.appendChild(input)
+
+
+            // 创建第三个按钮
+            var input = document.createElement("input");
+            var inputclassd = document.createAttribute("type");
+            inputclassd.value = "button";
+            input.setAttributeNode(inputclassd);
+            // 设置值为Delete
+            var inputclassd1 = document.createAttribute("value");
+            inputclassd1.value = "Delete";
+            input.setAttributeNode(inputclassd1)
+            //添加父级相同id
+            input.id = num;
+            input.setAttributeNode(inputclassd1);
+            // 设置class="delete"
+            var inputclassd2 = document.createAttribute("class");
+            inputclassd2.value = "delete"
+            input.setAttributeNode(inputclassd2);
+            // 设置一个onclick方法
+            var inputclassd3 = document.createAttribute("onclick");
+            inputclassd3.value = "tdelete(event)";
+            input.setAttributeNode(inputclassd3);
+            //传入event获取目标元素的id
+            inputclassd3.value = "tdelete(event)";
+            input.setAttributeNode(inputclassd3);
+            // 将按钮追加到div
+            div.appendChild(input)
+
+
+            // 创建一个p标签
+            var time = document.createElement("p");
+            div.appendChild(time);
+            // 添加时间
+            var value = currentTime();
+            var text = document.createTextNode(value);
+            time.appendChild(text);
+
+        }
+
+
+        function complete(event){
+            var faDiv = document.querySelectorAll(".dclass");
+            var realDiv;
+            for (var i= 0;i<faDiv.length;i++){
+                console.log(faDiv[i].id,event.target.id);
+                //如果有父级元素id等于当前元素id，则获取当前这个父元素下所有子元素
+                if (faDiv[i].id === event.target.id) {
+                    realDiv = faDiv[i].children;
+                }
+            }
+            realDiv[0].style.color = "red";
+            realDiv[0].style["textDecoration"] = "line-through";
+        }
+        function clean(event){
+            var faDiv = document.querySelectorAll(".dclass");
+            var realDiv;
+            for (var i= 0;i<faDiv.length;i++){
+                console.log(faDiv[i].id,event.target.id);
+                //如果有父级元素id等于当前元素id，则获取当前这个父元素下所有子元素
+                if (faDiv[i].id === event.target.id) {
+                    realDiv = faDiv[i].children;
+                }
+            }
+            realDiv[0].style.color = 'black';
+            realDiv[0].style["textDecoration"] = "none";
+        }
+        function tdelete(event){
+            var faDiv = document.querySelectorAll(".dclass");
+            var realDiv;
+            for (var i= 0;i<faDiv.length;i++){
+                console.log(faDiv[i].id,event.target.id);
+                //如果有父级元素id等于当前元素id，则获取当前这个父元素下所有子元素
+                if (faDiv[i].id === event.target.id) {
+                    realDiv = faDiv[i].children;
+                }
+            }
+            realDiv[0].parentNode.parentNode.removeChild(realDiv[0].parentNode);
+        }
+
+        var currentTime = function(){
+            var d = new Date();
+            var month = d.getMonth() + 1;
+            var date = d.getDate();
+            var hours = d.getHours();
+            var minutes = d.getMinutes();
+            var secounds = d.getSeconds();
+            var timeString = month+ "/" +date+ "-" +hours+ ":" +minutes+ ":" +secounds;
+            return timeString;
+        }
+    </script>
+</html>
