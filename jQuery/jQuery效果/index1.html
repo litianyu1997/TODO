@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>index</title>
+    <script src="jquery-2.1.1.min.js"></script>
+    <script src="index1.js"></script>
+    <style>
+        div{
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            float: left;
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        for(var i=0;i<5;i++){
+            // 创建div块
+            $("<div>").appendTo(document.body);
+        }
+        // 点击div元素时隐藏被点击的元素
+        $("div").click(function(){
+            $(this).hide(2000,function(){
+                // 被点击隐藏后删除
+                $(this).remove();
+            });
+        });
+    </script>
+
+
+    <p id="p1">hello</p>
+    <button id="btn1">隐藏</button>
+    <button id="btn2">显示</button>
+    <button id="btn3">隐藏/显示</button>
+</body>
+</html>

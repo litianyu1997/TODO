@@ -1,0 +1,57 @@
+h1{
+    text-align: center;
+    font-size: 36px;
+    color:rgb(228, 124, 124);
+    opacity: 0.5;
+}
+#div-body{
+    margin: 0 25%;
+    width: 100%;
+    height: 72.8px;
+    border: white 2.4px solid; /* 设置外边框 */
+    opacity: 0.5;  /* 设置透明度 */
+}
+#div-main{
+    width: 500px;
+    height: 68px;
+    border: 2px gray solid;
+}
+#input-text{
+    padding-left: 5%;
+    padding-top: 17px;
+    padding-bottom: 17px;
+    width: 425px;
+    height: 34px;
+    font-size: 34px;
+    border:none; /* 去掉输入框边框 */
+    float: left;
+}
+#btn-add{
+    width: 50px;
+    padding: 0;
+    height: 68px;
+    float: left;
+}
+/* 设置点击button1后开关span1的样式 */
+.styleComplete{
+    color: gray;
+    text-decoration: line-through;
+}
+.add-div-class{
+    width: 504px;
+    height: 20.8px;
+    position: relative;
+}
+.input-class1{
+    width: 12.8px;
+    height: 12.8px;
+}
+.input-class2,.input-class3{
+    display: inline;
+    font-size: 14px;
+}
+.input-class4{
+    width: 50px;
+    position: absolute;
+    right: 2px;
+}

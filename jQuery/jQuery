@@ -15,7 +15,7 @@ EventTarget.html | EventTarget.js
 (4)自定义事件
 customEvent.html | customEvent.js
 
-二、jQuery HTML
+二、jQuery DOM
 1.捕获
 index.html | index.js
 
@@ -23,6 +23,33 @@ index.html | index.js
 setting.html | setting.js
 
 3.添加元素
-
+content.html | content.html
 
 4.删除元素
+delete.html | delete.js
+
+三、jQuery效果
+1.隐藏与显示
+index1.html | index1.js
+
+2.淡入淡出
+fade.html | fade.js
+
+3.滑动
+move.html | move.js
+
+4.回调
+callback.html | callback.js
+
+
+四、jQuery扩展
+1.Extendsindex.html | Extendsindex.js | myjQuery.js
+
+2.noConflict.html | noConflict.js
+
+
+五、jQueryCSS方法
+1.jQuery方法
+JQCSS.html | JQCSS.js | JQCSS.css
+
+2.jQuery盒子模型
