@@ -118,4 +118,29 @@ onLoad          网页加载事件
 onUnload        关闭网页事件
 
 
+四、JavaScriptDOM
+1.DOM简介
+    当网页被加载时，浏览器会创建页面的文档对象模型(Document Object Model)
 
+    JavaScript 能够改变页面中的所有 HTML 元素
+    JavaScript 能够改变页面中的所有 HTML 属性
+    JavaScript 能够改变页面中的所有 CSS 样式
+    JavaScript 能够对页面中的所有事件做出反应
+
+2.DOM操作HTML
+    注意：绝对不要在文档加载完成之后使用document.write()。这会覆盖该文档
+
+    通过id找到HTML元素
+    通过标签名找到HTML元素
+
+    使用属性innerHTML改变HTML内容
+    使用属性attribute改变HTML属性
+
+3.DOM操作CSS
+    document.getElementById(id).style.property = new style
+
+4.DOM EventListener
+    addEventListener():
+    方法用于向指定元素添加事件句柄
+    removeEventListener():
+    移除方法添加的事件句柄

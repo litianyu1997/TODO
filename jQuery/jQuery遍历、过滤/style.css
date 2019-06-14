@@ -1,0 +1,4 @@
+.dclass *{
+    display: block;
+    border: 3px gray solid;
+}

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>带参数的函数</title>
+</head>
+<body>
+    <script>
+        function demo1(a,b){
+            var sum = a+b;
+            alert(sum);
+        }    
+        // 传递两个参数
+        demo1(10,20);
+
+        function demo2(name,age){
+            alert("Hello:"+name+",我的年龄是:"+age);
+        }
+    </script>
+    <!-- 单引号防止和双引号冲突，代表字符串 -->
+    <button onclick="demo2('tom',20)">按钮</button>
+    <button onclick="demo2('sam',30)">按钮</button>
+</body>
+</html>

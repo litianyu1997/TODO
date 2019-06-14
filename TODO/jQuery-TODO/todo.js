@@ -1,4 +1,4 @@
-// 创建一个addList()方法，作为id为btn-add的元素的点击事件
+// 创建一个addList()方法，作为id为input-text的标签的文本内容改变事件
 function addList(){
 
     // 执行方法时创建一个div元素
@@ -19,6 +19,7 @@ function addList(){
     $(input1).click(function(){
         // 当点击input1时将span元素的css样式更改,使用toggleClass附加样式开关
         $(input2).toggleClass("styleComplete");
+        $(input1).toggleClass("inputClick1")
     })
     // 添加为刚刚创建的div元素的子元素
     div.appendChild(input1);
@@ -56,6 +57,14 @@ function addList(){
         // 当点击Delete按钮时删除这个父级div元素
         $(div).remove();
     })
+    $(div).mouseover(function () { 
+        // 当鼠标移入div时
+        $(input4).css("opacity","1");
+    })
+    $(div).mouseout(function () { 
+        // 当鼠标移出div时
+        $(input4).css("opacity","0");
+    })
     div.appendChild(input4);
 }
 
@@ -67,6 +76,6 @@ var currentTime = function(){
     var hours = d.getHours();
     var minutes = d.getMinutes();
     var secounds = d.getSeconds();
-    var timeString = "|" + "time:" +month+ "/" +date+ "-" +hours+ ":" +minutes+ ":" +secounds;
+    var timeString = "time:" +month+ "/" +date+ "-" +hours+ ":" +minutes+ ":" +secounds;
     return timeString;
 }

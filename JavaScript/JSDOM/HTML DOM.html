@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>DOM操作HTML</title>
+</head>
+<body>
+    <p id="pid">Hello</p>
+    <button onclick="demo()">按钮</button>
+    <a href="http://www.baidu.com" id="aid" onclick="demo1()">Hello</a>
+    <script>
+        function demo(){
+            var ele = document.getElementById("pid");
+            ele.innerHTML = "World";
+            // 或者可以不声明变量直接写
+            // document.getElementById("pid").innerHTML = "World";
+
+            // 通过标签寻找到相同元素中的第一个
+            document.getElementsByTagName("p");
+        }
+
+        function demo1(){
+            document.getElementById("aid").href="http://www.sogou.com";
+        }
+    </script>
+</body>
+</html>

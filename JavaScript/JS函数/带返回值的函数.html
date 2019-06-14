@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>带返回值的函数</title>
+</head>
+<body>
+    <!-- <script>
+        function demo(){
+            return "Hello";
+            // 在return后面的代码都不会执行
+        }
+        // 将方法得到的返回值(可以加其他字符串等)赋值给一个声明的变量
+        var vl = demo()+"tom";
+        // 弹窗这个变量的内容
+        alert(vl);
+    </script> -->
+    <p id="pid"></p>
+    <script>
+    function demo(a,b){
+        if(a>b){
+            return "a比较大"
+        }else if(a<b){
+            return "b比较大"
+        }else{
+            return "a和b一样大"
+        }
+    }
+    // var vl = demo(100.20);
+    // alert(vl);
+
+    // 获取id=pid的标签并附加内容
+    document.getElementById("pid").innerHTML = demo(10,10);
+    </script>
+</body>
+</html>

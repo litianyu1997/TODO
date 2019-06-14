@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>事件</title>
+    <style>
+        .div{
+            width: 100px;
+            height: 100px;
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="div" onmouseover="onOver(this)" onmouseout="onOut(this)"></div>
+    <script>
+        function onOver(e){
+            e.innerHTML = "Hello";
+        }
+
+        function onOut(e){
+            e.innerHTML = "World";
+        }
+    </script>
+
+    <form>
+        <input type="text" onchange="changeDemo(this)">
+        <input type="text" onselect="selectDemo(this)" onfocus="focusDemo(this)">
+    </form>
+    <script>
+        function changeDemo(bg){
+            alert("Hello,内容改变了!");
+        }
+        // 选中内容
+        function selectDemo(bg){
+            bg.style.background="red";
+        }
+        // 选中输入框
+        function focusDemo(bg){
+            bg.style.background="blue";
+        }
+    </script>
+</body>
+</html>
