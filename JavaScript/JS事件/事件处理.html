@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>事件处理</title>
+</head>
+<body>
+    <div id="div">
+        <button id="btn1">按钮</button>
+    </div>
+    <!-- <script>
+        function demo(){
+            alert("Hello html事件处理");
+        }
+    </script> -->
+    <!-- <script>
+        var btn1 = document.getElementById("btn1");
+        btn1.onclick = function (){alert("Hello DOM0级事件处理程序1")} //被覆盖掉
+        btn1.onclick = function (){alert("Hello DOM0级事件处理程序2")}
+    </script> -->
+    <!-- <script>
+        var btn1 = document.getElementById("btn1");
+        btn1.addEventListener("click",demo1);
+        btn1.addEventListener("click",demo2);
+        function demo1(){
+            alert("DOM2级事件处理程序1")
+        }
+        function demo2(){
+            alert("DOM2级事件处理程序2")
+        }
+        btn1.removeEventListener("click",demo2)
+    </script> -->
+    <script>
+        var btn1 = document.getElementById("btn1");
+        if(btn1.addEventListener){
+            btn1.addEventListener("click",demo);
+        }else if(btn1.attachEvent("onclick",demo)){
+            btn1.attachEvent("onclick",demo);
+        }else{
+            btn1.onclick = demo();
+        }
+        function demo(){
+            alert("Hello");
+        }
+    </script>
+</body>
+</html>
