@@ -1,0 +1,86 @@
+embed标签
+embed标签定义嵌入的内容，比如插件
+实例：<embed src="helloworld.swf" />
+embed是HTML5中的新标签
+embed标签标签支持HTML中的全局属性、HTML中的事件属性
+
+
+HTML全局属性
+accesskey       规定激活元素的快捷键
+class           规定元素的一个或多个类名
+contenteditable 规定元素内容是否可编辑
+contextmenu     规定元素的上下文菜单。上下文菜单在用户点击元素时显示
+data-*          用于储存页面或应用程序的私有定制数据
+dir             规定元素中内容的文本方向
+draggable       规定元素是否可拖动
+dropzone        规定在拖动被拖动数据时是否进行复制、移动或链接
+hidden          规定元素仍未或不再相关
+id              规定元素的唯一id
+lang            规定元素内容的语言
+spellcheck      规定是否对元素进行拼写和语法检查
+style           规定元素的行内css样式
+tabindex        规定元素的tab键次序
+title           规定有关元素的额外信息
+translate       规定是否应该翻译元素的内容
+
+
+Window事件属性
+针对window对象触发的事件（应用到body标签）
+onafterprint    文档打印之后运行的脚本
+onbeforeprint   文档打印之前运行的脚本
+onbeforeunload  文档卸载之前运行的脚本
+onerror         在错误发生时运行的脚本
+onhaschange     当文档已改变时运行的脚本
+onload          页面结束加载之后触发
+onmessage       在消息被触发时运行的脚本
+onoffline       当文档离线时运行的脚本
+ononline        当文档上线时运行的脚本
+onpagehide      当窗口隐藏时运行的脚本
+onpageshow      当窗口成为可见时运行的脚本
+onpopstate      当窗口历史纪录改变时运行的脚本
+onredo          当文档执行撤销（redo）时运行的脚本
+onresize        当浏览器窗口被调整大小时触发
+onstorage       在Web Storage区域更新后运行的脚本
+onundo          在文档执行undo时运行的脚本
+onunload        一旦页面已下载时触发（或者浏览器窗口已被关闭）
+
+
+Form事件
+由HTML表单内的动作触发的事件（应用到几乎所有HTML元素，但最常用到form元素中）
+onblur          元素失去焦点时运行的脚本
+onchange        在元素值被改变时运行的脚本
+oncontextmenu   当上下文菜单被触发时运行的脚本
+onfocus         当元素获得焦点时运行的脚本
+onformchange    在表单改变时运行的脚本
+onforminput     当表单获得用户输入时运行的脚本
+oninput         当元素获得用户输入时运行的脚本
+oninvalid       当元素无效时运行的脚本
+onreset         当表单中的重置按钮被点击时触发
+onselect        在元素中文本被选中后触发
+onsubmit        在提交表单时触发
+
+
+Keyboard事件
+onkeydown       在用户按下按键时触发
+onkeypress      在用户敲击按钮时触发
+onkeyup         当用户释放按键时触发
+
+
+Mouse事件
+由鼠标或类似用户动作触发的事件
+onclick         元素上发生鼠标点击时触发
+ondblclick      元素上发生鼠标双击时触发
+ondrag          元素被拖动时运行的脚本
+ondragend       在拖动操作末端运行的脚本
+ondragenter     当元素已被拖动到有效拖放区域时运行的脚本
+ondragleave     当元素离开有效拖放目标时运行的脚本
+ondragover      当元素在有效拖放目标上正在被拖动时运行的脚本
+ondragstart     在拖动操作开端运行的脚本
+ondrop          当元素正在被拖放时运行的脚本
+onmousedown     当元素上按下鼠标按钮时触发
+onmousemove     当鼠标指针移出元素时触发
+onmouseout      当鼠标指针移出元素时触发
+onmouseover     当鼠标指针移动到元素上时触发
+onmouseup       当在元素上释放鼠标按钮时触发
+onmousewheel    当鼠标滚轮正在被滚动时运行的脚本
+onscroll        当元素滚动条被滚动时运行的脚本
