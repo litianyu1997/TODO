@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    *{
+        padding: 0;
+        margin: 0;
+    }
+    li{
+        list-style: none;
+    }
+    a{
+        text-decoration: none;
+    }
+
+    .nav1{
+        width: 408px;
+        height: 60px;
+        margin: auto;
+        margin-top: 20px;
+    }
+    .li1{
+        width: 100px;
+        height: 60px;
+        background: gray;
+        color: black;
+        float: left;
+        text-align: center;
+        line-height: 60px;
+        border-right: 2px white solid;
+        border-bottom: 2px white solid;
+    }
+    .li1:hover{
+        color: white;
+    }
+
+    .nav2{
+        width: 408px;
+        height: 186px;
+        display: none;
+        margin-top: 2px;
+    }
+    .li1:hover .nav2{
+        display: block;
+    }
+    .li2{
+        width: 100px;
+        height: 60px;
+        background: blue;
+        color: black;
+        float: top;
+        text-align: center;
+        line-height: 60px;
+        border-right: 2px white solid;
+        border-bottom: 2px white solid;
+    }
+    .li2:hover{
+        color: white;
+    }
+
+    .nav2 .li2{
+        position: relative;
+    }
+
+    .nav3{
+        display: none;
+        margin-top: 2px;
+        position: absolute;
+        top: -2px;
+        left: 102px;
+    }
+    .li3{
+        width: 100px;
+        height: 60px;
+        background: blueviolet;
+        color: black;
+        float: left;
+        text-align: center;
+        line-height: 60px;
+        border-right: 2px white solid;
+        border-bottom: 2px white solid;
+    }
+    .li2:hover .nav3{
+        display: block;
+    }
+    .li3:hover{
+        color: white;
+    }
+    </style>
+</head>
+<body>
+    <ul class="nav1">
+        <li class="li1">一级菜单1
+            <ol class="nav2">
+                <li class="li2">二级菜单11
+                    <ul class="nav3">
+                        <li class="li3">三级菜单111</li>
+                        <li class="li3">三级菜单112</li>
+                        <li class="li3">三级菜单113</li>
+                    </ul>
+                </li>
+                <li class="li2">二级菜单12
+                    <ul class="nav3">
+                        <li class="li3">三级菜单121</li>
+                        <li class="li3">三级菜单122</li>
+                        <li class="li3">三级菜单123</li>
+                    </ul>
+                </li>
+                <li class="li2">二级菜单13
+                    <ul class="nav3">
+                        <li class="li3">三级菜单131</li>
+                        <li class="li3">三级菜单132</li>
+                        <li class="li3">三级菜单133</li>
+                    </ul>
+                </li>
+            </ol>
+        </li>
+        <li class="li1">一级菜单2
+            <ol class="nav2">
+                <li class="li2">二级菜单21
+                    <ul class="nav3">
+                        <li class="li3">三级菜单211</li>
+                        <li class="li3">三级菜单212</li>
+                        <li class="li3">三级菜单213</li>
+                    </ul>
+                </li>
+                <li class="li2">二级菜单22
+                    <ul class="nav3">
+                        <li class="li3">三级菜单221</li>
+                        <li class="li3">三级菜单222</li>
+                        <li class="li3">三级菜单223</li>
+                    </ul>
+                </li>
+                <li class="li2">二级菜单23
+                    <ul class="nav3">
+                        <li class="li3">三级菜单231</li>
+                        <li class="li3">三级菜单232</li>
+                        <li class="li3">三级菜单233</li>
+                    </ul>
+                </li>
+            </ol>
+        </li>
+        <li class="li1">一级菜单3
+            <ol class="nav2">
+                <li class="li2">二级菜单1
+                    <ul class="nav3">
+                        <li class="li3">三级菜单311</li>
+                        <li class="li3">三级菜单312</li>
+                        <li class="li3">三级菜单313</li>
+                    </ul>
+                </li>
+                <li class="li2">二级菜单2
+                    <ul class="nav3">
+                        <li class="li3">三级菜单321</li>
+                        <li class="li3">三级菜单322</li>
+                        <li class="li3">三级菜单323</li>
+                    </ul>
+                </li>
+                <li class="li2">二级菜单3
+                    <ul class="nav3">
+                        <li class="li3">三级菜单331</li>
+                        <li class="li3">三级菜单332</li>
+                        <li class="li3">三级菜单333</li>
+                    </ul>
+                </li>
+            </ol>
+        </li>
+        <li class="li1">一级菜单4
+            <ol class="nav2">
+                <li class="li2">二级菜单1
+                    <ul class="nav3">
+                        <li class="li3">三级菜单411</li>
+                        <li class="li3">三级菜单412</li>
+                        <li class="li3">三级菜单413</li>
+                    </ul>
+                </li>
+                <li class="li2">二级菜单2
+                    <ul class="nav3">
+                        <li class="li3">三级菜单421</li>
+                        <li class="li3">三级菜单422</li>
+                        <li class="li3">三级菜单423</li>
+                    </ul>
+                </li>
+                <li class="li2">二级菜单3
+                    <ul class="nav3">
+                        <li class="li3">三级菜单431</li>
+                        <li class="li3">三级菜单432</li>
+                        <li class="li3">三级菜单433</li>
+                    </ul>
+                </li>
+            </ol>
+        </li>
+    </ul>
+</body>
+</html>

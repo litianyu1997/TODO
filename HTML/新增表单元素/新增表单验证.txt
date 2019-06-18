@@ -13,4 +13,4 @@
 on显示指定候补输入的数据列表，使用datalist元素与list属性提供候补输入的数据列表，自动完成时，可以将该datalist元素中的数据作为候补输入的数据在文本框中显示
 
 5.自动验证
-max：最大值 min：最小值 step：数字间隔 maxlength：最大字符串长度
+max：最大值 min：最小值 step：数字间隔 maxlength：最大字符串长度55
