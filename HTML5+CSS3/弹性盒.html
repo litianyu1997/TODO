@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{margin: 0;padding: 0;}
+        ul{
+            width: 800px;
+            height: 500px;
+            border: 1px solid blue;
+            margin: 60px;
+        }
+        ul li{
+            width: 400px;
+            height: 550px;
+            border: 1px red solid;
+            list-style: none;
+        }
+        /* 设为flex布局以后，子元素的float、clear和vertical-align属性将失效 */
+        /* flex-direction属性决定主轴的方向(即项目的排列方向) */
+        #u1{
+            /* 给子元素添加弹性 */
+            /* display: flex; */
+            display: inline-flex;
+        }
+        #u2{
+            /* 给父元素添加弹性 */
+            display: inline-flex;
+        }
+    </style>
+</head>
+<body>
+    <!-- 给父元素加上display:flex之后
+        1.默认情况下，子元素横着排
+        2.子元素的宽度之和大于父元素的整个宽度，子元素的宽度不会超出，被压缩
+         -->
+    <ul id="u1">
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+    </ul>
+    <ul id="u2">
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+    </ul>
+</body>
+</html>

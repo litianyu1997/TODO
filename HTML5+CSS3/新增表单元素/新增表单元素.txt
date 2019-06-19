@@ -1,0 +1,15 @@
+1.email
+专门用来输入email地址的文本框，如果该文本框中内容不是email地址格式的，则不允许提交，但它不检查email地址是否存在。提交时可以为空，除非加上了required属性。具有multiple属性，它允许在该文本框中输入一串以"，"分隔的email地址
+
+2.url
+专门用来输入URL地址的文本框。如果该文本框中内容不是URL地址格式的，则不允许提交
+
+3.number
+Number：专门用来输入数字的文本框。在提交时会检查其中的内容是否为数字，具有min、max、step的属性。
+
+4.range
+<input name="range1" type="range" value="25" min="0" max="100" steap="5">
+是用来只允话一段范围内数值的文本框它具有min属性与max属性，及step属性，可以指定每次拖动的步幅
+
+5.date pickers(date,month,week,time,datetime,datetime-local)
+拥有多个可供选区日期和时间的新输入类型。date-选取日、月、年

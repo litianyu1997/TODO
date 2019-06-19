@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>文本阴影</title>
+    <style>
+        *{margin: 0;padding: 0;}
+        p:nth-child(1){
+            /* 水平方向 竖直方向 阴影模糊程度 颜色 */
+            text-shadow: 10px 10px 5px blue;
+        }
+        div{
+            width: 200px;
+            height: 200px;
+            background: red;
+            margin-bottom: 10px;
+            /* keep-all不允许字断开
+            normal默认样式
+            break-all允许在单词内换行 */
+            word-break: break-all;
+        }
+    </style>
+</head>
+<body>
+    <p>我是文字阴影</p>
+    <p>我是文字阴影</p>
+    <p>我是文字阴影</p>
+    <div>我是盒子我是盒子我是盒子我是盒子我是盒子我是盒子我是盒子我是盒子我是盒子我是盒子我是盒子我是盒子</div>
+    <div>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Magni inventore optio, dolorem esse exercitationem totam asperiores placeat quis! Sit placeat quis quas soluta debitis! Pariatur nobis neque quod tempora incidunt.</div>
+    <div>Loremipsumdolorsit,ametconsecteturadipisicingelit.Magni inventoreoptio,doloremesseexercitationemtotamasperiores placeatquis!</div>
+</body>
+</html>

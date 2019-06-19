@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style type="text/css">
+    /* after选择器在被选择元素的“内容”前面插入内容，用来和content属性一起使用
+    虽然E：before可转化为E：：before，但是你写伪元素时要规范，用两个冒号。
+    content属性与：：before及：：after伪元素配合使用，来插入生成内容。伪元素还可以添加图片。 */
+        /* li:nth-child(2){font-size: 30px; color: orange;} */
+        ul::before{content:"这是ul的伪元素"; color: blue;}
+        ul::after{content:"这是之后的伪元素";}
+
+
+        input:checked+span{background: red;}
+        input:checked+span::after{content: " 我被选中了";}
+    </style>
+</head>
+<body>
+    <ul>
+        <li>A</li>
+        <li>B</li>
+        <li>C</li>
+        <li>D</li>
+    </ul>
+
+    <form action="" method="post">
+    <fieldset id="">
+        <legend>点击你喜欢的字母</legend>
+        <ul>
+            <li>
+                <label>
+                    <input type="radio" name="letter" /><span>E</span>
+                </label>
+            </li>
+            <li>
+                <label>
+                    <input type="radio" name="letter" /><span>F</span>
+                </label>
+            </li>
+            <li>
+                <label>
+                    <input type="radio" name="letter" /><span>G</span>
+                </label>
+            </li>
+        </ul>
+    </fieldset>
+    <fieldset>
+        <legend>以下是多选</legend>
+        <ul>
+            <li>
+                <label>
+                   <input type="checkbox" name="多选" /><span>H</span>
+                </label>
+            </li>
+            <li>
+                <label>
+                <input type="checkbox" name="多选" /><span>I</span>
+                </label>
+            </li>
+            <li>
+                <label>
+                    <input type="checkbox" name="多选" /><span>J</span>
+                </label>
+            </li>
+        </ul>
+        </fieldset>
+    </form>
+</body>
+</html>
