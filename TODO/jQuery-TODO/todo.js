@@ -8,6 +8,10 @@ function addList(){
     // 将创建的div元素添加为id="div-list"的子元素
     document.getElementById("div-list").appendChild(div);
 
+    // 当创建div元素时
+    $("#div-list").css("display","block");
+    
+
 
     // 创建input元素
     var input1 = document.createElement("input");
@@ -56,6 +60,11 @@ function addList(){
     $(input4).click(function(){
         // 当点击Delete按钮时删除这个父级div元素
         $(div).remove();
+        // 并判断id="div-list"元素中是否还有子元素
+        var list = document.getElementById("div-list").getElementsByTagName("div").length
+        if(list == 0){
+            $("#div-list").css("display","none");
+        }
     })
     $(div).mouseover(function () { 
         // 当鼠标移入div时
@@ -63,9 +72,11 @@ function addList(){
     })
     $(div).mouseout(function () { 
         // 当鼠标移出div时
-        $(input4).css("opacity","0");
+        $(input4).css("opacity","0.5");
     })
     div.appendChild(input4);
+
+    
 }
 
 // 创建一个时间方法

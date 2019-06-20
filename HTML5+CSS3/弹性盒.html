@@ -20,7 +20,6 @@
             list-style: none;
         }
         /* 设为flex布局以后，子元素的float、clear和vertical-align属性将失效 */
-        /* flex-direction属性决定主轴的方向(即项目的排列方向) */
         #u1{
             /* 给子元素添加弹性 */
             /* display: flex; */
@@ -30,13 +29,29 @@
             /* 给父元素添加弹性 */
             display: inline-flex;
         }
+        /* flex-direction属性决定主轴的方向(即项目的排列方向)
+            row 水平方向
+            row-reverse 水平方向反转
+            column 竖直方向
+            column-reverse 竖直方向反转 */
+        /* flex-wap: wap当子元素宽度之和大于父元素则换行 */
+        /* flex-flow是flex-direction和wap的简写 */
     </style>
 </head>
 <body>
     <!-- 给父元素加上display:flex之后
         1.默认情况下，子元素横着排
-        2.子元素的宽度之和大于父元素的整个宽度，子元素的宽度不会超出，被压缩
+        2.子元素的宽度之和大于父元素的整个宽度，子元素的宽度不会超出，被压缩(主轴默认方向为水平方向)
+        3.子元素的高度大于父元素的高度，子元素的高度会超出
          -->
+
+    <!-- align-content定义多根轴线的对齐方式，对于单行子元素，该属性不起作用
+        flex-start  与交叉轴的起点对齐
+        flex-end    与交叉轴的终点对齐
+        center      与交叉轴的中点对齐
+        space-betwwen   与交叉轴两端对齐，轴线之间的间隔平均分布
+        space-around    每根轴线两侧的间隔都相等
+        stretch     轴线占满整个交叉轴 -->
     <ul id="u1">
         <li>1</li>
         <li>2</li>
@@ -51,5 +66,7 @@
         <li>4</li>
         <li>5</li>
     </ul>
+<!-- order属性
+    order书 -->
 </body>
 </html>
