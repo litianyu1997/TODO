@@ -31,13 +31,42 @@ function addList(){
 
     var input2 = document.createElement("p");
     input2.className = "input-class2";
+    var span = document.createElement("span")
+    input2.appendChild(span);
     div.appendChild(input2);
     // 声明ivalue获取id="input-text"元素中的内容
     var ivalue = document.getElementById("input-text").value;
     // 声明text为创建内容为ivalue的文本
     var text = document.createTextNode(ivalue);
-    // 将text文本放入input2元素内
-    input2.appendChild(text);
+    // 创建一个双击事件
+    $(input2).dblclick(function(){
+        // 获取原本内容
+        var oldtxt = span.innerHTML;
+        // 创建input输入框将，原内容添加进去
+        var txt = document.createElement("input");
+        txt.type = "text";
+        txt.value = oldtxt;
+        input2.appendChild(txt);
+        // 隐藏原文本
+        $(span).css("display","none")
+        // 添加一个失去焦点事件
+        $(txt).blur(function(){
+            // 获取失去焦点时输入框的内容和内容长度
+            var newtxt = $(txt).val();
+            var newlength = newtxt.length;
+            // 删除输入框
+            $(txt).remove();
+            if(newlength==0){
+                // 如果改动后的字符串长度为0则还原改动前的内容
+                $(span).text(oldtxt);
+            }else{
+                $(span).text(newtxt);
+            }
+            $(span).css("display","inline")
+        });
+    });
+    // 将text文本放入span元素内
+    span.appendChild(text);
     // 之后清空id="input-text"元素中的内容
     document.getElementById("input-text").value = "";
 
@@ -87,6 +116,6 @@ var currentTime = function(){
     var hours = d.getHours();
     var minutes = d.getMinutes();
     var secounds = d.getSeconds();
-    var timeString = "time:" +month+ "/" +date+ "-" +hours+ ":" +minutes+ ":" +secounds;
+    var timeString = month+ "/" +date+ "-" +hours+ ":" +minutes+ ":" +secounds;
     return timeString;
 }
