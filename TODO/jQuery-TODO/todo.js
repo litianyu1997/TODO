@@ -29,6 +29,8 @@ function addList(){
     div.appendChild(input1);
 
 
+
+
     var input2 = document.createElement("p");
     input2.className = "input-class2";
     var span = document.createElement("span")
@@ -98,15 +100,50 @@ function addList(){
     $(div).mouseover(function () { 
         // 当鼠标移入div时
         $(input4).css("opacity","1");
+        $(input5).css("opacity","1");
     })
     $(div).mouseout(function () { 
         // 当鼠标移出div时
         $(input4).css("opacity","0.5");
+        $(input5).css("opacity","0.5");
     })
     div.appendChild(input4);
 
     
+    var input5 = document.createElement("input");
+    input5.type = "button";
+    input5.className = "input-class5";
+    input5.value = "Edit";
+    $(input5).click(function(){
+        var oldtxt = span.innerHTML;
+        var txt = document.createElement("input");
+        txt.type = "text";
+        txt.value = oldtxt;
+        input2.appendChild(txt);
+        $(span).css("display","none")
+        $(txt).blur(function(){
+            var newtxt = $(txt).val();
+            var newlength = newtxt.length;
+            $(txt).remove();
+            if(newlength==0){
+                $(span).text(oldtxt);
+            }else{
+                $(span).text(newtxt);
+            }
+            $(span).css("display","inline")
+        });
+    })
+    div.appendChild(input5);
+
+
+    var p = createElement("p");
+    var list = listLeft();
+    var num = document.createTextNode(list);
+    p.appendChild(num);
+    var foot = $("div-foot");
+    foot.appendChild(p);
 }
+
 
 // 创建一个时间方法
 var currentTime = function(){
@@ -118,4 +155,11 @@ var currentTime = function(){
     var secounds = d.getSeconds();
     var timeString = month+ "/" +date+ "-" +hours+ ":" +minutes+ ":" +secounds;
     return timeString;
+}
+
+var listLeft = function(){
+    var lNum = $("#div-list").children("div").length;
+    var cNum = $("#div-list").children(".styleComplete").length;
+    var show = "一共有"+lNum+"项任务在列表中，其中"+cNum+"项已完成";
+    return show;
 }
