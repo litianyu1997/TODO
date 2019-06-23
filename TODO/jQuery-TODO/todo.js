@@ -10,7 +10,7 @@ function addList(){
 
     // 当创建div元素时
     $("#div-list").css("display","block");
-    
+
 
 
     // 创建input元素
@@ -22,8 +22,10 @@ function addList(){
     // 设置一个点击事件
     $(input1).click(function(){
         // 当点击input1时将span元素的css样式更改,使用toggleClass附加样式开关
+        $(div).toggleClass("styleComplete");
         $(input2).toggleClass("styleComplete");
         $(input1).toggleClass("inputClick1")
+        document.getElementById("pid").innerHTML = listLeft();
     })
     // 添加为刚刚创建的div元素的子元素
     div.appendChild(input1);
@@ -73,15 +75,17 @@ function addList(){
     document.getElementById("input-text").value = "";
 
 
-    var input3 = document.createElement("p");
+    var input3 = document.createElement("input");
+    input3.type = "button";
     input3.className = "input-class3";
+    input3.value = "Time";
     div.appendChild(input3);
     // 声明tvalue为获取时间方法的值
     var tvalue = currentTime();
-    // 声明time为创建内容为tvalue的文本
-    var time = document.createTextNode(tvalue);
-    // 将time文本放入input3元素内
-    input3.appendChild(time);
+    // 给Time按钮添加一个点击事件
+    $(input3).click(function(){
+        alert(tvalue);
+    })
 
 
     var input4 = document.createElement("input");
@@ -93,17 +97,22 @@ function addList(){
         $(div).remove();
         // 并判断id="div-list"元素中是否还有子元素
         var list = document.getElementById("div-list").getElementsByTagName("div").length
+        document.getElementById("pid").innerHTML = listLeft();
         if(list == 0){
             $("#div-list").css("display","none");
+            $("#div-foot").css("display","none");
+            $("#spid").css("display","none");
         }
     })
     $(div).mouseover(function () { 
         // 当鼠标移入div时
+        $(input3).css("opacity","1");
         $(input4).css("opacity","1");
         $(input5).css("opacity","1");
     })
     $(div).mouseout(function () { 
         // 当鼠标移出div时
+        $(input3).css("opacity","0.5");
         $(input4).css("opacity","0.5");
         $(input5).css("opacity","0.5");
     })
@@ -115,6 +124,8 @@ function addList(){
     input5.className = "input-class5";
     input5.value = "Edit";
     $(input5).click(function(){
+        $(input3).css("display","none");
+        $(input5).css("display","none");
         var oldtxt = span.innerHTML;
         var txt = document.createElement("input");
         txt.type = "text";
@@ -131,17 +142,24 @@ function addList(){
                 $(span).text(newtxt);
             }
             $(span).css("display","inline")
+            $(input3).css("display","inline");
+            $(input5).css("display","inline");
         });
     })
     div.appendChild(input5);
 
+    $("#btn1").click(function(){
+        $("#btn1").css("display","none");
+        $("#btn2").css("display","inline");
+    });
+    $("#btn2").click(function(){
+        $("#btn1").css("display","inline");
+        $("#btn2").css("display","none");
+    });
 
-    var p = createElement("p");
-    var list = listLeft();
-    var num = document.createTextNode(list);
-    p.appendChild(num);
-    var foot = $("div-foot");
-    foot.appendChild(p);
+    $("#div-foot").css("display","block");
+    $("#spid").css("display","block");
+    document.getElementById("pid").innerHTML = listLeft();
 }
 
 
@@ -155,11 +173,11 @@ var currentTime = function(){
     var secounds = d.getSeconds();
     var timeString = month+ "/" +date+ "-" +hours+ ":" +minutes+ ":" +secounds;
     return timeString;
-}
+};
 
 var listLeft = function(){
     var lNum = $("#div-list").children("div").length;
     var cNum = $("#div-list").children(".styleComplete").length;
     var show = "一共有"+lNum+"项任务在列表中，其中"+cNum+"项已完成";
     return show;
-}
+};
