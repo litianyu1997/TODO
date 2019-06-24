@@ -1,5 +1,6 @@
+
 // 创建一个addList()方法，作为id为input-text的标签的文本内容改变事件
-function addList(){
+var addList = function(){
 
     // 执行方法时创建一个div元素
     var div = document.createElement("div");
@@ -160,6 +161,7 @@ function addList(){
     $("#div-foot").css("display","block");
     $("#spid").css("display","block");
     document.getElementById("pid").innerHTML = listLeft();
+
 }
 
 
@@ -178,6 +180,11 @@ var currentTime = function(){
 var listLeft = function(){
     var lNum = $("#div-list").children("div").length;
     var cNum = $("#div-list").children(".styleComplete").length;
-    var show = "一共有"+lNum+"项任务在列表中，其中"+cNum+"项已完成";
-    return show;
+    var show1 = "一共有"+lNum+"项任务在列表中，其中"+cNum+"项已完成";
+    var show2 = "一共有"+lNum+"项任务在列表中，已全部完成";
+    if(lNum==cNum){
+        return show2;
+    }else{
+        return show1;
+    }
 };
