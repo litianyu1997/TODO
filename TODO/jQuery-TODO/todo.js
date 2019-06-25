@@ -1,11 +1,13 @@
-
+var num = 0;
 // 创建一个addList()方法，作为id为input-text的标签的文本内容改变事件
 var addList = function(){
-
+    num = num+1;
     // 执行方法时创建一个div元素
     var div = document.createElement("div");
     // 给每次创建的div元素添加相同的class属性，用于设置样式
     div.className = "add-div-class";
+    // 给每次创建的div元素添加一个id,用于储存
+    div.id = num;
     // 将创建的div元素添加为id="div-list"的子元素
     document.getElementById("div-list").appendChild(div);
 
@@ -188,3 +190,18 @@ var listLeft = function(){
         return show1;
     }
 };
+
+var listNum = function(){
+    // 计算剩余div任务的数量
+    var i = document.getElementById("div-list").childNodes;
+    var value = i.length;
+    // 储存
+    for(j=0;j<value;++j){
+        
+
+
+        // var k = document.getElementById(i[j]).childNodes;
+        // var kvalue = k.length;
+        // alert(kvalue);
+    }
+}

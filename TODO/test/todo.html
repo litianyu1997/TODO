@@ -76,14 +76,17 @@
     
         var todoList = [];
     
+        // 点击添加按钮时
         var addButton = $('#id-button-add');
         addButton.addEventListener('click', function() {
             var todoInput = $('#id-input-todo');
+            // 获取输入框值、时间
             var task = todoInput.value;
             var todo = {
                 'task': task,
                 'time': currentTime()
             }
+            
             todoList.push(todo);
             saveTodos();
             insertTodo(todo);
