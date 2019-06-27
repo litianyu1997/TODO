@@ -1,7 +1,75 @@
 input::-webkit-input-placeholder{
     color: gray;
 }
+/* 设置点击input1后开关input2的样式 */
+.styleComplete{
+    color: gray;
+    text-decoration: line-through;
+}
 
+/* 设置点击input1后改变自身的样式 */
+.inputClick1{
+    opacity: 1;
+}
+#spid{
+    display: none;
+}
+/* #btn1{
+    display: inline;
+}
+#btn2{
+    display: none;
+} */
+
+#savebtn{
+    position: absolute;
+    left: 10px;
+    top: 10px;
+}
+#loadbtn{
+    position: absolute;
+    right: 90px;
+    top: 10px;
+}
+#cleanbtn{
+    position: absolute;
+    right: 10px;
+    top: 10px;
+}
+#loadp{
+    position: absolute;
+    font-size: 8px;
+    color: red;
+    right: 90px;
+    top: 14px;
+    display: none;
+}
+#savep{
+    position: absolute;
+    font-size: 8px;
+    color: red;
+    left: 10px;
+    top: 14px;
+    display: none;
+}
+#cleanp{
+    position: absolute;
+    font-size: 8px;
+    color: red;
+    right: 10px;
+    top: 14px;
+    display: none;
+}
+#tip{
+    position: absolute;
+    font-size: 8px;
+    color: red;
+    right: 10px;
+    top: 35px;
+    display: none;
+}
+
+/* 以下为媒体选择器 */
 @media screen and (min-width: 320px){
     h1{
         margin-top: 30px;
@@ -60,10 +128,11 @@ input::-webkit-input-placeholder{
         left: 12px;
     }
     .input-class3{
-        display: none;
+        display: inline;
         font-size: 14px;
         position: absolute;
-        right: 60px;
+        right: 82px;
+        opacity: 0.5;
     }
     
     .input-class4{
@@ -82,7 +151,20 @@ input::-webkit-input-placeholder{
     p{
         font-size: 8px;
     }
-    
+    #yes{
+        width: 35px;
+        position: absolute;
+        top: 50px;
+        right: 10px;
+        display: none;
+    }
+    #no{
+        width: 35px;
+        position: absolute;
+        top: 75px;
+        right: 10px;
+        display: none;
+    }
 }
 
 @media screen and (min-width: 375px){
@@ -143,10 +225,11 @@ input::-webkit-input-placeholder{
         left: 12px;
     }
     .input-class3{
-        display: none;
+        display: inline;
         font-size: 14px;
         position: absolute;
-        right: 60px;
+        right: 82px;
+        opacity: 0.5;
     }
     
     .input-class4{
@@ -164,6 +247,20 @@ input::-webkit-input-placeholder{
     }
     p{
         font-size: 10px;
+    }
+    #yes{
+        width: 35px;
+        position: absolute;
+        top: 50px;
+        right: 10px;
+        display: none;
+    }
+    #no{
+        width: 35px;
+        position: absolute;
+        top: 75px;
+        right: 10px;
+        display: none;
     }
 }
 
@@ -246,6 +343,18 @@ input::-webkit-input-placeholder{
     p{
         font-size: 12px;
     }
+    #yes{
+        position: absolute;
+        top: 50px;
+        right: 45px;
+        display: none;
+    }
+    #no{
+        position: absolute;
+        top: 50px;
+        right: 10px;
+        display: none;
+    }
 }
 
 @media screen and (min-width: 760px){
@@ -324,25 +433,20 @@ input::-webkit-input-placeholder{
     #pid{
         font-size: 12px;
     }
-    
+    #yes{
+        position: absolute;
+        top: 50px;
+        right: 45px;
+        display: none;
+    }
+    #no{
+        position: absolute;
+        top: 50px;
+        right: 10px;
+        display: none;
+    }
 }
 
-/* 设置点击input1后开关input2的样式 */
-.styleComplete{
-    color: gray;
-    text-decoration: line-through;
-}
+@media screen and (min-width: 1024px){
 
-/* 设置点击input1后改变自身的样式 */
-.inputClick1{
-    opacity: 1;
-}
-#spid{
-    display: none;
-}
-#btn1{
-    display: inline;
-}
-#btn2{
-    display: none;
 }

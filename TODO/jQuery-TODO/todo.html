@@ -19,10 +19,19 @@
         <div id="div-list"></div>
         <div id="div-foot">
             <p id="pid"></p>
-            <p id="spid">当前缓存状态：<button id="btn1">开启</button><button id="btn2">关闭</button></p>
+            <!-- <p id="spid">当前缓存状态：<button id="btn1">开启</button><button id="btn2">关闭</button></p> -->
         </div>
     </div>
-    <button onclick="savetodos()">save</button>
-    <button onclick="loadtodos()">load</button>
+
+    <!-- 以下为绝对定位元素 -->
+    <button id="savebtn" onclick="savetodos()">save</button>
+    <button id="loadbtn" onclick="loadtodos()">load</button>
+    <button id="cleanbtn" onclick="tip()">cleansave</button>
+    <span id="loadp">读取成功</span>
+    <span id="savep">保存成功</span>
+    <span id="cleanp">已清除缓存</span>
+    <span id="tip">是否要清除todo缓存</span>
+    <button id="yes" onclick="yes()">yes</button>
+    <button id="no" onclick="no()">no</button>
 </body>
 </html>
