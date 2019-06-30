@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        div{
+            width: 100px;
+            height: 100px;
+            background-color: red;
+
+            /* 添加动画效果 */
+            /* 1.animation-name:指定动画名称 */
+            animation-name: moveTest;
+            /* 2.设置动画的总耗时 */
+            animation-duration: 2s;
+        }
+
+        /* 创建动画 */
+        @keyframes moveTest{
+            /* 百分比是指整个动画耗时的百分比10s */
+            0%{
+                transform: translate(0,0);
+            }
+            30%{
+                transform: translate(0,500px);
+            }
+            100%{
+                transform: translate(500px,600px);
+            }
+        }
+    </style>
+</head>
+<body>
+    
+</body>
+</html>

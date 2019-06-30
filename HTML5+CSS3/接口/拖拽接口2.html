@@ -7,46 +7,49 @@
     <title>Document</title>
 </head>
 <body>
+    <div class="div1" id="div1"></div>
+    <div class="div2" id="div2"></div>
+
     <script>
-        var obj = null;
-        document.ondragstart = function(e){
-            // 通过事件捕获来获取当前被拖拽的子元素
-            e.target.style.opacity = 0.5;
-            e.target.parentNode.style.borderWidth = "5px";
-            obj = e.target;
-            // 通过dataTransfer来实现数据的存储与获取
-            // setDate(format,data):
-            // format:数据的类型:text/html  text/uri-list
-            // Data:数据:一般来说是字符串值
-            e.dataTransfer.setData("text/html",e.target.id);
-        }   
-        document.ondragend = function(e){
-            e.target.style.opacity = 1;
-            e.target.parentNode.style.borderWidth = "1px";
-        } 
-        document.ondragleave = function(e){
-
+        var p = document.querySelector("#pe");
+        var div2 = document.querySelector("#div2");
+        var div1 = document.querySelector("#div1");
+        p.ondragstart = function(){
+            console.log("ondragstart");
         }
-        document.ondrag = function(e){
-
+        p.ondragend = function(){
+            console.log("ondragend");
         }
-        document.ondragenter = function(e){
-            console.log(e.target);
+        p.ondragleave = function(){
+            console.log("被拖拽元素:ondragleave");
         }
-        document.ondragover = function(e){
+        p.ondrag = function(){
+            console.log("ondrag");
+        }
+        div2.ondragenter = function(){
+            console.log("ondragenter");
+        }
+        div2.ondragover = function(e){
+            console.log("ondragover");
             // 如果想触发ondrop事件，那么就必须在这个位置阻止浏览器的默认行为
             e.preventDefault();
         }
-        document.ondrop = function(e){
-            // 添加元素
-            // e.target.appendChild(obj);
-            // 通过e.dataTransfer.setData存储的数据，只能在drop事件中获取
-            var id = e.dataTransfer.getData("text/html");
-            // console.log(id);
-            e.target.appendChild(document.getElementById(id));
+        // 浏览器默认阻止ondrop事件：我们必须在ondragover中阻止浏览器的默认行为
+        div2.ondrop = function(){
+            console.log("ondrop");
+            // 添加被拖拽的元素到当前元素
+            div2.appendChild(p);
         }
-        document.ondragleave = function(e){
-
+        div2.ondragleave = function(){
+            console.log("目标元素:ondragleave");
+        }
+        div1.ondragover = function(e){
+            console.log("ondragover");
+            e.preventDefault();
+        }
+        div1.ondrop = function(){
+            console.log("ondrop");
+            div1.appendChild(p);
         }
     </script>
 </body>

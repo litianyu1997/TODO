@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        div{
+            width: 100px;
+            height: 100px;
+            background-color: red;
+
+            /* 添加动画效果 */
+            /* 1.animation-name:指定动画名称 */
+            animation-name: moveTest;
+            /* 2.设置动画的总耗时 */
+            animation-duration: 2s;
+            /* 3.设置动画的播放次数：默认为1次  可以指定具体的数值，也可以指定infinite */
+            animation-iteration-count: infinite;
+            /* 4.设置交替动画   alternate:来回交替 */
+            animation-direction: alternate;
+            /* 5.设置动画的延迟 */
+            animation-delay: 2s;
+            /* 6.设置动画结束时的状态：默认情况下，动画执行完毕之后，会回到原始状态
+            forwards:会保留动画结束时的状态
+            backwards:会保留动画结束时的状态
+            both */
+            animation-fill-mode: both;
+            /* 7.动画的时间函数 */
+            animation-timing-function: linear;
+            /* 设置动画的播放状态   paused:暂停  running:播放 */
+            animation-play-state: running;
+        }
+            
+            
+        /* 创建动画 */
+        @keyframes moveTest{
+            /* 百分比是指整个动画耗时的百分比10s */
+            /* 0%{
+                transform: translate(0,0);
+            }
+            30%{
+                transform: translate(0,500px);
+            }
+            100%{
+                transform: translate(500px,600px);
+            } */
+            from{
+                transform: translate(0,0) rotate(45deg);
+            }
+            /* 0~1 */
+            50%{
+                transform: translate(0,500px);
+            }
+            to{
+                transform: translate(500px,600px);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div></div>
+    <input type="button" value="播放" id="play">
+    <input type="button" value="暂停" id="pause">
+    <script>
+        var div=document.querySelector("div");
+        document.querySelector("#play").onclick = function(){
+            div.style.animationPlayState = "running";
+        }
+        document.querySelector("#pause").onclick = function(){
+            div.style.animationPlayState = "running";
+        }
+    </script>
+</body>
+</html>
