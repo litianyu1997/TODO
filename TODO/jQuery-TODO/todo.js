@@ -191,13 +191,21 @@ var currentTime = function(){
 var listLeft = function(){
     var lNum = $("#div-list").children("div").length;
     var cNum = $("#div-list").children(".styleComplete").length;
-    var show1 = "一共有"+lNum+"项任务在列表中，其中"+cNum+"项已完成";
-    var show2 = "一共有"+lNum+"项任务在列表中，已全部完成";
-    if(lNum==cNum){
-        return show2;
+    var rNum = lNum-cNum;
+    var show = rNum+"item left";
+    if(cNum!==0){
+        $("#clearall").css("display","inline-block");
     }else{
-        return show1;
+        $("#clearall").css("display","none");
     }
+    if(lNum!==0){
+        $(".div-drag").css("display","inline-block");
+        $("#div-foot").css("display","inline-block");
+    }else{
+        $(".div-drag").css("display","none");
+        $("#div-foot").css("display","none");
+    }
+    return show;
 };
 
 var savetodos = function(){

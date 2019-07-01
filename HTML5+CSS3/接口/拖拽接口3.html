@@ -7,6 +7,12 @@
     <title>Document</title>
 </head>
 <body>
+    <div class="div1" id="div1">
+        <!-- 在h5中，如果想拖拽元素，就必须为元素添加draggable="true".图片和超链接默认就可以拖拽 -->
+        <p id="pe" draggable="true">试着把我拖过去</p>
+        <p id="1" draggable="true">试着把我也拖过去</p>
+    </div>
+    <div class="div2" id="div2"></div>
     <script>
         var obj = null;
         document.ondragstart = function(e){

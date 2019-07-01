@@ -11,6 +11,8 @@ input::-webkit-input-placeholder{
 .inputClick1{
     opacity: 1;
 }
+
+
 #spid{
     display: none;
 }
@@ -31,7 +33,7 @@ input::-webkit-input-placeholder{
     right: 90px;
     top: 10px;
 }
-#cleanbtn{
+#clearbtn{
     position: absolute;
     right: 10px;
     top: 10px;
@@ -52,7 +54,7 @@ input::-webkit-input-placeholder{
     top: 14px;
     display: none;
 }
-#cleanp{
+#clearp{
     position: absolute;
     font-size: 8px;
     color: red;
@@ -68,7 +70,13 @@ input::-webkit-input-placeholder{
     top: 35px;
     display: none;
 }
-
+.p-drag{
+    display: inline-block;
+}
+#clearall{
+    display: none;
+    text-decoration: underline;
+}
 /* 以下为媒体选择器 */
 @media screen and (min-width: 320px){
     h1{
@@ -380,6 +388,16 @@ input::-webkit-input-placeholder{
         height: 64px;
         border: 1px gray solid;
     }
+    #div-list{
+        width: 420px;
+        border: 1px #e6e6e6 solid;
+        display: none;
+    }
+    #div-foot{
+        width: 420px;
+        border: 1px #e6e6e6 solid;
+        display: none;
+    }
     #input-text{
         padding: 16px 0 16px 0;
         width: 420px;
@@ -387,11 +405,6 @@ input::-webkit-input-placeholder{
         font-size: 32px;
         border:none;
         float: left;
-    }
-    #div-list{
-        width: 420px;
-        border: 1px #e6e6e6 solid;
-        display: none;
     }
     .add-div-class{
         margin-top: 4px;
@@ -416,21 +429,24 @@ input::-webkit-input-placeholder{
     }
     .input-class3{
         width: 50px;
+        height: 20px;
         position: absolute;
-        right: 52px;
+        right: 50px;
         opacity: 0.5;
     }
     
     .input-class4{
         width: 50px;
+        height: 20px;
         position: absolute;
-        right: 2px;
+        right: 0px;
         opacity: 0.5;
     }
     .input-class5{
         display: none;
     }
     #pid{
+        display: inline-block;
         font-size: 12px;
     }
     #yes{

@@ -20,16 +20,20 @@
         <div id="div-foot">
             <p id="pid"></p>
             <!-- <p id="spid">当前缓存状态：<button id="btn1">开启</button><button id="btn2">关闭</button></p> -->
+
+            <!-- 以下为绝对定位元素 -->
+            <p id="div-all" class="p-drag">All</p>
+            <p id="div-active" class="p-drag">Active</p>
+            <p id="div-complete" class="p-drag">Complete</p>
+            <p id="clearall">Clear completed</p>
         </div>
     </div>
-
-    <!-- 以下为绝对定位元素 -->
     <button id="savebtn" onclick="savetodos()">save</button>
     <button id="loadbtn" onclick="loadtodos()">load</button>
-    <button id="cleanbtn" onclick="tip()">cleansave</button>
+    <button id="clearbtn" onclick="tip()">clearsave</button>
     <span id="loadp">读取成功</span>
     <span id="savep">保存成功</span>
-    <span id="cleanp">已清除缓存</span>
+    <span id="clearp">已清除缓存</span>
     <span id="tip">是否要清除todo缓存</span>
     <button id="yes" onclick="yes()">yes</button>
     <button id="no" onclick="no()">no</button>
