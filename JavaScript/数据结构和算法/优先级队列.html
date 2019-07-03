@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>优先级队列</title>
+</head>
+<body>
+<script>
+    // 封装优先级队列
+    function priorityQueue(){
+        // 重新创建一个类
+        function queueElement(element,priority){
+            this.element = element;
+            this.priority = priority;
+        }
+
+        // 封装属性
+        this.item = [];
+
+        // 实现插入方法
+        priorityQueue.prototype.enqueue = function(element,priority){
+            // 创建queueElement对象
+            var queueElement = new queueElement(element,priority);
+
+            // 判断队列是否为空
+            if (this.item.length == 0){
+                this.items.push(queueElement)
+            } else {
+                var added = false;
+                for (var i = 0; i < this.items.length; i++){
+                    if (queueElement.priority < this.items[i].priority){
+                        this.items.splice(i, 0, queueElement);
+                        added = true;
+                        break;
+                    }   
+                }
+                if (!added){
+                    this.items.push(queueElement);
+                }
+            }
+        }
+        // 1.将元素加入到队列中 
+        priorityQueue.prototype.enqueue = function(element){
+            this.item.push(element);
+        }
+
+        // 2.从队列中删除前端元素
+        priorityQueue.prototype.dequeue = function(){
+            return this.items.shift();
+        }
+
+        // 3.查看前端的元素
+        priorityQueue.prototype.front = function(){
+            return this.item[0];
+        }
+
+        // 4.查看队列是否为空
+        priorityQueue.prototype.isEmpty = function(){
+            return this.items.length == 0;
+        }
+
+        // 5.查看队列中元素的个数
+        priorityQueue.prototype.size = function(){
+            return this.items.length;
+        }
+
+        // 6.toString方法
+        priorityQueue.prototype.toString = function(){
+            var resultString = "";
+            for(var i = 0; i < this.items.length; i++){
+                resultString += this.items[i].element + "-"+ this.item[i].priority+ ""
+            }
+            return resultString;
+        }
+    }
+
+    // 测试代码
+    var pq = new priorityQueue();
+
+    // enqueue方法
+    pq.enqueue('abc',111);
+    pq.enqueue('cba',200);
+    pq.enqueue('nba',50);
+    pq.enqueue('nba',60);
+    alert();
+</script>
+</body>
+</html>

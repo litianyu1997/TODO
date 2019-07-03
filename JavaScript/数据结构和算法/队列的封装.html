@@ -24,7 +24,7 @@
             }
 
             // 3.查看前端的元素
-            Queue.prototype.font = function(){
+            Queue.prototype.front = function(){
                 return this.item[0];
             }
 
@@ -51,6 +51,53 @@
 
         // 使用队列
         var queue = new Queue();
+
+        // // 将元素加入到队列中
+        // queue.enqueue('abc');
+        // queue.enqueue('cba');
+        // queue.enqueue('nba');
+        // queue.enqueue('nba');
+        // alert(queue);
+
+        // // 从队列中删除元素
+        // queue.dequeue();
+        // alert(queue);
+        // queue.dequeue();
+        // alert(queue);
+
+        // // front方法
+        // alert(queue.front());
+
+        // // 验证其他方法
+        // alert(queue.isEmpty());
+        // alert(queue.size());
+
+
+        // 击鼓传花
+        function passGame(nameList,num){
+            // 创建队列结构
+            var queue = new Queue();
+            // 将所有人依次加入到队列中
+            for (var i = 0; i < nameList.length; i++){
+                queue.enqueue(nameList[i]);
+            }
+
+            // 开始数数字，如果不是num重新加入到队列，如果是num则删除
+            while(queue.size() > 1){
+                for(var i = 0; i < num-1; i++){
+                queue.enqueue(queue.dequeue());
+                }
+                queue.dequeue()
+            }
+            // 获取剩下的那个人
+            alert(queue.size());
+            var endName = queue.front();
+            alert('最终剩下的人：'+endName);
+
+            return nameList.indexOf(endName);
+        }
+        names = [];
+        alert(passGame(names,num));
     </script>
 </body>
 </html>
