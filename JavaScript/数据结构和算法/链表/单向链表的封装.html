@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>单向链表的封装</title>
+</head>
+<body>
+    <script>
+    // 封装链表类
+    function LinkedList(){
+        // 内部类/节点类
+        function Node(data){
+            this.data = data;
+            this.next = null;
+        }
+
+        // 属性
+        this.head = null;
+        this.length = 0; // 记录链表的长度
+
+        // 追加方法
+        LinkedList.prototype.append = function(data){
+            // 判断是否添加的是第一个属性
+            if(this.length == 0){ //是第一个节点
+                var newNode = new Node(data);
+                this.head = newNode
+            }else{ //不是第一个节点
+                // 找到第一个节点
+                var newNode = new Node(data);
+                var current = this.head;
+                while (current.next){
+                    current = current.next;
+                }
+                current.next = newNode;
+            }
+            this.length += 1;
+        }
+
+        // toString方法
+        LinkedList.prototype.toString = function(){
+            // 定义变量
+            var current = this.head;
+            var listString = "";
+
+            // 循环获取一个个的节点
+            while(current){
+                listString += current.data + "";
+                current = current.next;
+            }
+            return listString;
+        }
+
+        // insert方法
+        LinkedList.prototype.insert = function(position,data){
+            // 对position进行越界判断
+            if(position < 0||position > this.length) return false;
+
+            // 根据data创建newNode
+            var newNode = new Node(data);
+
+            // 判断插入的位置是否是第一个
+            if(position == 0){
+                newNode.next = this.head;
+                this.head = newNode;
+            }else{
+                var index = 0;
+                var current = this.head;
+                var previous = null;
+                while(index++ < position){
+                    previous = current;
+                    current = current.next;
+                }
+                newNode.next = current;
+                previous.next = newNode;
+            }
+
+            this.length += 1;
+
+            return true;
+        }
+
+        // get方法
+        LinkedList.prototype.get = function(position){
+            // 对position进行越界判断
+            if(position < 0||position >= this.length) return false;
+
+            // 获取对应的data
+            var current = this.head;
+            index = 0;
+            while(index++ < position){
+                current = current.next;
+            }
+            return current.data;
+        }
+
+        // indexOf方法
+        LinkedList.prototype.indexOf = function(data){
+            // 定义变量
+            var current = this.head;
+            var index = 0;
+
+            // 开始查找
+            while(current){
+                if(current.data == data){
+                    return index;
+                }
+                current = current.next;
+                index += 1;
+            }
+            return -1;
+        }
+
+        // update方法
+        LinkedList.prototype.update = function(position,newData){
+            // 越界判断
+            if(position < 0||position >=this.length)return false;
+
+            // 查找正确的节点
+            var current = this.head;
+            var index = 0;
+            while(index++ < position){
+                current = current.next;
+            }
+            // 将position位置的node的data修改为newData
+            current.data = newData;
+
+            return true;
+        }
+
+        // removeAt方法
+        LinkedList.prototype.removeAt = function(position){
+            // 越界判断
+            if(position < 0||position >=this.length)return false;
+
+            // 判断是否删除的是第一个节点
+            if(position == 0){
+                this.head = this.head.next;
+            }else{
+                var index = 0;
+                var current = this.head;
+                var previous = null;
+                while(index++ < position){
+                    previous = current;
+                    current = current.next;
+                }
+                previous.next = current.next
+            }
+            this.length -= 1;
+
+            return true;
+        }
+
+        // remove方法
+        LinkedList.prototype.remove = function(data){
+            // 获取data在列表中的位置
+            var position = this.indexOf(data);
+
+            // 根据位置信息删除节点
+            return this.removeAt(position);
+        }
+
+        // isEmpty方法
+        LinkedList.prototype.isEmpty = function(){
+            return this.length == 0;
+        }
+
+        // size()方法
+        LinkedList.prototype.size = function(){
+            return this.length;
+        }
+    }
+
+    // 测试代码
+    // 创建LinkedList
+    var list = new LinkedList();
+
+    // 测试append方法
+    list.append('abc');
+    list.append('cba');
+    list.append('nba');
+    // alert(list);
+
+    // 测试insert方法
+    list.insert(0,'aaa');
+    list.insert(3,'bbb');
+    list.insert(5,'ccc');
+    // alert(list);
+
+    // 测试get方法
+    // alert(list.get(0));
+    // alert(list.get(3));
+    // alert(list.get(5));
+
+    // 测试indexOf方法
+    // alert(list.indexOf('abc'));
+    // alert(list.indexOf('bbb'));
+    // alert(list.indexOf('ccc'));
+
+    // 测试update方法
+    list.update(0,'mmm');
+    list.update(3,'nnn');
+    // alert(list);
+
+    // 测试removeAt方法
+    list.removeAt(0);
+    // alert(list);
+    list.removeAt(3);
+    // alert(list);
+
+    // 测试remove方法
+    list.remove('nnn');
+    alert(list);
+    list.remove('abc');
+    alert(list);
+    </script>
+</body>
+</html>

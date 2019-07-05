@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>栈的封装</title>
+</head>
+<body>
+    <script>
+        // Method:和某一个对象实例有联系
+        // function
+        // 封装栈类
+        function stack(){
+            // 栈中的属性
+            this.items = [];
+
+            // 栈的相关操作
+            // push(element):添加一个新元素到栈顶位置
+            // 将元素压入栈
+            this.push = function(){} // 给整个类添加方法
+
+            Stack.prototype.push = function(element){
+                this.item.push(element);
+            } // 给对象实例添加方法
+
+            // pop():移除栈顶的元素，同时返回被移除的元素
+            Stack.prototype.pop = function(){
+                return this.items.pop()
+            } 
+
+            // peek():返回栈顶的元素，不对栈做任何修改(这个方法不会移除站定的元素，仅仅返回它)
+            Stack.prototype.peek = function(){
+                return this.items[this.items.length - 1];
+            }
+
+            // isEmpty():如果栈里面没有任何元素就返回true，否则返回false
+            Stack.prototype.isEmpty = function(){
+                return this.items.length == 0;
+            }
+
+            // size():返回栈里面的的元素个数。这个方法和数组的length属性很类似
+            Stack.prototype.size = function(){
+                return this.items.length;
+            }
+
+            // toString():将站结构的内容以字符形式返回
+            Stack.prototype.toString = function(){
+                // 20 10 12 8 7
+                for(var i = 0; i < this.items.length; i++){
+                    resultString += this.items[i] + " "
+                }
+                return resultString;
+            }
+        }
+
+        // 栈的使用
+        var s = new stack();
+        s.push(20);
+        s.push(10);
+        s.push(100);
+        s.push(77);
+        // alert(s);
+
+        s.pop();
+        s.pop();
+        // aleart(s);
+
+        // alert(s.peek());
+
+        // alert(s.isEmpty());
+        // alert(s.size());
+
+
+        // 函数:将十进制转成二进制
+        function dectobin(decNumber){
+            // 定义一个栈对象
+            var stack = new Stack();
+
+            // 循环操作
+            while(decNumber > 0) {
+                // 获取余数并放入栈中
+                stack.push(decNumber % 2);
+
+                // 获取整除的结果作为下一次运算的数字
+                decNumber = Math.floor(decNumber / 2);
+            }
+            // 从栈中取出0和1
+            var binaryString = '';
+            while(!stack.isEmpty()){
+                binaryString += stack.pop()
+            }
+            return binaryString;
+        }
+
+        // 测试
+        alert(dectobin(100));
+        alert(dectobin(10));
+        alert(dectobin(1000));
+
+    </script>
+</body>
+</html>
