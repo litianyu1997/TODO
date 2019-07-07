@@ -60,6 +60,34 @@
             // 返回当前对象的所有元素
             return Object.keys(this.items);
         }
+
+
+
+        // 集合间操作
+        // 并集
+        Set.prototype.union = function(otherSet){
+            // this:集合对象A
+            // otherSet:集合对象B
+            // 创建新的集合
+            var unionSet = new Set();
+
+            // 将A集合种所有元素添加到新集合种
+            var values = this.values();
+            for(var i = 0; i < values.length; i++){
+                unionSet.add(values[i]);
+            }
+
+            // 取出B集合中的元素，判断是否加入到新集合
+            values = otherSet.values();
+            for(var i = 0; i < value.length; i++){
+                unionSet.add(values[i]);
+            }
+
+            return unionSet;
+        }
+
+
+
     }
 
     // 测试Set类
@@ -91,8 +119,19 @@
     alert(set.size());
 
 
+    // 测试并集
+    var setA = new Set();
+    setA.add('aaa');
+    setA.add('bbb');
+    setA.add('ccc');
 
-    
+    var setB = new Set();
+    setB.add('aaa');
+    setB.add('ddd');
+    setB.add('eee');
+
+    // 求两个集合的并集
+    setA.union(setB);
 </script>
 </body>
 </html>
