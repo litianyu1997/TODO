@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>哈希表</title>
+</head>
+<body>
+<script>
+    // 封装哈希表
+    function HashTable(){
+        // 属性
+        this.storage = [];
+        this.count = 0;
+        this.limit = 7;
+
+        // 方法
+        // 哈希函数
+        function hashFunc(str,size){
+        // str 字符串，size 数组大小
+        // 定义hashcode变量
+        var hashcode = 0;
+
+        // 霍纳法则计算hashcode的值
+        for(var i = 0; i < str.length; i++){
+            hashcode = 37 * hashcode + str.charCodeAt(i);
+        }
+
+        // 取余操作
+        var index = hashcode % size;
+        return index;
+        }
+    }
+
+</script>
+</body>
+</html>
