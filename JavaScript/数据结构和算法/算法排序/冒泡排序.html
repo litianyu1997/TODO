@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>冒泡排序</title>
+</head>
+<body>
+
+    <input type="text" id="i1" onkeyup = "value=value.replace(/[^\d]/g,'')">
+    <input type="text" id="i2" onkeyup = "value=value.replace(/[^\d]/g,'')">
+    <input type="text" id="i3" onkeyup = "value=value.replace(/[^\d]/g,'')">
+    <input type="text" id="i4" onkeyup = "value=value.replace(/[^\d]/g,'')">
+    <input type="text" id="i5" onkeyup = "value=value.replace(/[^\d]/g,'')">
+    <input type="button" id="btn" onclick="demo()" value="排序">
+    <br/>
+    <input type="text" id="r1">
+    <input type="text" id="r2">
+    <input type="text" id="r3">
+    <input type="text" id="r4">
+    <input type="text" id="r5">
+<script>
+    function demo(){
+
+        var num = [];
+        var change = 0;
+        var v1 = document.getElementById("i1").value;
+        if(v1 !== null){num.push(v1);}
+        var v2 = document.getElementById("i2").value;
+        if(v2 !== null){num.push(v2);}
+        var v3 = document.getElementById("i3").value;
+        if(v3 !== null){num.push(v3);}
+        var v4 = document.getElementById("i4").value;
+        if(v4 !== null){num.push(v4);}
+        var v5 = document.getElementById("i5").value;
+        if(v5 !== null){num.push(v5);}
+        
+
+        for(var i = num.length; i > 1; i--){
+            for(var j = 0; j < i; j++){
+                if(num[j] - num[j+1] > 0){
+                    change = num[j];
+                    num[j] = num[j+1];
+                    num[j+1] = change;
+                }
+            }
+        }
+        document.getElementById("r1").value = num[0];
+        document.getElementById("r2").value = num[1];
+        document.getElementById("r3").value = num[2];
+        document.getElementById("r4").value = num[3];
+        document.getElementById("r5").value = num[4];
+
+        
+    }
+</script>
+</body>
+</html>
