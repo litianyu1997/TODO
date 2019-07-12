@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>选择排序</title>
+    <title>插入排序</title>
 </head>
 <body>
     <input type="text" id="i1" onkeyup = "value=value.replace(/[^\d]/g,'')">
@@ -24,7 +24,6 @@
 
         var num = [];
         var change = 0;
-        var x = 0;
 
         var v1 = document.getElementById("i1").value;
         if(v1 !== null){num.push(v1);}
@@ -38,17 +37,21 @@
         if(v5 !== null){num.push(v5);}
 
         for(var i = 0; i < num.length-1; i++){
-            change = num[i];
-            for(var j = i+1; j < num.length; j++){
-                if(change - num[j] > 0){
-                    change = num[j];
-                    x = j;
+            change = num[i+1];
+            alert("i="+i)
+            for(var j = i; j >= 0; j--){
+                alert("j="+j);
+                alert("change="+change);
+                if(change - num[j] < 0){
+                    num[j+1] = num[j];
+                    if(j == 0){
+                        num[0] = change;
+                    }
+                }else{
+                    num[j+1] = change;
                 }
-            }
-            if(num[x] - num[i] < 0){
-                num[x] = num[i];
-                num[i] = change;
                 alert(num);
+                alert("j="+j);
             }
         }
 
