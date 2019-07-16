@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>图结构</title>
+</head>
+<body>
+<script>
+    // 封装图结构
+    function Graph(){
+        // 属性：顶点(数组)/边(字典)
+        this.vertexes = []; // 顶点
+        this.edges = new Dictionary(); // 边
+
+        // 方法
+        // 添加方法
+        // 添加顶点的方法
+        Graph.prototype.addVertex = function(v){
+            this.vertextes.push(v);
+            this.edges.set(v,[]);
+        }
+
+        // 添加边值的方法
+        Graph.prototype.addEdge = function(v1,v2){
+            this.edges.get(v1).push(v2);
+            this.edges.get(v1).push(v1);
+        }
+    }
+
+    // 测试代码
+
+</script>
+</body>
+</html>
