@@ -8,7 +8,8 @@
     <link rel="stylesheet" type="text/css" href="reset.css">
     <link rel="stylesheet" type="text/css" href="todo.css">
     <script src="jquery-2.1.1.min.js"></script>
-    <script src="todo.js"></script>
+    <script src="todo1.js"></script>
+    <script src="todo2.js"></script>
 </head>
 <body>
     <h1>todos</h1>
@@ -22,10 +23,16 @@
             <!-- <p id="spid">当前缓存状态：<button id="btn1">开启</button><button id="btn2">关闭</button></p> -->
 
             <!-- 以下为绝对定位元素 -->
-            <p id="div-all" class="p-drag">All</p>
-            <p id="div-active" class="p-drag">Active</p>
-            <p id="div-complete" class="p-drag">Complete</p>
-            <p id="clearall">Clear completed</p>
+            <div id="drag1" class="d-drag" onclick="select1()">
+                <p id="div-all" class="p-drag" draggable="true">All</p>
+            </div>
+            <div id="drag2" class="d-drag" onclick="select2()">
+                <p id="div-active" class="p-drag" draggable="true">Active</p>
+            </div>
+            <div id="drag3" class="d-drag" onclick="select3()">
+                <p id="div-complete" class="p-drag" draggable="true" >Complete</p>
+            </div>
+            <p id="clearall" onclick="clearcomplete()">Clear completed</p>
         </div>
     </div>
     <button id="savebtn" onclick="savetodos()">save</button>

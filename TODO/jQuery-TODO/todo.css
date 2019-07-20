@@ -12,7 +12,6 @@ input::-webkit-input-placeholder{
     opacity: 1;
 }
 
-
 #spid{
     display: none;
 }
@@ -70,8 +69,15 @@ input::-webkit-input-placeholder{
     top: 35px;
     display: none;
 }
-.p-drag{
+
+
+.p-drag,.d-drag{
     display: inline-block;
+}
+.d-drag{
+    width: 96px;
+    height: 20px;
+    text-align: center;
 }
 #clearall{
     display: none;
