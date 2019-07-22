@@ -69,8 +69,15 @@ input::-webkit-input-placeholder{
     top: 35px;
     display: none;
 }
-
-
+.click{
+    background-color: white;
+}
+.unclick{
+    background-color: #e6e6e6;
+}
+.change{
+    display: none;
+}
 .p-drag,.d-drag{
     display: inline-block;
 }

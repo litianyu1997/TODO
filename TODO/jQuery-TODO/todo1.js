@@ -190,8 +190,8 @@ var currentTime = function(){
 
 var clearcomplete = function(){
     var dchild = $("#div-list").children("div");
-    var length = $("#div-list").children("div").length;
-    for(var i = 0; i < length; i++){
+    var clength = $("#div-list").children("div").length;
+    for(var i = 0; i < clength; i++){
         if($(dchild[i]).hasClass('styleComplete')){
             $(dchild[i]).remove();
         }
