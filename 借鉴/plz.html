@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <p>123456</p>
+    <input type="text" onchange="ChangeAns(event)">
+    <button style="width:50px;height:20px;" onclick="PushArr()">确认</button>
+</body>
+<script>
+    var an ="";
+    var arr = [];
+    var current = [];
+    var realArr = [];
+    var realA,realB,realC;
+    var pic =0,pos =0;
+    realA = Math.floor(Math.random() * (7 - 1) ) + 1;
+    realArr.push(realA);
+    realB = Math.floor(Math.random() * (7 - 1) ) + 1;
+    for (var i = realB;realA === realB; ){
+        realB = Math.floor(Math.random() * (7 - 1) ) + 1;
+    }
+    realArr.push(realB);
+    realC = Math.floor(Math.random() * (7 - 1) ) + 1;
+    for (var i = realC;realC === realB||realC === realA; ){
+        realC = Math.floor(Math.random() * (7 - 1) ) + 1;
+    }
+    realArr.push(realC);
+    // console.log(realArr);
+    function ChangeAns(event){
+        an = event.target.value;
+        if (an.length !==3){
+            alert("必须选择3个答案");
+            event.target.value = "";
+            an = "";
+        }
+    }
+    function PushArr(event){
+        if (an.length !==3){
+            alert("必须选择3个答案");
+            an = "";
+        } else {
+            pic =0;
+            pos =0;
+            current =[];
+            arr = eval("["+String(an.split(""))+"]");
+            // console.log(arr);
+            for (var i =0;i<arr.length;i++) {
+                if (arr[i] == realArr[i]) {
+                    pic++;
+                    pos++;
+                    current.push(arr[i]);
+                }
+            }
+            for (var i =0;i<arr.length;i++) {
+                for (var j = 0; j < realArr.length; j++) {
+                    console.log(arr[i],current,current.indexOf(arr[i])=== -1);
+                    if (arr[i] == realArr[j] && current.indexOf(arr[i]) === -1) {
+                        pic++;
+                    }
+                }
+            }
+            alert("正确图片"+pic+"张，位置正确"+pos);
+        }
+    }
+</script>
+</html >
