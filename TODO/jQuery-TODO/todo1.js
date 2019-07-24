@@ -1,5 +1,8 @@
 var num = 0;
 var x;
+var rNum;
+var todoList1
+
 // 创建一个addList()方法，作为id为input-text的标签的文本内容改变事件
 var addList = function(){
     num = num+1;
@@ -188,7 +191,7 @@ var currentTime = function(){
     return timeString;
 };
 
-var clearcomplete = function(){
+var cleancomplete = function(){
     var dchild = $("#div-list").children("div");
     var clength = $("#div-list").children("div").length;
     for(var i = 0; i < clength; i++){
@@ -202,7 +205,7 @@ var clearcomplete = function(){
 var listLeft = function(){
     var lNum = $("#div-list").children("div").length;
     var cNum = $("#div-list").children(".styleComplete").length;
-    var rNum = lNum-cNum;
+    rNum = lNum-cNum;
     var show = rNum+"item left";
     if(cNum!==0){
         $("#clearall").css("display","inline-block");
@@ -226,7 +229,7 @@ var savetodos = function(){
     var ilength = i.length;
     // 储存
     var faDiv = document.querySelectorAll(".add-div-class");
-    for(j=0;j<ilength;++j){
+    for(var j=0;j<ilength;++j){
         var child = faDiv[j].childNodes;
         var span = child[1].childNodes;
         var value = span[0].innerHTML;
@@ -310,7 +313,7 @@ todoList = load();
 var loadtodos = function(){
     var n = todoList.length;
     if(n>0){
-        for(i=0;i<n;++i){
+        for(var i=0; i < n; ++i){
             var todo = todoList[i];
             loadList(todo);
         }
@@ -333,7 +336,7 @@ var loadList = function(todo){
 
     var input1 = document.createElement("input");
     input1.type = "checkbox";
-    input1.className = input1.className;
+    input1.className = "input-class1";
     $(input1).click(function(){
         $(div).toggleClass("styleComplete");
         $(input2).toggleClass("styleComplete");
@@ -468,15 +471,4 @@ var loadList = function(todo){
     }else{
         console.log("WRONG")
     }
-
-    var ArrayList = function(){
-
-    }
-
-
-
-
-
-
-
 }

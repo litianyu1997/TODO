@@ -27,12 +27,20 @@ input::-webkit-input-placeholder{
     left: 10px;
     top: 10px;
 }
+#fnobtn,#fonbtn{
+    position: absolute;
+    left: 66px;
+    top: 10px;
+}
+#fnobtn{
+    display: none;
+}
 #loadbtn{
     position: absolute;
     right: 90px;
     top: 10px;
 }
-#clearbtn{
+#cleanbtn{
     position: absolute;
     right: 10px;
     top: 10px;
@@ -53,7 +61,7 @@ input::-webkit-input-placeholder{
     top: 14px;
     display: none;
 }
-#clearp{
+#cleanp{
     position: absolute;
     font-size: 8px;
     color: red;
@@ -81,12 +89,7 @@ input::-webkit-input-placeholder{
 .p-drag,.d-drag{
     display: inline-block;
 }
-.d-drag{
-    width: 96px;
-    height: 20px;
-    text-align: center;
-}
-#clearall{
+#cleanall{
     display: none;
     text-decoration: underline;
 }
@@ -186,6 +189,11 @@ input::-webkit-input-placeholder{
         right: 10px;
         display: none;
     }
+    .d-drag{
+        width: 62px;
+        height: 20px;
+        text-align: center;
+    }
 }
 
 @media screen and (min-width: 375px){
@@ -283,6 +291,11 @@ input::-webkit-input-placeholder{
         right: 10px;
         display: none;
     }
+    .d-drag{
+        width: 72px;
+        height: 20px;
+        text-align: center;
+    }
 }
 
 @media screen and (min-width: 414px){
@@ -375,6 +388,11 @@ input::-webkit-input-placeholder{
         top: 50px;
         right: 10px;
         display: none;
+    }
+    .d-drag{
+        width: 96px;
+        height: 20px;
+        text-align: center;
     }
 }
 
@@ -473,6 +491,11 @@ input::-webkit-input-placeholder{
         top: 50px;
         right: 10px;
         display: none;
+    }
+    .d-drag{
+        width: 100px;
+        height: 20px;
+        text-align: center;
     }
 }
 

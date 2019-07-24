@@ -310,7 +310,7 @@ var again = function(){
     num = 0;
 
     random();
-
+    clean();
 }
 
 var random = function(){

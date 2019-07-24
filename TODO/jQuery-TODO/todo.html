@@ -10,6 +10,7 @@
     <script src="jquery-2.1.1.min.js"></script>
     <script src="todo1.js"></script>
     <script src="todo2.js"></script>
+    <script src="todo3.js"></script>
 </head>
 <body>
     <h1>todos</h1>
@@ -32,15 +33,17 @@
             <div id="drag3" class="d-drag" onclick="select3()">
                 <p id="div-complete" class="p-drag" draggable="true" >Complete</p>
             </div>
-            <p id="clearall" onclick="clearcomplete()">Clear completed</p>
+            <p id="cleanall" onclick="cleancomplete()">Clean completed</p>
         </div>
     </div>
     <button id="savebtn" onclick="savetodos()">save</button>
+    <button id="fnobtn" onclick="fromOldToNew()">当前：从新到旧排列</button>
+    <button id="fonbtn" onclick="fromNewToOld()">当前：从旧到新排列</button>
     <button id="loadbtn" onclick="loadtodos()">load</button>
-    <button id="clearbtn" onclick="tip()">clearsave</button>
+    <button id="cleanbtn" onclick="tip()">cleansave</button>
     <span id="loadp">读取成功</span>
     <span id="savep">保存成功</span>
-    <span id="clearp">已清除缓存</span>
+    <span id="cleanp">已清除缓存</span>
     <span id="tip">是否要清除todo缓存</span>
     <button id="yes" onclick="yes()">yes</button>
     <button id="no" onclick="no()">no</button>
