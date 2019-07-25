@@ -1,41 +1,48 @@
 
 var fromNewToOld = function(){
 
-    todoList1 = todoList;
+    var p = $("#drag1").children("p")[0];
+    if(p.id == "div-all"){
+        select1();
+    }
+    var p = $("#drag2").children("p")[0];
+    if(p.id == "div-all"){
+        select2();
+    }
+    var p = $("#drag3").children("p")[0];
+    if(p.id == "div-all"){
+        select3();
+    }
 
-    var length = rNum;
+    var length = lNum;
 
-    if(todoList1.length != length){
-
-        todoList1 = [];
-        // 计算剩余div任务的数量
-        var i = document.getElementById("div-list").childNodes;
-        var ilength = i.length;
-        // 储存
-        var faDiv = document.querySelectorAll(".add-div-class");
-        for(var j=0;j<ilength;++j){
-            var child = faDiv[j].childNodes;
-            var span = child[1].childNodes;
-            var value = span[0].innerHTML;
-            var time = child[2].id;
-            var complete = child[0].className;
-            var clength = complete.length;
-            if(clength=="0"||clength=="12"){
-                x = 1;
-            }else if(clength=="11"||clength=="24"){
-                x = 2;
-            }else{
-                console.log("WRONG");
-            }
-
-            var todo = {
-                'value': value,
-                'time': time,
-                'x': x
-            }
-            todoList1.push(todo);
+    todoList1 = [];
+    // 计算剩余div任务的数量
+    var i = document.getElementById("div-list").childNodes;
+    var ilength = i.length;
+    // 储存
+    var faDiv = document.querySelectorAll(".add-div-class");
+    for(var j = 0; j < ilength; ++j){
+        var child = faDiv[j].childNodes;
+        var span = child[1].childNodes;
+        var value = span[0].innerHTML;
+        var time = child[2].id;
+        var complete = child[0].className;
+        var clength = complete.length;
+        if(clength == "0" || clength == "12"){
+            x = 1;
+        }else if(clength == "11" || clength == "24"){
+            x = 2;
+        }else{
+            console.log("WRONG");
         }
 
+        var todo = {
+            'value': value,
+            'time': time,
+            'x': x
+        }
+        todoList1.push(todo);
     }
 
     if(length > 1){
@@ -88,41 +95,48 @@ var fromNewToOld = function(){
 
 var fromOldToNew = function(){
 
-    todoList1 = todoList;
+    var p = $("#drag1").children("p")[0];
+    if(p.id == "div-all"){
+        select1();
+    }
+    var p = $("#drag2").children("p")[0];
+    if(p.id == "div-all"){
+        select2();
+    }
+    var p = $("#drag3").children("p")[0];
+    if(p.id == "div-all"){
+        select3();
+    }
 
-    var length = rNum;
+    var length = lNum;
 
-    if(todoList1.length != length){
-
-        todoList1 = [];
-        // 计算剩余div任务的数量
-        var i = document.getElementById("div-list").childNodes;
-        var ilength = i.length;
-        // 储存
-        var faDiv = document.querySelectorAll(".add-div-class");
-        for(var j=0;j<ilength;++j){
-            var child = faDiv[j].childNodes;
-            var span = child[1].childNodes;
-            var value = span[0].innerHTML;
-            var time = child[2].id;
-            var complete = child[0].className;
-            var clength = complete.length;
-            if(clength=="0"||clength=="12"){
-                x = 1;
-            }else if(clength=="11"||clength=="24"){
-                x = 2;
-            }else{
-                console.log("WRONG");
-            }
-
-            var todo = {
-                'value': value,
-                'time': time,
-                'x': x
-            }
-            todoList1.push(todo);
+    todoList1 = [];
+    // 计算剩余div任务的数量
+    var i = document.getElementById("div-list").childNodes;
+    var ilength = i.length;
+    // 储存
+    var faDiv = document.querySelectorAll(".add-div-class");
+    for(var j = 0; j < ilength; ++j){
+        var child = faDiv[j].childNodes;
+        var span = child[1].childNodes;
+        var value = span[0].innerHTML;
+        var time = child[2].id;
+        var complete = child[0].className;
+        var clength = complete.length;
+        if(clength=="0"||clength=="12"){
+            x = 1;
+        }else if(clength=="11"||clength=="24"){
+            x = 2;
+        }else{
+            console.log("WRONG");
         }
 
+        var todo = {
+            'value': value,
+            'time': time,
+            'x': x
+        }
+        todoList1.push(todo);
     }
 
     if(length > 1){

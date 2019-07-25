@@ -1,6 +1,6 @@
 var num = 0;
 var x;
-var rNum;
+var lNum;
 var todoList1
 
 // 创建一个addList()方法，作为id为input-text的标签的文本内容改变事件
@@ -203,9 +203,9 @@ var cleancomplete = function(){
 }
 
 var listLeft = function(){
-    var lNum = $("#div-list").children("div").length;
+    lNum = $("#div-list").children("div").length;
     var cNum = $("#div-list").children(".styleComplete").length;
-    rNum = lNum-cNum;
+    var rNum = lNum-cNum;
     var show = rNum+"item left";
     if(cNum!==0){
         $("#clearall").css("display","inline-block");
