@@ -148,64 +148,52 @@ var random = function(){
 
     cor = [];
 
-    var r1 = Math.floor(Math.random() * 6 + 1);
+    var i = 0;
 
-    if(r1 == "1"){
-        cor.push("A");
-    }else if(r1 == "2"){
-        cor.push("B");
-    }else if(r1 == "3"){
-        cor.push("C");
-    }else if(r1 == "4"){
-        cor.push("D");
-    }else if(r1 == "5"){
-        cor.push("E");
-    }else if(r1 == "6"){
-        cor.push("F");
-    }
+    while(i < 3){
 
-    var r2 = Math.floor(Math.random() * 6 + 1);
+        var num = Math.floor(6*Math.random() + 1);
 
-    while(r2 == r1){
+        if(cor.indexOf(num) == -1){
 
-        r2 = Math.floor(Math.random() * 6 + 1);
+            cor.push(num);
 
-    }
-    
-    if(r2 == "1"){
-        cor.push("A");
-    }else if(r2 == "2"){
-        cor.push("B");
-    }else if(r2 == "3"){
-        cor.push("C");
-    }else if(r2 == "4"){
-        cor.push("D");
-    }else if(r2 == "5"){
-        cor.push("E");
-    }else if(r2 == "6"){
-        cor.push("F");
-    }
+            i++;
 
-    var r3 = Math.floor(Math.random() * 6 + 1);
-
-    while(r3 == r1 || r3 == r2){
-
-        r3 = Math.floor(Math.random() * 6 + 1);
+        }
 
     }
 
-    if(r3 == "1"){
-        cor.push("A");
-    }else if(r3 == "2"){
-        cor.push("B");
-    }else if(r3 == "3"){
-        cor.push("C");
-    }else if(r3 == "4"){
-        cor.push("D");
-    }else if(r3 == "5"){
-        cor.push("E");
-    }else if(r3 == "6"){
-        cor.push("F");
+    for(j = 0; j < 3; j++){
+
+        var x = cor[j];
+
+        if(x == 1){
+
+            cor[j] = "A";
+
+        }else if(x == 2){
+
+            cor[j] = "B";
+
+        }else if(x == 3){
+
+            cor[j] = "C";
+
+        }else if(x == 4){
+
+            cor[j] = "D";
+
+        }else if(x == 5){
+
+            cor[j] = "E";
+
+        }else if(x == 6){
+
+            cor[j] = "F";
+
+        }
+
     }
 
 }
