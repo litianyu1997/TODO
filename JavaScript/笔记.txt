@@ -1,0 +1,22 @@
+变量使用var 关键字进行生命和定义，注意变量提升
+
+常量使用function关键进行声明和定义，函数存在声明前，其本质与变量提升一致，函数的声明有三种形式：函数声明，匿名函数，函数表达式
+
+基本数据类型在ES5中共有六种:String,Number,Boolean,undefined,null,Object
+
+作用域分为全局作用域和局部作用域，局部可以拿到全局作用中的元素，而全局无法拿到局部作用域的元素，这种控制体系，称之为闭包
+
+String类型的基本操作方法
+
+全局方法：parseInt，parseFloat，Number，Boolean，String，isNaN
+
+
+数组的方法：
+数组.html
+
+
+
+
+
+
+
