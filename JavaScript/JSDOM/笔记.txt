@@ -1,0 +1,20 @@
+获取对象
+var obj = document.getElementById();
+
+获取类数组
+var objs = document.getElementByClassName();
+
+修改标签属性
+objs[0].style.width
+
+
+
+
+
+
+
+
+
+
+
+

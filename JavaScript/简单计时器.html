@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        /* 自定义字体 */
+        /* @font-face{
+            font-family: "";
+            font-src: "";
+        }
+        #timer{
+            font-family: "";  出现特殊字符/非英文单词/空格时，需要加""
+        } */
+
+        #timer{
+            font-size: 38px;
+            color: red;
+            padding: 0;
+            margin: 0;
+        }
+        #container{
+            background-color: blue;
+            padding: 16px 20px 16px 20px;
+            width: 212px;
+            margin: 200px auto;
+            
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <p id="timer">
+            <span id="hour">00 :</span>
+            <span id="minute">00 :</span>
+            <span id="second">00</span>
+        </p>
+    </div>
+
+    <script>
+        var container = document.getElementById("container");
+        var hourDom = document.getElementById("hour");
+        var minuteDom = document.getElementById("minute");
+        var secondDom = document.getElementById("second");
+        var hour = 0;
+        var minute = 0;
+        var second = 0;
+        var secondStr = "";
+        var minuteStr = "";
+        var hourStr = "";
+        setInterval(function(){
+            second++;
+            if(second > 59){
+                second = 0;
+                minute++;
+            }
+            if(second < 10){
+                secondStr = "0" + second;
+            }else{
+                secondStr = second.toString();
+            }
+            // secondStr = (second < 10)?("0" + second):(second.toString());
+
+            secondDom.innerText = secondStr;
+            if(minute > 59){
+                minute = 0;
+                hour++;
+            }
+            minuteStr = (minute < 10)?("0" + minute + " :"):("" + minute + " :");
+            minuteDom.innerText = minuteStr;
+
+            hourStr = (hour < 10)?("0" + hour + " :"):("" + hour + " :");
+            hourDom.innerText = hourStr;
+        },1000)
+
+    </script>
+</body>
+</html>

@@ -3,6 +3,8 @@ var select = [];
 var cor = [];
 var c1 = 0;
 var c2 = 0;
+var t = 0
+var time;
 
 $(document).ready(function () {
 
@@ -42,6 +44,7 @@ $(document).ready(function () {
 
     })
 
+    document.getElementById("time").innerHTML = "已用时：" + t + "s";
 });
 
 
@@ -117,7 +120,10 @@ var add = function(){
 
     c1 = 0;
     c2 = 0;
-
+    
+    if(t == 0){
+        time = setInterval(spend,1000);
+    }
 }
 
 var clean = function(){
@@ -142,6 +148,10 @@ var again = function(){
 
     random();
     clean();
+
+    t = 0;
+    clearInterval(time);
+    document.getElementById("time").innerHTML = "已用时：" + t + "s";
 }
 
 var random = function(){
@@ -200,31 +210,40 @@ var random = function(){
 
 var correct = function(){
 
-    if(select[0] == cor[0]){
-        c1 = c1+1;
-        c2 = c2+1;
-    }else if(select[0] == cor[1]||select[0] == cor[2]){
-        c1 = c1+1;
-    }
+        if(select[0] == cor[0]){
+            c1 = c1+1;
+            c2 = c2+1;
+        }else if(select[0] == cor[1]||select[0] == cor[2]){
+            c1 = c1+1;
+        }
 
-    if(select[1] == cor[1]){
-        c1 = c1+1;
-        c2 = c2+1;
-    }else if(select[1] == cor[0]||select[1] == cor[2]){
-        c1 = c1+1;
-    }
+        if(select[1] == cor[1]){
+            c1 = c1+1;
+            c2 = c2+1;
+        }else if(select[1] == cor[0]||select[1] == cor[2]){
+            c1 = c1+1;
+        }
 
-    if(select[2] == cor[2]){
-        c1 = c1+1;
-        c2 = c2+1;
-    }else if(select[2] == cor[0]||select[2] == cor[1]){
-        c1 = c1+1;
-    }
+        if(select[2] == cor[2]){
+            c1 = c1+1;
+            c2 = c2+1;
+        }else if(select[2] == cor[0]||select[2] == cor[1]){
+            c1 = c1+1;
+        }
 
-    if(c2 == "3"){
-        alert("恭喜找到正确答案");
-    }
+        if(c2 == "3"){
+            alert("恭喜找到正确答案");
+            clearInterval(time);
+        }
 
-}
+    }
 
 random();
+
+var spend = function(){
+
+    t = t+1;
+
+    document.getElementById("time").innerHTML = "已用时：" + t + "s";
+
+}

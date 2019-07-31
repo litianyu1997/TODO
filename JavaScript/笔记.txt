@@ -11,12 +11,3 @@ String类型的基本操作方法
 全局方法：parseInt，parseFloat，Number，Boolean，String，isNaN
 
 
-数组的方法：
-数组.html
-
-
-
-
-
-
-
