@@ -8,7 +8,43 @@
 </head>
 <body>
 <script>
-    var arr = [1,2,3,4]
+    var arr = ["1",,3,,] // 数组的隐性创建
+    var arr1 = new Array("1",2,3);
+    // arr2为Array构造函数的实例化对象
+    var arr2 = new Array;
+    var arr3 = new Array(15);
+    console.log(Array.isArray());
+
+    var obj1 = new Foo;
+    function Foo(){
+
+    }
+    console.log(typeof obj);
+
+
+    var arr = new Array(1,2,3,4,5);
+    var arr1 = new Array(5,4,3,2,1);
+    var result = arr.some(function(value,index,self){
+        console.log(this);
+        return value === this[index]
+    },arr1);
+    console.log(result);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
     // 获取数组长度
