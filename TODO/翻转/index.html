@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    .off{
+        position: absolute;
+        width: 50px;
+        height: 50px;
+        background-color: blueviolet;
+        text-align: center;
+        transform: rotateY(180deg);
+        backface-visibility: hidden;
+    }
+    .on{
+        position: absolute;
+        width: 50px;
+        height: 50px;
+        background-color: red;
+        text-align: center;
+        backface-visibility: hidden;
+    }
+    .container{
+        position: absolute;
+        width: 50px;
+        height: 50px;
+        transition: 1s;
+        transform-style: preserve-3d;
+    }
+    #c1,#c5,#c9,#c13{
+        left: 50px;
+    }
+    #c2,#c6,#c10,#c14{
+        left: 110px;
+    }
+    #c3,#c7,#c11,#c15{
+        left: 170px;
+    }
+    #c4,#c8,#c12,#c16{
+        left: 230px;
+    }
+    #c1,#c2,#c3,#c4{
+        top: 50px;
+    }
+    #c5,#c6,#c7,#c8{
+        top: 110px;
+    }
+    #c9,#c10,#c11,#c12{
+        top: 170px;
+    }
+    #c13,#c14,#c15,#c16{
+        top: 230px;
+    }
+    </style>
+</head>
+<body>
+    <div id="c1" class="container" onclick="demo(event)">
+        <div id="div1" class="on">?</div>
+        <div id="d1" class="off"></div>
+    </div>
+
+    <div id="c2" class="container" onclick="demo(event)">
+        <div id="div2" class="on">?</div>
+        <div id="d2" class="off"></div>
+    </div>
+
+    <div id="c3" class="container" onclick="demo(event)">
+        <div id="div3" class="on">?</div>
+        <div id="d3" class="off"></div>
+    </div>
+
+    <div id="c4" class="container" onclick="demo(event)">
+        <div id="div4" class="on">?</div>
+        <div id="d4" class="off"></div>
+    </div>
+
+    <div id="c5" class="container" onclick="demo(event)">
+        <div id="div5" class="on">?</div>
+        <div id="d5" class="off"></div>
+    </div>
+
+    <div id="c6" class="container" onclick="demo(event)">
+        <div id="div6" class="on">?</div>
+        <div id="d6" class="off"></div>
+    </div>
+
+    <div id="c7" class="container" onclick="demo(event)">
+        <div id="div7" class="on">?</div>
+        <div id="d7" class="off"></div>
+    </div>
+
+    <div id="c8" class="container" onclick="demo(event)">
+        <div id="div8" class="on">?</div>
+        <div id="d8" class="off"></div>
+    </div>
+
+    <div id="c9" class="container" onclick="demo(event)">
+        <div id="div9" class="on">?</div>
+        <div id="d9" class="off"></div>
+    </div>
+
+    <div id="c10" class="container" onclick="demo(event)">
+        <div id="div10" class="on">?</div>
+        <div id="d10" class="off"></div>
+    </div>
+
+    <div id="c11" class="container" onclick="demo(event)">
+        <div id="div11" class="on">?</div>
+        <div id="d11" class="off"></div>
+    </div>
+
+    <div id="c12" class="container" onclick="demo(event)">
+        <div id="div12" class="on">?</div>
+        <div id="d12" class="off"></div>
+    </div>
+
+    <div id="c13" class="container" onclick="demo(event)">
+        <div id="div13" class="on">?</div>
+        <div id="d13" class="off"></div>
+    </div>
+
+    <div id="c14" class="container" onclick="demo(event)">
+        <div id="div14" class="on">?</div>
+        <div id="d14" class="off"></div>
+    </div>
+
+    <div id="c15" class="container" onclick="demo(event)">
+        <div id="div15" class="on">?</div>
+        <div id="d15" class="off"></div>
+    </div>
+
+    <div id="c16" class="container" onclick="demo(event)">
+        <div id="div16" class="on">?</div>
+        <div id="d16" class="off"></div>
+    </div>
+</body>
+<script src="jquery-2.1.1.min.js"></script>
+<script src="index.js"></script>
+</html>

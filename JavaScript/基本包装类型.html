@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var num = new Number(5);
+        console.log(typeof num);
+    
+
+        var str1 = "123";
+        var str2 = "456";
+        var str3 = "789";
+        
+
+        function myConcat(){
+            var rersult = "";
+            for(var i = 0; i < arguments.length; i++){
+                result = result + arguments[i];
+            }
+            return result;
+        }
+        console.log(myConcat(str1,str2,str3))
+
+        function myString(str){
+            this.primitive = str;
+            myconcat = function(){
+                for(var i = 0; i < arguments.length; i++){
+                    this.primitive = this.primitive + arguments[i];
+                }
+                return this.primitive;
+            }
+            this.myToString = function(){
+
+            }
+        }
+        var myStr = new String("123");
+        console.log(myStr.myconcat("456","789"));
+        console.log(myStr);
+        console.log(inStr);
+
+
+        var str = "123";
+        str = new String(str);
+        console.log(str);
+        str.toString();
+        console.log(String.prototype);
+
+        var newStr = new String(str);
+        newStr[3] = "546";
+        console.log(newStr);
+        var obj = {
+            0:1,
+            1:2,
+            2:3,
+            2:3,
+        }
+
+        var str = "string";
+        console.log(str.includes("m"));
+        
+    </script>
+</body>
+</html>
