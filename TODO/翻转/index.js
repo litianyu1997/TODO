@@ -3,41 +3,46 @@ var cnum = 0;
 var sl = [];
 var choose = [];
 var t = 0;
+var sw = "true";
 
 function test(){
-    if(cnum == 2){
-        if(sl[0] !== sl[1]){
-            $(choose[0]).css("transform","rotateY(0deg)");
-            $(choose[1]).css("transform","rotateY(0deg)");
-            cnum = 0;
-            choose = [];
-            sl = [];
-            
-        }else if(sl[0] == sl[1]){
-            cnum = 0;
-            choose = [];
-            sl = [];
-            t = t+1;
-        }
-        if(t == 8){
-            alert("congratulation!")
-        }
+    if(sl[0] !== sl[1]){
+        $(choose[0]).css("transform","rotateY(0deg)");
+        $(choose[1]).css("transform","rotateY(0deg)");
+        cnum = 0;
+        choose = [];
+        sl = [];
+        
+    }else if(sl[0] == sl[1]){
+        cnum = 0;
+        choose = [];
+        sl = [];
+        t = t+1;
     }
+    if(t == 8){
+        alert("congratulation!")
+    }
+    sw = "true";
 }
 
 function demo(event){
+    if(sw == "true"){
+        if(cnum < 2){
+            var target = event.target.parentNode;
 
-    if(cnum < 2){
-        var target = event.target.parentNode;
-        $(target).css("transform","rotateY(180deg)");
-        var value = target.childNodes[3].innerText;
-        sl.push(value);
-        choose.push(target);
-        cnum = cnum+1;
+            if(event.target == target.childNodes[1]){
+                $(target).css("transform","rotateY(180deg)");
+                var value = target.childNodes[3].innerText;
+                sl.push(value);
+                choose.push(target);
+                cnum = cnum+1;
+            }
+        }
+        if(cnum == 2){
+            sw = "false";
+            setTimeout("test()","1300");
+        }
     }
-
-    setTimeout("test()","1300");
-
 }
 
 var random = function(){
