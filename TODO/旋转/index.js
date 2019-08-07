@@ -9,6 +9,8 @@ var year = myDate.getFullYear();
 var nums = 0;
 var numm = 0;
 var numh = 0;
+var numd = 0;
+var nummo = 0;
 var divAll = document.getElementsByTagName("div");
 var pAll = document.getElementsByTagName("p");
 
@@ -78,7 +80,7 @@ function minute(){
 
         numm++
     }
-    var t = (60 - sec)*1000
+    var t = (60 - sec)*1000;
     
     setTimeout(function (){
         kM = kM + 1;
@@ -129,7 +131,7 @@ function hour(){
         numh++
     }
 
-    var t = (60 - sec)*1000 + (59 - min)*60000
+    var t = (60 - sec)*1000 + (59 - min)*60*1000;
 
     setTimeout(function (){
         kH = kH + 1;
@@ -158,63 +160,198 @@ function hour(){
 }
 
 function d(){
+
+    var jD;
+    var kD;
+    var lD;
+
     if(mon+1 == 2){
 
         if(year%4 == 0){
-            $("#d30").css("display","none");
-            $("#d31").css("display","none");
+            for(var i = 144; i < 173; i++){
+
+                if(numd < 9){
+                    pAll[i].innerText = "0" + (numd+1);
+                }else{
+                    pAll[i].innerText = numd+1;
+                }
+        
+                jD = i + 4;
+                divAll[jD].id = numd+1;
+                
+                kD = day + 143 - i;
+                lD = 360 + kD * (360/29) +'deg'
+                $(divAll[jD]).css("transform","rotateZ(" + lD + ")");
+        
+                numd++
+
+            }
+            
+            var t = (60 - sec)*1000 + (59 - min)*60*1000 + (23 - hou)*60*60*1000;
+
+            setTimeout(function (){
+                kD = kD + 1;
+                for(var i = 0; i < 29; i++){
+                    var m = kD + i;
+                    var n = 360 + m * (360/29) +'deg'
+                    $(divAll[jD]).css("transform","rotateZ(" + n + ")");
+                    jD--;
+                }
+                
+                jD = 176;
+    
+            },t)
+
         }else{
-            $("#d29").css("display","none");
-            $("#d30").css("display","none");
-            $("#d31").css("display","none");
+
+            for(var i = 144; i < 172; i++){
+
+                if(numd < 9){
+                    pAll[i].innerText = "0" + (numd+1);
+                }else{
+                    pAll[i].innerText = numd+1;
+                }
+        
+                jD = i + 4;
+                divAll[jD].id = numd+1;
+                
+                kD = day + 143 - i;
+                lD = 360 + kD * (360/28) +'deg'
+                $(divAll[jD]).css("transform","rotateZ(" + lD + ")");
+        
+                numd++
+
+            }
+            
+            var t = (60 - sec)*1000 + (59 - min)*60*1000 + (23 - hou)*60*60*1000;
+
+            setTimeout(function (){
+                kD = kD + 1;
+                for(var i = 0; i < 28; i++){
+                    var m = kD + i;
+                    var n = 360 + m * (360/28) +'deg'
+                    $(divAll[jD]).css("transform","rotateZ(" + n + ")");
+                    jD--;
+                }
+                
+                jD = 175;
+    
+            },t)
+
+
+
         }
 
     }else if(mon+1 == 4 || mon+1 == 6 || mon+1 == 9 || mon+1 == 11){
 
-        $("#d31").css("display","none");
+        for(var i = 144; i < 174; i++){
+
+            if(numd < 9){
+                pAll[i].innerText = "0" + (numd+1);
+            }else{
+                pAll[i].innerText = numd+1;
+            }
+    
+            jD = i + 4;
+            divAll[jD].id = numd+1;
+            
+            kD = day + 143 - i;
+            lD = 360 + kD * 12 +'deg'
+            $(divAll[jD]).css("transform","rotateZ(" + lD + ")");
+    
+            numd++
+        }
+        
+        var t = (60 - sec)*1000 + (59 - min)*60*1000 + (23 - hou)*60*60*1000;
+
+        setTimeout(function (){
+            kD = kD + 1;
+            for(var i = 0; i < 30; i++){
+                var m = kD + i;
+                var n = 360 + m * 12 +'deg'
+                $(divAll[jD]).css("transform","rotateZ(" + n + ")");
+                jD--;
+            }
+            
+            jD = 177;
+
+        },t)
 
     }else{
 
+        for(var i = 144; i < 175; i++){
 
+            if(numd < 9){
+                pAll[i].innerText = "0" + (numd+1);
+            }else{
+                pAll[i].innerText = numd+1;
+            }
+    
+            jD = i + 4;
+            divAll[jD].id = numd+1;
+            
+            kD = day + 143 - i;
+            lD = 360 + kD * (360/31) +'deg'
+            $(divAll[jD]).css("transform","rotateZ(" + lD + ")");
+    
+            numd++
+        }
+
+        var t = (60 - sec)*1000 + (59 - min)*60*1000 + (23 - hou)*60*60*1000;
+
+        setTimeout(function (){
+            kD = kD + 1;
+            for(var i = 0; i < 31; i++){
+                var m = kD + i;
+                var n = 360 + m * (360/31) +'deg'
+                $(divAll[jD]).css("transform","rotateZ(" + n + ")");
+                jD--;
+            }
+            
+            jD = 178;
+
+        },t)
         
     }
-
     
-
-    
-    
-    // month();
+    month();
 }
 
 function month(){
 
+    var jMo;
+    var kMo;
+    var lMo;
+
+    for(var i = 175; i < 187; i++){
+
+        if(nummo < 9){
+            pAll[i].innerText = "0" + (nummo+1);
+        }else{
+            pAll[i].innerText = nummo+1;
+        }
+
+        jMo = i + 5;
+        divAll[jMo].id = nummo+1;
+        
+        kMo = mon + 175 - i;
+        lMo = 360 + kMo * 30 +'deg'
+        $(divAll[jMo]).css("transform","rotateZ(" + lMo + ")");
+
+        nummo++
+    }
+
+    y();
+
+}
+
+function y(){
+
+    var i = 187;
+    pAll[i].innerText = year;
     
+    $(".sign").css("display","inline");
 
-    var mm01 = 360 + (mon + 12) * 30+'deg';
-    var mm02 = 360 + (mon + 11) * 30+'deg';
-    var mm03 = 360 + (mon + 10) * 30+'deg';
-    var mm04 = 360 + (mon + 9) * 30+'deg';
-    var mm05 = 360 + (mon + 8) * 30+'deg';
-    var mm06 = 360 + (mon + 7) * 30+'deg';
-    var mm07 = 360 + (mon + 6) * 30+'deg';
-    var mm08 = 360 + (mon + 5) * 30+'deg';
-    var mm09 = 360 + (mon + 4) * 30+'deg';
-    var mm10 = 360 + (mon + 3) * 30+'deg';
-    var mm11 = 360 + (mon + 2) * 30+'deg';
-    var mm12 = 360 + (mon + 1) * 30+'deg';
+    console.log("start time: " + year + "/" + (mon+1) + "/" + day + "-" + hou + ":" + min + ":" + sec)
     
-
-    setTimeout(function () {$("#mo1").css("transform","rotateZ(" + mm01 + ")");}, 4000);
-    setTimeout(function () {$("#mo2").css("transform","rotateZ(" + mm02 + ")");}, 4000);
-    setTimeout(function () {$("#mo3").css("transform","rotateZ(" + mm03 + ")");}, 4000);
-    setTimeout(function () {$("#mo4").css("transform","rotateZ(" + mm04 + ")");}, 4000);
-    setTimeout(function () {$("#mo5").css("transform","rotateZ(" + mm05 + ")");}, 4000);
-    setTimeout(function () {$("#mo6").css("transform","rotateZ(" + mm06 + ")");}, 4000);
-    setTimeout(function () {$("#mo7").css("transform","rotateZ(" + mm07 + ")");}, 4000);
-    setTimeout(function () {$("#mo8").css("transform","rotateZ(" + mm08 + ")");}, 4000);
-    setTimeout(function () {$("#mo9").css("transform","rotateZ(" + mm09 + ")");}, 4000);
-    setTimeout(function () {$("#mo10").css("transform","rotateZ(" + mm10 + ")");}, 4000);
-    setTimeout(function () {$("#mo11").css("transform","rotateZ(" + mm11 + ")");}, 4000);
-    setTimeout(function () {$("#mo12").css("transform","rotateZ(" + mm12 + ")");}, 4000);
-
 }
