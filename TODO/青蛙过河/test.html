@@ -1,0 +1,214 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!--[if IE]>
+<script type="text/javascript" src="http://code.taobao.org/svn/gpms/trunk/gpms/web/resource/js/json2.js"></script>
+<![endif]-->
+<title>青蛙公主</title>
+<style>
+    /* #pool {} */
+    .lotus_leaf {
+        width: 30px; 
+        height: 30px; 
+        margin: 2px; 
+        float:left; 
+        background-color:#dddddd;
+        font-size:24px;
+        line-height:30px;
+        text-align:center;
+    }
+    .on { 
+        background-color:#99cc66;
+        cursor:pointer;
+    }
+    .off { 
+        background-color:#cccc99;
+        cursor:default;
+    }
+    .clear {clear:both;}
+</style>
+</head>
+<body>
+<div>
+    <h3>青蛙公主游戏玩法</h3>
+    <p>绿色为荷叶，带箭头的为青蛙。操作方法：鼠标点击操作，单击荷叶跳，背对着荷叶是不能跳的，只能走直线跳，并且中间不能隔着荷叶，要全把荷叶跳了才可以过关。</p>
+    <p>祝您好运！</p>
+</div>
+<div id="pool">
+    <div class="lotus_leaf" id="leaf_1_1"></div>
+    <div class="lotus_leaf" id="leaf_1_2"></div>
+    <div class="lotus_leaf" id="leaf_1_3"></div>
+    <div class="lotus_leaf" id="leaf_1_4"></div>
+    <div class="lotus_leaf" id="leaf_1_5"></div>
+    <div class="lotus_leaf" id="leaf_1_6"></div>
+  
+    <div class="lotus_leaf" id="leaf_2_1"></div>
+    <div class="lotus_leaf" id="leaf_2_2"></div>
+    <div class="lotus_leaf" id="leaf_2_3"></div>
+    <div class="lotus_leaf" id="leaf_2_4"></div>
+    <div class="lotus_leaf" id="leaf_2_5"></div>
+    <div class="lotus_leaf" id="leaf_2_6"></div>
+  
+    <div class="lotus_leaf" id="leaf_3_1"></div>
+    <div class="lotus_leaf" id="leaf_3_2"></div>
+    <div class="lotus_leaf" id="leaf_3_3"></div>
+    <div class="lotus_leaf" id="leaf_3_4"></div>
+    <div class="lotus_leaf" id="leaf_3_5"></div>
+    <div class="lotus_leaf" id="leaf_3_6"></div>
+  
+    <div class="lotus_leaf" id="leaf_4_1"></div>
+    <div class="lotus_leaf" id="leaf_4_2"></div>
+    <div class="lotus_leaf" id="leaf_4_3"></div>
+    <div class="lotus_leaf" id="leaf_4_4"></div>
+    <div class="lotus_leaf" id="leaf_4_5"></div>
+    <div class="lotus_leaf" id="leaf_4_6"></div>
+</div>
+<div class="clear"></div>
+<div id="levels">
+    <p>
+        <a href="javascript:void(0);" οnclick="javascript:loadMap([[[3,5],[3,4],[3,3],[2,3],[1,3],[1,4]],[3,5]]);">第1关</a>
+        <a href="javascript:void(0);" οnclick="javascript:loadMap([[[1,1],[2,1],[3,1],[4,1],[1,2],[2,2],[3,2],[4,2],[1,3],[2,3],[3,3],[1,4],[2,4],[3,4],[4,4],[1,5],[2,5],[3,5],[4,5]],[1,1]]);">第2关</a>
+        <a href="javascript:void(0);" οnclick="javascript:loadMap([[[1,1],[2,1],[3,1],[4,1],[4,2],[4,3],[4,4],[4,5]],[1,1]]);">第3关</a>
+        <a href="javascript:void(0);" οnclick="javascript:loadMap([[[1,1],[1,2],[1,4],[1,5],[1,6],[2,1],[2,2],[2,3],[2,4],[2,6],[3,1],[3,3],[3,4],[3,6],[4,1],[4,3],[4,4],[4,5],[4,6]],[4,1]]);">第4关</a>
+        <a href="javascript:void(0);" οnclick="javascript:mapEditorMode();return false;">地图编辑器</a>
+   </p>
+</div>
+ 
+<div class="clear"></div>
+<div>
+    <textarea rows="5" cols="30" id="mapEditorResult" ></textarea>
+    <input type="button" value="试玩" οnclick="return mapEditorPreview();"/>
+ </div>
+ </body>
+ </html>
+  
+  
+  
+  
+<script type="text/javascript">
+    var ROW = 12, COL = 16, SIZE = 30;
+    var g_map = [[[3,2],[3,3],[3,4],[3,5]],[3,2]];
+    //var g_map = [[[3,5],[3,4],[3,3],[2,3],[1,3],[1,4]],[3,5]];
+    var g_cur = [-1,-1];
+    var g_cnt = [0, 0];// [total, remaining]
+  
+    function g(x){return document.getElementById(x);}
+    function loadMap(map) {
+        var html = '';
+        for (var i=1; i<=ROW; i++) {
+            for (var j=1; j<=COL; j++) {
+                html += '<div class="lotus_leaf" id="leaf_'+i+'_'+j+'"></div>';
+                /*var me = g('leaf_'+i+'_'+j);
+                me.className = 'lotus_leaf';
+                me.removeAttribute('x');
+                me.removeAttribute('y');
+                me.onclick = null;
+                me.innerHTML = '';*/
+            }
+        }
+        if (!map) {
+            alert('本关开发中！');
+            return false;
+        }
+        var pool = g('pool');
+        pool.style.width = ( (SIZE+4)*COL )+ 'px';
+        pool.innerHTML = html;
+        for (var i in map[0]) {
+            setLeaf(map[0][i]);
+        }
+        g_cnt = [map[0].length, map[0].length];
+        setFlog(map[1]);
+    }
+    function setLeaf(x) {
+        var me = g('leaf_'+x[0]+'_'+x[1]);
+        me.className = 'lotus_leaf on';
+        me.setAttribute('x', x[0]);
+        me.setAttribute('y', x[1]);
+        me.οnclick=function(){
+            var o = this;
+            var x = o.getAttribute('x'), y = o.getAttribute('y');
+            var dist = Math.abs(x - g_cur[0]) + Math.abs(y - g_cur[1]);
+            if (dist < 2 && dist > 0) {
+                jumpTo([x,y]);
+            }
+        }
+    }
+    function unsetLeaf(x) {
+        var me = g('leaf_'+x[0]+'_'+x[1]);
+        me.className = 'lotus_leaf off';
+        me.innerHTML = '';
+        me.οnclick=null;
+    }
+    function setFlog(x) {
+        g('leaf_'+x[0]+'_'+x[1]).innerHTML = '→';//←↑↓';
+        g_cur = x;
+    }
+    function jumpTo(x) {
+        unsetLeaf(g_cur);
+        setLeaf(x);
+        setFlog(x);
+        if (--g_cnt[1] == 1) {
+            alert('过关了！');
+        }
+    }
+  
+    ////////////////////////////////////////////
+    function mapEditorMode() {
+        for (var i=1; i<=ROW; i++) {
+            for (var j=1; j<=COL; j++) {
+                var me = g('leaf_'+i+'_'+j);
+                me.className = 'lotus_leaf';
+                me.setAttribute('x', i);
+                me.setAttribute('y', j);
+                me.onclick = function() {
+                    var i = this.getAttribute('x'),
+                        j = this.getAttribute('y');
+                    mapEditorMark([i,j]);
+                };
+                me.innerHTML = '';
+            }
+        }
+    }
+    function mapEditorMark(x) {
+        var me = g('leaf_'+x[0]+'_'+x[1]);
+        me.className = (me.className == 'lotus_leaf')?'lotus_leaf on':'lotus_leaf';
+        //
+        var mapData = [[], [0,0]];
+        for (var i=1; i<=ROW; i++) {
+            for (var j=1; j<=COL; j++) {
+                var me = g('leaf_'+i+'_'+j);
+                if (me.className == 'lotus_leaf on') {
+                    mapData[0].push([i,j]);
+                }
+            }
+        }
+  
+        g('mapEditorResult').value = JSON.stringify(mapData);
+    }
+    function mapEditorPreview() {
+        var data = g('mapEditorResult').value;
+        if (!data){
+            alert('先编辑地图！');
+            return false;
+        };
+        var mapData = JSON.parse(data);
+        if (!mapData || !mapData[0] || !mapData[1]) {
+            alert('数据非法！');
+            return false;
+        }
+        if (!mapData[1][0] || !mapData[1][1]) {
+            alert('请手动修改修改青蛙初始位置！（最后两个数字坐标）');
+            return false;
+        }
+  
+        var x = mapData[1], me = g('leaf_'+x[0]+'_'+x[1]);
+        if (!me || me.className != 'lotus_leaf on') {
+            alert('青蛙初始位置必须是荷叶！');
+            return false;
+        }
+        loadMap(mapData);
+        return false;
+    }
+    loadMap(g_map);
+  
+ </script>

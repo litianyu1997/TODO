@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <style>
+    
+    .side{
+        position: relative;
+        left: 50%;
+        top: 200px;
+        margin: -50px 0 0 -50px;
+        width: 100px;
+        height: 100px;
+        background-color: gray;
+        transform-style: preserve-3d;
+    }
+
+    #div1,#div2,#div3,#div4,#div5,#div6{
+        position: absolute;
+        width: 100px;
+        height: 100px;
+        font-weight: bold;
+        text-align: center;
+        line-height: 100px;
+        background-color: aqua;
+    }
+    
+    #div1{
+        transform: translateZ(-50px)rotateX(180deg);
+    }
+    #div2{
+        transform: translateY(-50px)rotateX(-90deg);
+    }
+    #div3{
+        transform: translateX(-50px)rotateY(-90deg);
+    }
+    #div4{
+        transform: translateX(50px)rotateY(90deg);
+    }
+    #div5{
+        transform: translateY(50px)rotateX(90deg);
+    }
+    #div6{
+        transform: translateZ(50px)rotateX(0deg);
+    }
+    </style>
+
+</head>
+<body>
+    <div class="side">
+        <div id="div1">1</div>
+        <div id="div2">2</div>
+        <div id="div3">3</div>
+        <div id="div4">4</div>
+        <div id="div5">5</div>
+        <div id="div6">6</div>
+    </div>
+</body>
+</html>
