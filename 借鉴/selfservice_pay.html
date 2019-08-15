@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>我要缴费</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <script type="text/javascript">
+        var typeP = '';
+        var sUserAgent = navigator.userAgent.toLowerCase();
+        var bIsIpad = sUserAgent.match(/ipad/i) == "ipad";
+        var bIsIphoneOs = sUserAgent.match(/iphone os/i) == "iphone os";
+        var bIsMidp = sUserAgent.match(/midp/i) == "midp";
+        var bIsUc7 = sUserAgent.match(/rv:1.2.3.4/i) == "rv:1.2.3.4";
+        var bIsUc = sUserAgent.match(/ucweb/i) == "ucweb";
+        var bIsAndroid = sUserAgent.match(/android/i) == "android";
+        var bIsCE = sUserAgent.match(/windows ce/i) == "windows ce";
+        var bIsWM = sUserAgent.match(/windows mobile/i) == "windows mobile";
+        if (bIsIpad || bIsIphoneOs || bIsMidp || bIsUc7 || bIsUc || bIsAndroid || bIsCE || bIsWM) {
+            typeP = "phone";
+        } else {
+            typeP = "pc";
+        }
+        var deviceWidth = document.documentElement.clientWidth;
+        if (typeP == "phone"){
+            if (deviceWidth>640){
+                deviceWidth = 640;
+            }
+            document.documentElement.style.fontSize = deviceWidth / 6.4 + 'px';
+        }
+        else {
+            deviceWidth = document.documentElement.clientWidth;
+            document.documentElement.style.fontSize = deviceWidth / deviceWidth*100 + 'px';
+        }
+        window.onload = function () {
+            var arr = []
+            var ul = document.getElementsByClassName("detail-list");
+
+        }
+    </script>
+    <style>
+        /*Reset样式*/
+        html, body, div, span, applet, object, iframe,
+        h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+        a, abbr, acronym, address, big, cite, code,
+        del, dfn, em, img, ins, kbd, q, s, samp,
+        small, strike, strong, sub, sup, tt, var,
+        b, u, i, center,
+        dl, dt, dd, ol, ul, li,
+        fieldset, form, label, legend,
+        table, caption, tbody, tfoot, thead, tr, th, td,
+        article, aside, canvas, details, embed,
+        figure, figcaption, footer, header, hgroup,
+        menu, nav, output, ruby, section, summary,
+        time, mark, audio, video{
+            margin: 0;
+            padding: 0;
+            user-select: none;
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+            -webkit-box-sizing: border-box;
+        }
+        ol, ul {
+            list-style: none;
+        }
+        a,img {
+            border: none;
+        }
+        *{
+            box-sizing: border-box;
+            user-select:none;
+            -webkit-touch-callout:none;  /*系统默认菜单被禁用*/
+            -webkit-user-select:none; /*webkit浏览器*/
+            -khtml-user-select:none; /*早期浏览器*/
+            -moz-user-select:none; /*火狐*/
+            -ms-user-select:none;  /*IE10*/
+        }
+        input,textarea{
+            -webkit-appearance: none;
+            -webkit-user-select: auto;
+        }
+        textarea{
+            resize: none;
+        }
+        html,body,input,textarea,button{
+            font-size:0.26rem;
+        }
+        html,body,div,input,textarea,p,span,i{
+            font-family: "微软雅黑";
+        }
+        /*防止点击元素出现闪烁*/
+        html,body{
+            -webkit-text-size-adjust: 100%;
+            -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+        }
+
+        input::-webkit-input-placeholder,
+        textarea::-webkit-input-placeholder{
+            color:#cacaca;
+            line-height:normal;
+        }
+
+        a:link {
+            font-size: 0.26rem;
+            color: #000000;
+            text-decoration: none;
+        }
+        a:visited {
+            font-size: 0.26rem;
+            color: #000000;
+            text-decoration: none;
+        }
+        a:hover {
+            font-size: 0.26rem;
+            color: #999999;
+            text-decoration: underline;
+        }
+        .wrapper{
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-flex-direction: column;
+            -ms-flex-direction: column;
+            flex-direction: column;
+            overflow-y: hidden;
+            box-sizing: border-box;
+        }
+        .detail{
+            position:relative;
+            width:100%;
+            display:flex;
+            display: -webkit-flex;
+            -webkit-flex-direction:column;
+            flex-direction: column;
+            -webkit-box-flex: 1;
+            -webkit-flex: 1;
+            flex: 1;
+            overflow-y: hidden;
+            -webkit-box-flex: 1;
+            display: -webkit-flex;
+            -webkit-flex: 1;
+            -webkit-flex-direction: column;
+            margin-bottom: 3.37rem;
+            padding-top: 0.14rem;
+            background: #F4F4F4;
+        }
+        .detail-list{
+            position:relative;
+            width:100%;
+        }
+        .footer{
+            position:fixed;
+            bottom: 0;
+            width:100%;
+        }
+        .footer-select{
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: -ms-flexbox;
+            display: flex;
+            position: relative;
+            width:100%;
+            height: 1.21rem;
+            background: #FFFFFF;
+        }
+        .selectType{
+            -webkit-box-flex: 1;
+            -webkit-flex: 1;
+            flex: 1;
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: -ms-flexbox;
+            display: flex;
+            align-items:center;
+        }
+        .selectPay{
+            -webkit-box-flex: 1;
+            -webkit-flex: 1;
+            flex: 1;
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: -ms-flexbox;
+            display: flex;
+            justify-content: flex-end;
+            align-items:center;
+        }
+        .typeCheck{
+            display: inline-block;
+            margin-left: 0.29rem;
+            list-style: none;
+            border: none;
+            width: 0.38rem;
+            height: 0.38rem;
+            background: #2071FE;
+            border-radius: 0.17rem;
+        }
+        .typeTxt{
+            margin-left: 0.25rem;
+            font-family: PingFangSC-Regular;
+            font-size: 0.26rem;
+            color: #999999;
+        }
+        .payTxt{
+            margin-right: 0.1rem;
+            font-family: PingFangSC-Regular;
+            font-size: 0.26rem;
+            color: #999999;
+        }
+        .paySum{
+            margin-right: 0.14rem;
+            font-family: PingFangSC-Semibold;
+            font-size: 0.29rem;
+            font-weight: bold;
+            color: #333333;
+            text-align: left;
+        }
+        .footer-submit{
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: -ms-flexbox;
+            display: flex;
+            justify-content: center;;
+            position: relative;
+            height: 1.31rem;
+            background: #F4F4F4;
+        }
+        .submitBtn{
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: -ms-flexbox;
+            display: flex;
+            justify-content: center;;
+            align-items: center;
+            margin: 0.13rem 0.29rem 0 0.29rem;
+            width: 100%;
+            height: 0.8rem;
+            background: #3D70FF;
+            color: #ffffff;
+            border-radius: 2px;
+            font-family: PingFangSC-Regular;
+            font-size: 18px;
+            letter-spacing: 1.2px;
+        }
+        .footer-nav{
+            position: relative;
+            height: 0.85rem;
+            background: #EDEDED;
+            padding: 0.22rem 2.24rem;
+        }
+        .leftTab{
+            width: 0.34rem;
+            height: 0.34rem;
+        }
+        .rightTab{
+            position:absolute;
+            top: 0.22rem;
+            right: 2.24rem;
+            width: 0.34rem;
+            height: 0.34rem;
+        }
+        .icon-leftTab{
+            width: 0.17rem;
+            height: 0.34rem;
+            background: url("../img/rn_top_back_white@2x.png");
+            background-size: 100% 100%;
+            -webkit-background-size: 100% 100%;
+            -moz-background-size: 100% 100%;
+            -o-background-size: 100% 100%;
+        }
+        .icon-rightTab{
+            position: relative;
+            left:0.17rem;
+            width: 0.17rem;
+            height: 0.34rem;
+            background: url("../img/rn_window_back@2x.png");
+            background-size: 100% 100%;
+            -webkit-background-size: 100% 100%;
+            -moz-background-size: 100% 100%;
+            -o-background-size: 100% 100%;
+        }
+        </style>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="detail">
+            <ul class="detail-list">
+                <li><input type="checkbox" class="typeCheck">1</li>
+                <li><input type="checkbox" class="typeCheck">2</li>
+                <li><input type="checkbox" class="typeCheck">3</li>
+                <li><input type="checkbox" class="typeCheck">4</li>
+                <li><input type="checkbox" class="typeCheck">5</li>
+            </ul>
+        </div>
+        <div class="footer">
+            <div class="footer-select">
+                <div class="selectType">
+                    <input type="checkbox" class="typeCheck" /><div class="typeTxt">全选</div>
+                </div>
+                <div class="selectPay">
+                    <div class="payTxt">合计</div><div class="paySum" id="paySum"></div>
+                </div>
+            </div>
+            <div class="footer-submit">
+                <div class="submitBtn">提交订单</div>
+            </div>
+            <div class="footer-nav">
+                <div class="leftTab">
+                    <div class="icon-leftTab"></div>
+                </div>
+                <div class="rightTab">
+                    <div class="icon-rightTab"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    var sum = 0;
+    var ulChilds = document.getElementsByTagName("li");
+    for(var i = 0; i < ulChilds.length; i++){
+        if(ulChilds[i].checked == true){
+            sum += Number(ulChilds[i].innerText);
+        }
+    }
+    sum = sum + ".00"
+    console.log(sum)
+    var text = document.createTextNode(sum)
+    document.getElementById("paySum").appendChild(text);
+</script>
+</html>
