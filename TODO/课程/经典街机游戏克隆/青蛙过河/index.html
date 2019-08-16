@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <style>
+        
+        .div{
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            margin: -25px 0 0 -25px;
+            width: 50px;
+            height: 50px;
+            line-height: 50px;
+            text-align: center;
+        }
+        
+        .div1{
+            background-color: red;
+        }
+
+        .div2{
+            background-color: blue;
+        }
+
+        .div3{
+            background-color: rgb(80, 238, 80);
+        }
+
+        #d1{
+            margin-left: -205px;
+        }
+
+        #d2{
+            margin-left: -145px;
+        }
+
+        #d3{
+            margin-left: -85px;
+        }
+
+        #d5{
+            margin-left: 35px;
+        }
+
+        #d6{
+            margin-left: 95px;
+        }
+
+        #d7{
+            margin-left: 155px;
+        }
+
+    </style>
+
+</head>
+<body>
+    <div class="container">
+        <div class="div" id="d1"></div>
+        <div class="div" id="d2"></div>
+        <div class="div" id="d3"></div>
+        <div class="div" id="d4"></div>
+        <div class="div" id="d5"></div>
+        <div class="div" id="d6"></div>
+        <div class="div" id="d7"></div>
+    </div>
+    <button onclick="start()">Start</button>
+</body>
+</html>
+<script src="jquery-2.1.1.min.js"></script>
+<script>
+    function start(){
+
+        var dAll = document.getElementsByClassName("div");
+        console.log(dAll[0].innerHTML)
+        $(dAll[0]).addClass("div1");
+        $(dAll[1]).addClass("div1");
+        $(dAll[2]).addClass("div1");
+        $(dAll[3]).addClass("div3");
+        $(dAll[4]).addClass("div2");
+        $(dAll[5]).addClass("div2");
+        $(dAll[6]).addClass("div2");
+        
+
+    }
+</script>
