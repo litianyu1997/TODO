@@ -249,7 +249,75 @@
         // Q:以上哪些时正确的箭头函数格式
         // A:1,4
 
+
+        // "this"和箭头函数
+        // 构造函数
+        function IceCream(){
+            this.scoops = 0;
+        }
+        // 为IceCream添加addScoop方法
+        IceCream.prototype.addScoop = function(){
+            setTimeout(() => {
+                this.scoops++;
+                console.log('scoop added!');
+            },500);
+        };
+        const dessert = new IceCream();
+        dessert.addScoop();
+
+        // 默认函数参数
+        function greet(name = 'Student', greeting = 'Welcome'){
+            return `${greeting} ${name}!`;
+        }
+
+        // 习题1
+        function houseDescriptor([houseColor = 'green', shutterColors = [red]]){
+            return `I have a ${houseColor} house with ${shutterColors.join(' and ')} shutters`;
+        }
+        // 选项1
+        houseDescriptor('red',['white', 'gray', 'pink']);
+        // 选项2
+        houseDescriptor(['green',['white', 'gray', 'pink']]);
+        // 选项3
+        houseDescriptor(['blue','purple']);
+        // 选项4
+        houseDescriptor(['green']);
+        // Q:以上哪些选项可以正常运行
+        // A:2,4
+
+        // 默认值和解构对象
+        function createSundae({scoops = 1, toppings = ['Hot Fudge']} = {}){
+            const scoopText = scoops === 1 ? 'scoop' : 'scoops';
+            return `Your sundae has ${scoops} ${scoopText} with ${toppings.join(' and ')} toppings.`;
+        }
+        createSundae({});
+        createSundae({scoops:2});
+        createSundae({scoops:2, toppings: ['Sprinkles']});
+        createSundae({toppings: ['Cookie Dough']});
+        // Returns:
+        // Your sundae has 1 scoop with Hot Fudge toppings.
+        // Your sundae has 2 scoops with Hot Fudge toppings.
+        // Your sundae has 2 scoops with Sprinkles toppings.
+        // Your sundae has 1 scoop Cookie Dough toppings.
+
+        // 习题2
+        function houseDescriptor({houseColor = 'green', shutterColors = ['red']} = {}){
+            return `I have a ${houseColor} house with ${shutterColors.join(' and ')} shutters`;
+        }
+        // 选项1
+        houseDescriptor({houseColor:'red',shutterColors:['white','gray','pink']});
+        // 选项2
+        houseDescriptor({houseColor:'red'});
+        // 选项3
+        houseDescriptor();
+        // 选项4
+        houseDescriptor({shutterColors:['orange','blue']});
+        // 选项5
+        houseDescriptor({});
+        // Q:上面的哪些选项可以正常运行
+        // A:全都可以
         
+
     </script>
 </body>
 </html>
