@@ -243,7 +243,7 @@
             color.split('').reverse().join('') + "!";
         });
         // 选项3
-        const crazyColors = colors.map(color => return color.split('').reverse().join('') + "!");
+        const crazyColors = colors.map(color => color.split('').reverse().join('') + "!");
         // 选项4
         const crazyColors = colors.map(color => color.split('').reverse().join('') + "!");
         // Q:以上哪些时正确的箭头函数格式
@@ -317,6 +317,192 @@
         // Q:上面的哪些选项可以正常运行
         // A:全都可以
         
+
+        // ES6中的子类
+        class Tree {
+            constructor(size = '10', leaves = {spring: 'green', summer: 'green', fall: 'orange', winter: null}){
+                this.size = size;
+                this.leaves = leaves;
+                this.leafColor = null;
+            }
+
+            changeSeason(season){
+                this.leafColor = this.leaves[season];
+                if(season === 'spring'){
+                    this.size += 1;
+                }
+            }
+        }
+
+        class Maple extends Tree {
+            constructor(syrupQty = 15, size, leaves){
+                super(size, leaves);
+                this.syrupQty = syrupQty;
+            }
+            changeSeason(season) {
+                super.changeSeason(season);
+                if(season === 'spring'){
+                    this.syrupQty += 1;
+                }
+            }
+            gatherSyrup(){
+                this.syrupQty -= 3;
+            }
+        }
+        const myMaple = new Maple(15,5);
+        myMaple.changeSeason('fall');
+        myMaple.gatherSyrup();
+        myMaple.changeSeason('spring');
+
+
+        // Symbol
+        // 创建Symbol，输入Symbol()，并添加一个可选的字符串作为其描述
+        // 避免相同名称的对象被覆盖
+        // Symbo.iterator相当于迭代器的接口，只有对象里有这个symbol的属性，才可以认为此对象是可迭代的
+
+        // 使用默认数组的默认迭代器访问数组钟的每个值
+        const digits = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+        const arrayIterator = digits[Symbo.iterator]();
+
+        console.log(arrayIterator.next()); // Object{value: 0, done: false};
+        console.log(arrayIterator.next()); // Object{value: 1, done: false};
+        console.log(arrayIterator.next()); // Object{value: 2, done: false};
+
+
+        // 集合(Set)
+        // Set与数组之间的区别：
+        // 1、Set不基于索引，不能根据集合中的条目在集合中的位置引用这些条目
+        // 2、Set中的条目不能单独被访问
+        // 基本上，Set是让你可以存储唯一条目的对象。你可以向Set中添加条目，删除条目，并循环访问Set。这些条目可以是原始值或对象。
+        const games = new Set(['Super Mario Bros.', 'Banjo-Kazooie', 'Mario Kart', 'Super Mario Bros.']);
+        console.log(games); // Set {'Super Mario Bros.', 'Banjo-Kazooie', 'Mario Kart'}
+        // 在创建Set时，会自动移除重复的条目"Super Mario Bros."
+
+        // 修改Set 使用名称对应的.add()和.delete()方法
+        // 使用.size属性可以返回Set中的条目数
+        // 使用.has()方法可以检查Set中是否存在某个条目
+        // 使用.values()方法可以返回Set中的值，返回值是SetIterator对象
+
+
+        // Map(映射)
+        // 如果说Set类似于数组，那么Map就类似于对象，因为Map存储键值对，和对象包含命名属性及值相类似
+        // 本质上，Map是一个可以存储键值对的对象，键和值都可以是对象、原始值或二者的结合
+
+        const employees = new Map();
+        console.log(employees);
+        // return: Map{}
+
+        // 修改Map
+        // 和Set不同，需要使用Map的.set()方法添加键值
+        employees.set('james.parkes@udacity.com',{
+            firstName: 'James',
+            lastName: 'Parkes',
+            role: 'Content Developer' 
+        });
+        employees.set('julia@udacity.com', {
+            firstName: 'Julia',
+            lastName: 'Van Cleve',
+            role: 'Content Developer'
+        });
+        employees.set('richard@udacity.com', {
+            firstName: 'Richard',
+            lastName: 'Kalehoff',
+            role: 'Content Developer'
+        });
+        console.log(employees);
+
+        // return：Map {'james.parkes@udacity.com' => Object {...}, 'julia@udacity.com' => Object {...}, 'richard@udacity.com' => Object {...}}
+        // .set() 方法有两个参数。第一个参数是键，用来引用第二个参数，即值。
+
+        // 要移除键值对，只需使用 .delete() 方法。
+        employees.delete('julia@udacity.com');
+        employees.delete('richard@udacity.com');
+        console.log(employees);
+
+        // return：Map {'james.parkes@udacity.com' => Object {firstName: 'James', lastName: 'Parkes', role: 'Course Developer'}}
+
+        // 同样，和 Set 类似，你可以使用 .clear() 方法从 Map 中删除所有键值对。
+        employees.clear()
+        console.log(employees);
+        // return：Map {}
+
+        // 处理Map
+        // 构建 Map 后，可以使用 .has() 方法并向其传入一个键来检查 Map 中是否存在该键值对。
+        const members = new Map();
+        members.set('Evelyn', 75.68);
+        members.set('Liam', 20.16);
+        members.set('Sophia', 0);
+        members.set('Marcus', 10.25);
+        console.log(members.has('Xavier'));
+        console.log(members.has('Marcus'));
+        // return: false  true
+
+        // 还可以通过向 .get() 方法传入一个键，检索 Map 中的值。
+        console.log(members.get('Evelyn')); // 75.68
+
+        // 循环访问Map
+        // 1. 使用 MapIterator
+        // 在 Map 上使用 .keys() 和 .values() 方法将返回新的迭代器对象，叫做 MapIterator。你可以将该迭代器对象存储在新的变量中，并使用 .next() 循环访问每个键或值。你所使用的方法将决定迭代器是否能够访问 Map 的键或值。
+        let iteratorObjForKeys = members.keys();
+        iteratorObjForKeys.next();
+        // return：Object {value: 'Evelyn', done: false}
+        // 使用 .next() 获得下个键值对。
+        iteratorObjForKeys.next();
+        // return：Object {value: 'Liam', done: false}
+        iteratorObjForKeys.next();
+        // return：Object {value: 'Sophia', done: false}
+
+        // 另一方面，使用 .values() 方法访问 Map 的值，然后重复同一流程。
+        let iteratorObjForValues = members.values();
+        iteratorObjForValues.next();
+        // return：Object {value: 75.68, done: false}
+
+        // 2. 使用 for...of 循环
+        for (const member of members) {
+            console.log(member);
+        }
+        // return：['Evelyn', 75.68]
+        //  ['Liam', 20.16]
+        //  ['Sophia', 0]
+        //  ['Marcus', 10.25]
+
+        // 3.使用 Map 的 .forEach() 方法循环访问每个键值对
+        members.forEach((value, key) => console.log(value, key));
+        // return：'Evelyn' 75.68
+        //  'Liam' 20.16
+        //  'Sophia' 0
+        //  'Marcus' 10.25
+
+
+        // WeakMap
+        // WeakMap 和普通 Map 很像，但是具有以下关键区别：
+        // 1.WeakMap 只能包含对象作为键，
+        // 2.WeakMap 无法迭代，意味着无法循环访问，并且
+        // 3.WeakMap 没有 .clear() 方法。
+        const book1 = { title: 'Pride and Prejudice', author: 'Jane Austen' };
+        const book2 = { title: 'The Catcher in the Rye', author: 'J.D. Salinger' };
+        const book3 = { title: `Gulliver's Travels`, author: 'Jonathan Swift' };
+
+        const library = new WeakMap();
+        library.set(book1, true);
+        library.set(book2, false);
+        library.set(book3, true);
+
+        console.log(library);
+        // return：WeakMap {Object {title: 'Pride and Prejudice', author: 'Jane Austen'} => true, Object {title: 'The Catcher in the Rye', author: 'J.D. Salinger'} => false, Object {title: 'Gulliver's Travels', author: 'Jonathan Swift'} => true}
+
+        // 如果添加对象以外的内容作为键
+        library.set('The Grapes of Wrath', false);
+        // 系统将报错
+        // return：Uncaught TypeError: Invalid value used as weak map key(…)
+
+        // 垃圾回收
+        // 在 JavaScript 中，创建新的值时会分配内存，并且当这些值不再需要时，将自动释放内存。这种内存不再需要后释放内存的过程称为垃圾回收。
+        // WeakMap 通过专门处理对象作为键来利用这一点。如果将对象设为 null，则本质上是删除该对象。当 JavaScript 的垃圾回收器运行时，该对象之前占用的内存将被释放，以便稍后在程序中使用。
+        book1 = null;
+        console.log(library);
+        // return：WeakMap {Object {title: 'The Catcher in the Rye', author: 'J.D. Salinger'} => false, Object {title: 'Gulliver’s Travels', author: 'Jonathan Swift'} => true}
+
 
     </script>
 </body>
