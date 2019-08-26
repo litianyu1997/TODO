@@ -504,6 +504,142 @@
         // return：WeakMap {Object {title: 'The Catcher in the Rye', author: 'J.D. Salinger'} => false, Object {title: 'Gulliver’s Travels', author: 'Jonathan Swift'} => true}
 
 
+        // Promise
+        new Promise(function (resolve, reject) {
+            window.setTimeout(function createSundae(flavor = 'chocolate') {
+                const sundae = {};
+                // 请求冰淇淋
+                // 得到锥形蛋筒
+                // 加热冰淇淋
+                // 舀一大勺到蛋筒里!
+                resolve(sundae);
+            }, Math.random() * 2000);
+        });
+        // 当 sundae 被成功创建后，它会调用 resolve 方法并向其传递我们要返回的数据，返回的数据是完成的 sundae。因此 resolve 方法用来表示请求已完成，并且成功完成了请求。
+
+        new Promise(function (resolve, reject) {
+            window.setTimeout(function createSundae(flavor = 'chocolate') {
+                const sundae = {};
+                // 请求冰淇淋
+                // 得到锥形蛋筒
+                // 加热冰淇淋
+                // 舀一大勺到蛋筒里!
+                if ( iceCreamConeIsEmpty(flavor)  ) {
+                    reject(`Sorry, we're out of that flavor :-(`);
+                }
+                resolve(sundae);
+            }, Math.random() * 2000);
+        });
+        // 如果请求无法完成，则使用 reject 方法。注意，即使请求失败了，我们依然可以返回数据，我们只是返回了一段文字，表示没有我们想要的冰激凌口味。
+
+        // 首先要注意的是，Promise 将立即返回一个对象。
+        const myPromiseObj = new Promise(function (resolve, reject) {
+            // 圣代创建代码
+        });
+        // 该对象上具有一个 .then() 方法，我们可以让该方法通知我们 promise 中的请求成功与否。.then() 方法会接收两个函数：
+        // 1.请求成功完成时要运行的函数
+        // 2.请求失败时要运行的函数
+        mySundae.then(function(sundae) {
+            console.log(`Time to eat my delicious ${sundae}`);
+        }, function(msg) {
+            console.log(msg);
+            self.goCry(); // 不是一个真正的方法
+        });
+        // 传递给 .then() 的第一个函数将被调用，并传入 Promise 的 resolve 函数需要使用的数据。这里，该函数将接收 sundae 对象。第二个函数传入的数据会在 Promise 的 reject 函数被调用时使用。
+
+
+        // Proxy
+        // 要创建 Proxy（代理）对象，使用 Proxy 构造函数 new Proxy();。Proxy 构造函数接收两个项目：
+        // 1.它将要代理的对象
+        // 2.包含将为被代理对象处理的方法列表的对象
+        // 第二个对象叫做处理器
+
+        var richard = {status: 'looking for work'};
+        var agent = new Proxy(richard, {});
+        agent.status; // return： 'looking for work'
+
+        // Get Trap（捕获器）
+        const richard = {status: 'looking for work'};
+        const handler = {
+            get(target, propName) {
+                console.log(target); // `richard` 对象，不是 `handler` 也不是`agent`
+                console.log(propName); // 代理(本例中为`agent`)正在检查的属性名称
+            }
+        };
+        const agent = new Proxy(richard, handler);
+        agent.status; // 注销 richard 对象
+
+        // 直接获取 Proxy 的返回信息
+        const richard = {status: 'looking for work'};
+        const handler = {
+            get(target, propName) {
+                return `He's following many leads, so you should offer a contract as soon as possible!`;
+            }
+        };
+        const agent = new Proxy(richard, handler);
+        agent.status; // 返回文本 `He's following many leads, so you should offer a contract as soon as possible!`
+
+
+        // set trap 用来截获将更改属性的代码。set trap 将接收： 它代理的对象 被设置的属性 Proxy 的新值
+        const richard = {status: 'looking for work'};
+        const handler = {
+            set(target, propName, value) {
+                if (propName === 'payRate') { // 如果工资正在确定，则需要15%作为佣金。
+                    value = value * 0.85;
+                }
+                target[propName] = value;
+            }
+        };
+        const agent = new Proxy(richard, handler);
+        agent.payRate = 1000; // 将演员的工资设置为 1,000美元
+        agent.payRate; // 850美元是演员的实际工资
+
+        // get trap - 使 proxy 能处理对属性访问权的调用
+        // set trap - 使 proxy 能将属性设为新值
+        // apply trap - 使 proxy 能被调用（被代理的对象是函数）
+        // has trap - 使 proxy 能使用 in 运算符
+        // deleteProperty trap - 使 proxy 能确定属性是否被删除
+        // ownKeys trap - 使 proxy 能处理当所有键被请求时的情况
+        // construct trap - 使 proxy 能处理 proxy 与 new 关键字一起使用当做构造函数的情形
+        // defineProperty trap - 使 proxy 能处理当 defineProperty 被用于创建新的对象属性的情形
+        // getOwnPropertyDescriptor trap - 使 proxy 能获得属性的描述符
+        // preventExtenions trap - 使 proxy 能对 proxy 对象调用 Object.preventExtensions()
+        // isExtensible trap - 使 proxy 能对 proxy 对象调用 Object.isExtensible
+        // getPrototypeOf trap - 使 proxy 能对 proxy 对象调用 Object.getPrototypeOf
+        // setPrototypeOf trap - 使 proxy 能对 proxy 对象调用 Object.setPrototypeOf
+
+        // 生成器和迭代器
+        // 生成器被调用时，它不会运行函数中的任何代码，而是创建和返回迭代器。该迭代器可以用来运行实际生成器的内部代码。
+        const generatorIterator = getEmployee();
+        generatorIterator.next();
+        // 迭代器的 .next() 方法第一次被调用时，它会运行生成器中的所有代码。代码始终没有暂停
+        // 关键字 yield 是 ES6 中新出现的关键字。只能用在生成器函数中。yield 会导致生成器暂停下来。向生成器中添加 yield
+        function* getEmployee() {
+            console.log('the function has started');
+
+            const names = ['Amanda', 'Diego', 'Farrin', 'James', 'Kagure', 'Kavita', 'Orit', 'Richard'];
+
+            for (const name of names) {
+                console.log(name);
+                yield;
+            }
+
+            console.log('the function has ended');
+        }
+        // 现在 for...of 循环中出现了 yield。如果我们调用该生成器（生成迭代器），然后调用 .next()，将获得以下输出：
+        const generatorIterator = getEmployee();
+        generatorIterator.next();
+        // return：the function has started
+        // Amanda
+        // 暂停
+        generatorIterator.next();
+        // return：Diego
+        // 它能完全记住上次停下的地方，它获取到数组中的下一项（Diego），记录它，然后再次触发了 yield，再次暂停。
+
+        // console.log(name)切换成 yield name。更改后，当生成器运行时，它会把姓名从函数里返回出去，然后暂停执行代码
+
+
+
     </script>
 </body>
 </html>
