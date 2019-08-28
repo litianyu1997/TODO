@@ -1,22 +1,20 @@
 /* Engine.js
- * This file provides the game loop functionality (update entities and render),
- * draws the initial game board on the screen, and then calls the update and
- * render methods on your player and enemy objects (defined in your app.js).
- *
- * A game engine works by drawing the entire game screen over and over, kind of
- * like a flipbook you may have created as a kid. When your player moves across
- * the screen, it may look like just that image/character is moving or being
- * drawn but that is not the case. What's really happening is the entire "scene"
- * is being drawn over and over, presenting the illusion of animation.
- *
- * This engine makes the canvas' context (ctx) object globally available to make
- * writing app.js a little simpler to work with.
+此文件提供游戏循环功能（更新实体和渲染）,在屏幕上绘制初始游戏板，然后调用更新和在你的player和enemy对象上渲染方法（在你的app.js中定义）.
+
+A游戏引擎通过一遍又一遍地绘制整个游戏屏幕, 就像你小时候创作的动画书一样. 
+当你的球员移动过屏幕, 可能只是Image/Character在moving或being
+但事实并非如此.真正发生的是整个“场景”
+一次又一次地被画出来，呈现出动画的错觉。
+ 
+
+This engine makes the canvas' context (ctx) object globally available to make writing app.js a little simpler to work with.
+这个引擎使canvas的context（ctx）对象全局可用，使编写app.js变得更简单。
  */
 
 var Engine = (function(global) {
-    /* Predefine the variables we'll be using within this scope,
-     * create the canvas element, grab the 2D context for that canvas
-     * set the canvas element's height/width and add it to the DOM.
+    /* 预先定义我们将在这个范围内使用的变量,
+    创建canvas元素, 获取 the 2D context for that canvas
+    设置canvas元素的高度/宽度并将其添加到DOM
      */
     var doc = global.document,
         win = global.window,
@@ -28,39 +26,35 @@ var Engine = (function(global) {
     canvas.height = 606;
     doc.body.appendChild(canvas);
 
-    /* This function serves as the kickoff point for the game loop itself
-     * and handles properly calling the update and render methods.
-     */
+    /* 此函数用作游戏循环本身的起始点，并正确处理调用更新和呈现方法。*/
     function main() {
-        /* Get our time delta information which is required if your game
-         * requires smooth animation. Because everyone's computer processes
-         * instructions at different speeds we need a constant value that
-         * would be the same for everyone (regardless of how fast their
-         * computer is) - hurray time!
+        /* 获取我们的时间增量信息需要平滑动画。
+        因为每个人的计算机处理
+        指令在不同的速度下，我们需要一个恒定的值
+        对每个人都一样（不管他们的电脑速度有多快）
          */
         var now = Date.now(),
             dt = (now - lastTime) / 1000.0;
 
-        /* Call our update/render functions, pass along the time delta to
-         * our update function since it may be used for smooth animation.
+        /* 调用更新/呈现函数，将时间增量传递给我们的更新功能，因为它可以用于平滑动画。
          */
         update(dt);
         render();
 
-        /* Set our lastTime variable which is used to determine the time delta
-         * for the next time this function is called.
+        /* 设置上次用于确定时间增量的时间变量
+        下次调用此函数时.
          */
         lastTime = now;
 
-        /* Use the browser's requestAnimationFrame function to call this
-         * function again as soon as the browser is able to draw another frame.
+        /* 使用浏览器的requestAnimationFrame函数调用
+        当浏览器能够绘制另一帧时，再次运行.
          */
         win.requestAnimationFrame(main);
     }
 
-    /* This function does some initial setup that should only occur once,
-     * particularly setting the lastTime variable that is required for the
-     * game loop.
+    /* 此函数执行一些只应发生一次的初始设置，
+    尤其是设置
+    游戏循环。
      */
     function init() {
         reset();
@@ -68,26 +62,19 @@ var Engine = (function(global) {
         main();
     }
 
-    /* This function is called by main (our game loop) and itself calls all
-     * of the functions which may need to update entity's data. Based on how
-     * you implement your collision detection (when two entities occupy the
-     * same space, for instance when your character should die), you may find
-     * the need to add an additional function call here. For now, we've left
-     * it commented out - you may or may not want to implement this
-     * functionality this way (you could just implement collision detection
-     * on the entities themselves within your app.js file).
+    /* 这个函数由main（我们的游戏循环）调用，它本身调用可能需要更新实体数据的函数。
+    基于如何实现碰撞检测（当两个实体占用相同的空间时，例如当您的角色应该消失时）
+    你可能会发现这里需要添加一个额外的函数调用。 
+    现在，我们已经将其注释掉了——您可能希望也可能不希望通过这种方式实现此功能（您可以只对app.js文件中的实体本身实现冲突检测）。
      */
     function update(dt) {
         updateEntities(dt);
         // checkCollisions();
     }
 
-    /* This is called by the update function and loops through all of the
-     * objects within your allEnemies array as defined in app.js and calls
-     * their update() methods. It will then call the update function for your
-     * player object. These update methods should focus purely on updating
-     * the data/properties related to the object. Do your drawing in your
-     * render methods.
+    /* 这是由更新函数调用的，并按照app.js中的定义循环遍历allenemies数组中的所有对象，并调用它们的update（）方法。
+    然后它将调用播放器对象的更新函数。这些更新方法应该只关注更新与对象相关的数据/属性。
+    在渲染方法中绘制
      */
     function updateEntities(dt) {
         allEnemies.forEach(function(enemy) {
@@ -96,15 +83,11 @@ var Engine = (function(global) {
         player.update();
     }
 
-    /* This function initially draws the "game level", it will then call
-     * the renderEntities function. Remember, this function is called every
-     * game tick (or loop of the game engine) because that's how games work -
-     * they are flipbooks creating the illusion of animation but in reality
-     * they are just drawing the entire screen over and over.
+    /* 此函数最初绘制 "game level"，然后调用renderities函数。
+    记住，这个功能被称为每个游戏标记（或游戏引擎的循环），因为这就是游戏的工作原理——它们是动画的动画书，但实际上它们只是一遍又一遍地绘制整个屏幕。
      */
     function render() {
-        /* This array holds the relative URL to the image used
-         * for that particular row of the game level.
+        /* 此数组保存用于 "game level" 特定行的图像的相对URL。
          */
         var rowImages = [
                 'images/water-block.png',   // Top row is water
@@ -118,21 +101,15 @@ var Engine = (function(global) {
             numCols = 5,
             row, col;
 
-        // Before drawing, clear existing canvas
+        // 绘图前，清除现有canvas
         ctx.clearRect(0,0,canvas.width,canvas.height);
 
-        /* Loop through the number of rows and columns we've defined above
-         * and, using the rowImages array, draw the correct image for that
-         * portion of the "grid"
+        /* 循环遍历上面定义的行数和列数，并使用rowImages数组为 "grid" 的该部分绘制正确的图像。
          */
         for (row = 0; row < numRows; row++) {
             for (col = 0; col < numCols; col++) {
-                /* The drawImage function of the canvas' context element
-                 * requires 3 parameters: the image to draw, the x coordinate
-                 * to start drawing and the y coordinate to start drawing.
-                 * We're using our Resources helpers to refer to our images
-                 * so that we get the benefits of caching these images, since
-                 * we're using them over and over.
+                /* canvas上下文元素的drawImage函数需要3个参数：要绘制的图像、要开始绘制的X坐标和要开始绘制的Y坐标。
+                我们正在使用我们的资源帮助器来引用我们的图像，这样我们就可以获得缓存这些图像的好处，因为我们一次又一次地使用它们。
                  */
                 ctx.drawImage(Resources.get(rowImages[row]), col * 101, row * 83);
             }
@@ -141,13 +118,11 @@ var Engine = (function(global) {
         renderEntities();
     }
 
-    /* This function is called by the render function and is called on each game
-     * tick. Its purpose is to then call the render functions you have defined
-     * on your enemy and player entities within app.js
+    /* 此函数由渲染函数调用，并在每个游戏标记上调用。
+    它的目的是调用您在app.js中对敌人和玩家实体定义的渲染函数。
      */
     function renderEntities() {
-        /* Loop through all of the objects within the allEnemies array and call
-         * the render function you have defined.
+        /* 循环遍历allenemies数组中的所有对象，并调用您定义的呈现函数。
          */
         allEnemies.forEach(function(enemy) {
             enemy.render();
@@ -156,17 +131,13 @@ var Engine = (function(global) {
         player.render();
     }
 
-    /* This function does nothing but it could have been a good place to
-     * handle game reset states - maybe a new game menu or a game over screen
-     * those sorts of things. It's only called once by the init() method.
+    /* 这个功能什么也不做，但它可能是一个处理游戏重置状态的好地方——可能是一个新的游戏菜单，或者是一个屏幕上的游戏。它只被init（）方法调用一次。
      */
     function reset() {
         // noop
     }
 
-    /* Go ahead and load all of the images we know we're going to need to
-     * draw our game level. Then set init as the callback method, so that when
-     * all of these images are properly loaded our game will start.
+    /* 继续加载我们知道需要绘制的所有图像。然后将init设置为回调方法，这样当所有这些图像都正确加载时，我们的游戏就会开始。
      */
     Resources.load([
         'images/stone-block.png',
@@ -177,9 +148,7 @@ var Engine = (function(global) {
     ]);
     Resources.onReady(init);
 
-    /* Assign the canvas' context object to the global variable (the window
-     * object when run in a browser) so that developers can use it more easily
-     * from within their app.js files.
+    /* 将canvas的上下文对象分配给全局变量（在浏览器中运行时为窗口对象），这样开发人员就可以更容易地从app.js文件中使用它。
      */
     global.ctx = ctx;
 })(this);

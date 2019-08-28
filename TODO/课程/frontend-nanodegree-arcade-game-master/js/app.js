@@ -1,39 +1,38 @@
-// Enemies our player must avoid
+// 我们的玩家必须避免的敌人
 var Enemy = function() {
-    // Variables applied to each of our instances go here,
-    // we've provided one for you to get started
+    // 应用于每个实例的变量如下：
+    // 我们为您提供了一个开始
 
     // The image/sprite for our enemies, this uses
-    // a helper we've provided to easily load images
+    // 我们提供的帮助程序，可以轻松加载图像
     this.sprite = 'images/enemy-bug.png';
 };
 
-// Update the enemy's position, required method for game
+// 更新敌人位置，游戏所需方法
 // Parameter: dt, a time delta between ticks
 Enemy.prototype.update = function(dt) {
-    // You should multiply any movement by the dt parameter
-    // which will ensure the game runs at the same speed for
-    // all computers.
+    // 应将任何移动乘以dt参数
+    // 这将确保游戏以相同的速度运行
+    // 所有计算机
 };
 
-// Draw the enemy on the screen, required method for game
+// 在屏幕上绘制敌人，游戏所需的方法
 Enemy.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 
-// Now write your own player class
-// This class requires an update(), render() and
-// a handleInput() method.
+// 现在编写自己的player类
+// 此类需要update（）、render（）和handleinput（）方法。
 
 
-// Now instantiate your objects.
-// Place all enemy objects in an array called allEnemies
-// Place the player object in a variable called player
+// 现在实例化对象
+// 将所有敌方对象放在一个称为allenemies的数组中
+// 将player对象放入名为player的变量中
 
 
 
-// This listens for key presses and sends the keys to your
-// Player.handleInput() method. You don't need to modify this.
+// 这将侦听按键并将按键发送到
+// player.handleinput（）方法。你不需要修改这个
 document.addEventListener('keyup', function(e) {
     var allowedKeys = {
         37: 'left',
