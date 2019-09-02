@@ -14,6 +14,14 @@ Enemy.prototype.update = function(dt) {
     // 应将任何移动乘以dt参数
     // 这将确保游戏以相同的速度运行
     // 所有计算机
+
+    // drawImage(image,sx,sy,sw,sh,dx,dy,dw,dh)
+    // img：规定要使用的图像、画布或视频
+    // sx，sy：开始剪切图片的x、y坐标位置
+    // sw，sh：被剪切图片的宽、高度
+    // dx，dy：在画布上放置图像的x、y坐标位置
+    // dw，dh：要使用的图像的宽度
+    
 };
 
 // 在屏幕上绘制敌人，游戏所需的方法
@@ -23,7 +31,21 @@ Enemy.prototype.render = function() {
 
 // 现在编写自己的player类
 // 此类需要update（）、render（）和handleinput（）方法。
+var Player = function(){
+    this.sprite = 'char-boy';
+}
 
+Player.prototype.update = function(){
+
+}
+
+Player.prototype.render = function(){
+    ctx.drawImage(image,0,0,image.width,image.height,0,0,101,171);
+}
+
+Player.prototype.handleInput = function(){
+    
+}
 
 // 现在实例化对象
 // 将所有敌方对象放在一个称为allenemies的数组中

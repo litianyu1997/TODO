@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 回调
+        function callAndAdd(n, callbackFunction){
+            return n + callbackFunction();
+        }
+
+        function returnsThree(){
+            return 3;
+        }
+
+        // 闭包
+        function remember(number){
+            return function(){
+                return number;
+            }
+        }
+
+        const returnedFunction = remember(5);
+
+        console.log( returnedFunction());
+
+        // 闭包和作用域
+        const myName = 'Andrew';
+
+        function introduceMyself(){
+            const you = 'student';
+
+            function introduce(){
+                console.log(`Hello , ${you}, I'm ${myName}!`);
+            }
+
+            return introduce();
+        }
+
+        introduceMyself();
+
+        // 函数声明与函数表达式
+        function returnHello(){
+            return 'Hello!';
+        }
+
+        // 匿名
+        const myFunction = function(){
+            return 'Hello!';
+        }
+
+        // 命名
+        const otherFunction = function returnHello(){
+            return 'Hello!';
+        }
+
+        // 立即调用
+        (function sayHi(){
+            alert('Hi there!');
+        })();
+
+        // 向IIFE传递参数
+        (function (name){
+            alert('Hi, ' + name);
+        })('Andrew');
+
+        (function (x, y){
+            console.log(x * y);
+        })(2, 3);
+
+        // IIFE和私有作用域
+        const myFunction = (
+            function (){
+                const hi = 'Hi!';
+                return function(){
+                    console.log(hi);
+                }
+            }
+        )();
+
+        // IIFE的替代语法
+        (function sayHi(){
+            alert('Hi there!');
+        })();
+
+        // 构造函数：结构和语法
+        function SoftwareDeeveloper(){
+            this.favoriteLanguage = 'JavaScript';
+        }
+
+        // 创建多个对象
+        let engineer = new SoftwareDeveoper();
+        let programmer = new SoftwareDeveloper();
+        console.log(engineer);
+        console.log(programmer);
+
+        // 构造函数可以有参数
+        function SoftwareDeveloper(name){
+            this.favoriteLanguage = 'JavaScript';
+            this.name = name;
+        }
+
+        let instructor = new SoftwareDeveloper('Andrew');
+
+        console.log(instrucetor);
+
+        let teacher = new SoftwareDeveloper('Richard');
+
+        console.log(teacher);
+
+        // 构造函数中的this
+        function Cat(name){
+            this.name = name;
+            this.lives = 9;
+            this.sayName = function(){
+                console.log( 'Meow! My name is '+this.name);
+            };
+        }
+
+        const bailey = new Cat();
+
+        // {
+        //     name: Bailey,
+        //     sayName: function (){
+        //         console.log('Meow! My name is ' + this.name);
+        //     }
+        // }
+
+        bailey.sayName();
+
+        // this什么时候会被赋值
+        const dog = {
+            bark: function(){
+                console.log('Woof!');
+            },
+            barkTwice: function(){
+                this.bark();
+                this.bark();
+            }
+        };
+    </script>
+</body>
+</html>
