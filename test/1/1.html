@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    .add-div-class{
+        width: 50px;
+        height: 50px;
+        background: red;
+    }
+    </style>
+</head>
+<body>
+    <input type="button" onclick="create()" value="Create">
+    <div id="div">
+
+    </div>
+</body>
+<script>
+var num = 0;
+var create =function(){
+    num = num+1;
+    var cdiv = document.createElement("div");
+    cdiv.id = num;
+    document.getElementById("div").appendChild(cdiv);
+
+    var childdiv = document.createElement("div");
+    childdiv.className = "add-div-class";
+    var pdiv = document.createElement("div");
+    pdiv.innerHTML = "Hello";
+    cdiv.appendChild(pdiv);
+    cdiv.appendChild(childdiv);
+}
+
+
+var todoList = [];
+if(num = 5){
+for(var snum=0;snum<num;++snum){
+    var svalue = document.getElementById(snum).getElementsByTagName("input");
+    var todo = {
+        'value': svalue[2]
+    }
+    alert(todo.value);
+}
+}
+</script>
+</html>
