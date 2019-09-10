@@ -19,7 +19,7 @@
     </style>
 </head>
 <body>
-    <canvas id="canvas"></canvas>
+    <canvas id="canvas" width="500" height="500"></canvas>
     <script src="digit.js"></script>
     <script>
         var cxt = canvas.getContext('2d');// 创建绘画上下文画笔
@@ -31,6 +31,7 @@
             for(var i = 0; i < digit[num].length; i++){ // 具体的哪一个数字
                 
                 for(var j = 0; i < digit[num][i].length; j++){ // 具体确立数字的每一个组成
+                
                     if(digit[num][i][j] == 1){ // 判断是否绘制 1
                         cxt.fillStyle = '#fff';
                         cxt.beginPath();
@@ -43,7 +44,7 @@
         }
 
         for(var i = 0; i< 11; i++){
-            init(i);
+            init(i, i);
         }
 
 

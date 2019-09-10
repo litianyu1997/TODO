@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>canvas常用属性方法</title>
+    <style>
+        canvas{border: 1px solid #ccc}
+    </style>
+</head>
+<body>
+    <canvas id="mycanvas" width="800" height="600"></canvas>
+
+    <script>
+        var mycanvas = document.getElementById('mycanvas');
+        // 获取上下文
+        var ctx = mycanvas.getContext('2d');
+
+        ctx.rect(50, 50, 100, 100)
+        ctx.strokeStyle = "#f00";
+        ctx.stroke();
+
+        // 路径初始化
+        ctx.beginPath();
+        ctx.rect(200, 50, 100, 100)
+        ctx.strokeStyle = "rgb(0, 0, 255)";
+        ctx.stroke();
+
+        ctx.beginPath();
+        // 设置路径开始点
+        ctx.moveTo(350, 50);
+        // 从之前的点画到这里
+        ctx.lineTo(450, 50);
+        ctx.lineTo(450, 150);
+        ctx.lineTo(350, 150);
+        ctx.lineTo(350, 50);
+        // 设置线条宽度
+        ctx.lineWidth = 4;
+        ctx.stroke();
+
+        ctx.beginPath();
+        ctx.moveTo(600, 50);
+        ctx,lineTo(670, 150);
+        ctx.lineTo(530, 150);
+        // 直接画到原来的点 路径没有闭合
+        // ctx.lineTo(600, 50);
+        // 闭合路径 最后一个点和开始的点连接在一起
+        ctx.closePath();
+        ctx.lineWidth = 10;
+        ctx.stroke();
+
+        // 圆形 弧 参数： 中心点x  中心点y  半径r  起始弧度  结束弧度  [顺false/逆true时针]
+        ctx.beginPath();
+        ctx.arc(100, 300, 80, 0, 2*Math.PI);
+        ctx.fillStyle = 'yellow';
+        ctx.fill();
+     
+        ctx.beginPath();
+        ctx.arc(350, 300, 50, 2*Math.PI/6, 2*Math.PI, true);
+        ctx.stroke();
+
+        // 创建渐变颜色 点1 x,y  点2 x,y
+        var grd = ctx.createLinearGradient(100, 500, 300, 500)
+        grd.addColorStop(0, "red");
+        grd.addColorStop(0.1, "#f71");
+        grd.addColorStop(0.6, "#17f");
+        grd.addColorStop(1, "yellow");
+
+        // 文字  设置字体样式
+        ctx.lineWidth = 2;
+
+        // 水平对齐
+        ctx.textAlign = 'center';
+
+        // 垂直对齐
+        ctx.textBaseline = 'middle';
+
+        ctx.font = '32px 微软雅黑';
+        ctx.fillStyle = grd;
+        ctx.strokeStyle = grd;
+        ctx.fillText('文字', 500, 100);
+        ctx.strokeText('文字', 300, 500);
+
+        ctx.beginPath();
+        ctx.fillStyle = 'red';
+        ctx.fillReact(100-2, 500-2, 4, 2,)
+        
+    </script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>路径、填充、描边</title>
+</head>
+<body>
+    <canvas id="mycanvas" width="400" height="300"></canvas>
+
+    <script>
+        var mycanvas = document.getElementById('mycanvas');
+        // 获取上下文
+        var ctx = mycanvas.getContext('2d');
+
+        // 路径
+        ctx.rect(100, 100, 100, 100);
+
+        // 填充
+        ctx.fill(); 
+
+        // 描边
+        ctx.stroke();   
+    </script>
+</body>
+</html>
