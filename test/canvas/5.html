@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>多边形</title>
+</head>
+<body>
+    <canvas id="mycanvas" width="800" height="600"></canvas>
+
+    <script>
+        var mycanvas = document.getElementById('mycanvas');
+
+        var ctx = mycanvas.getContext('2d');
+
+        // 以0,0点 旋转画布
+        ctx.rotate(Math.PI/6);
+
+        // 设置画布中心点
+        ctx.translate(mycanvas.width/2, mycanvas.height/2); 
+        
+        
+        function drawShape(){
+            // 正三角形
+            ctx.beginPath();
+            ctx.moveTo(Math.sin(0)*100, Math.cos(0)-100);
+
+            var radian = 2 * Math.PI / n;
+            // 旋转 2*Math.PI/3
+            // x Math.sin(2*Math.PI/3)*100
+            // y Math.cos(2*Math.PI/3)*-100
+
+            ctx.lineTo(Math.sin(radian) * 100, Math.cos(radian) * -100)
+
+            ctx.lineTo(Math.sin(radian * 2) * 100, Math.cos(radian * 2) * -100)
+
+            ctx.closePath();
+            ctx.lineWidth = 4;
+            ctx.stroke();
+        }
+    </script>
+</body>
+</html>
