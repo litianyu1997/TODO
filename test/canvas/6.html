@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>动画</title>
+    <style>
+        canvas{border: 1px solid #ccc}
+    
+    </style>
+</head>
+<body>
+    <canvas id="mycanvas" width="800" height="600"></canvas>
+
+    <script>
+        var mycanvas = document.getElementById('mycanvas');
+
+        var ctx = mycanvas.getContext('2d');
+
+        ctx.fillStyle = 'green';
+        var x = 55;
+        ctx.fillRect(50, 50, 50, 50)
+
+        // // 写法1
+        // setInterval(function(){
+        //     // 清除画布
+        //     ctx.clearRect(0, 0, mycanvas.width, mycanvas.height);
+        //     ctx.fillRect(x, 50, 50, 50);
+        //     x+=2;
+        // },1000/50)
+
+
+        // // 写法2
+        // (function run(){
+        //     ctx.clearRect(0, 0, mycanvas.width, mycanvas.height);
+        //     ctx.fillRect(x, 50, 50, 50);
+        //     x+=2;
+        //     setTimeout(run,100/50);
+        // })();
+
+        // 比较 定时器 和 动画函数
+        // setInterval(function(){
+        //     var t = new Date();
+        //     var s = t.getSeconds();
+        //     console.log(s);
+        // }, 1000/50)
+
+        // (function run(){
+        //     var t = new Date();
+        //     var s = t.getSeconds();
+        //     console.log(s);
+        //     requestAnimationFrame(run);
+        // })();
+    </script>
+</body>
+</html>
