@@ -1,0 +1,18 @@
+
+var model = {
+    数据存储(包括来自服务器和来自用户的数据)
+}
+
+var octopus = {
+    连接model和view
+    
+}
+
+var view = {
+    用户看到以及与其互动的所有事务
+    DOM元素，输入元素，按钮，图片
+    基本是用户与应用之间的接口
+    用于提供应用数据和读取数据
+    init: function(){设置内容}
+    render: function(){更新视图}
+}
