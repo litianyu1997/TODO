@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    
+// JavaScript中的异步操作
+
+// ES6诞生以前，异步编程的方法，大概有下面四种
+// 1、回调函数
+// 2、事件监听
+// 3、发布/订阅
+// 4、Promise对象
+// 5、es6中出现了Generator函数
+// 6、es7中出现了async/await
+
+// 所谓"异步"，简单说就是一个任务分成两段，先执行第一段，然后转而执行其他任务，等做好了准备，再回过头执行第二段。
+
+
+
+// 回调函数
+// 回调是异步编程中最基础的方法
+
+var func1=function(callback){
+    console.log(1); 
+    callback();
+}
+var func2=function(){
+    console.log(2);
+}
+func1(func2);
+
+// 回调函数中最常见的形式就是ajax
+
+
+
+// 事件监听
+// js中可以通过DOM绑定事件，实现异步事件监听
+
+var elem = document.querySelector('#div');
+var event = document.createEvent('Event');
+    // 定义事件名称myEvent
+event.initEvent('myEvent', true, true);
+    // 监听myEvent
+elem.addEventListener('myEvent', function (e) {
+    console.log('触发事件');
+    console.log(e);
+}, false);
+    // 使用目标对象去派发事件，可以是元素节点/事件对象
+elem.dispatchEvent(event);
+
+
+
+// 发布订阅
+// 发布—订阅模式又叫观察者模式，它定义对象间的一对多的依赖关系，当一个对象的状态发生改变时，所有依赖于它的对象都将得到通知
+
+var Observer = (() => {
+    // 为防止消息队列暴露而被篡改故将消息容器作为静态私有变量保存
+    var _message = {};
+    return {
+        // 注册信息接口
+        regist:function(type,fn){
+            // 如果此消息不存在则应该创建一个该消息类型
+            if(typeof _message[type] === 'undefined'){
+                // 将动作推入到该消息对应的动作执行队列中
+                _message[type] = [fn];
+                // 如果此消息存在
+            }else{
+                // 将动作方法推入该消息嘴硬的动作执行序列中
+                _message[type].push(fn)
+            }
+        },
+        // 发布信息接口
+        fire:function(type,args){
+            // 如果该消息没有被注册，则返回
+            if(!_message[type]){
+                return
+            }
+            // 定义消息信息
+            var events = {
+                type:type,  // 消息类型
+                args:args || {}  // 消息携带数据
+            },
+            i = 0; // 消息动作循环变量
+            len = _message[type].length // 消息动作长度
+            // 遍历消息东旭哦
+            for(; i <len; i++){
+                // 依次执行注册的消息对应的动作序列
+                _message[type][i].call(this,events);
+            }
+        },
+        // 移除信息接口
+        remove:function(type,fn){
+            // 如果消息动作队列存在
+            if(_message[type] instanceof Array){
+                // 从最后一个消息动作遍历
+                var i = _message[type].length -1;
+                for(; i >= 0; i--){
+                    // 如果存在该动作则在消息动作序列中移除相应动作
+                    _message[type][i] === fn && _message[type].splice(i,1);
+                }
+            }
+        }
+    }
+})()
+Observer.regist('test',function(e){
+    console.log(e.type,e.args.msg);
+})
+Observer.fire('test',{msg:'传递参数'});
+
+
+
+// Promise
+// 所谓 Promise，就是一个对象，用来传递异步操作的消息
+// 对象的状态不受外界影响。Promise 对象代表一个异步操作，有三种状态：Pending（进行中）、Resolved（已完成，又称 Fulfilled）和 Rejected（已失败）。只有异步操作的结果，可以决定当前是哪一种状态，任何其他操作都无法改变这个状态。这也是 Promise 这个名字的由来，它的英语意思就是「承诺」，表示其他手段无法改变。
+
+var promise = new Promise(function(resolve, reject) {
+    if (异步操作成功){
+        resolve(value);
+    } else {
+        reject(error);
+    }
+});
+        promise.then(function(value){
+            console.log(value)
+        }).then(function(value){
+            console.log('1')
+        }).then(function(value){
+            console.log('2')
+        }).catch(function(e){
+            console.log(e)
+        })
+
+
+// 常用方法：
+// 1、Promise.all()方法接受一个数组作为参数，用于将多个promise实例，包装成一个新的Promise实例
+// 2、Promise.race()同样是将多个Promise实例，包装成一个新的Promise实例，与Promise.all()不同的是，Promise.race([p1,p2,p3])只要有一个实例状态为resolved，那么Promise.race()的方法就会被触发。
+// 3、Promise.resolve() 将现有对象转为promise对象,比如，bjquery的ajax返回的是deferred对象，通过promise的resolve()方法将其转换为promise对象。var jsPromise = Promise.resolve($.ajax('/whatever.json'));
+// 4、Promise.reject()返回一个新的promise实例，状态为reject
+
+
+// Generator函数
+
+    function* gen(x){
+    var y = yield x + 2; return y;
+    }
+    var g = gen(1);
+    g.next() // { value: 3, done: false } g.next() // { value: undefined, done: true }
+
+
+// 调用generator函数返回的是内部的指针对象，调用next方法就会移动内部指针。Generator函数之所以能被用来处理异步操作，因为它可以暂停执行和恢复执行、函数体内外的数据交换和错误处理机制。
+// 所以使用起来我们常常需要额外需要写一个自动执行generator函数的执行器函数，例如：
+
+var fs = require('fs');
+var readFile = function (fileName){
+  return new Promise(function (resolve, reject){
+          fs.readFile(fileName, function(error, data){
+             if (error) return reject(error); 
+             resolve(data);
+           }); 
+    });
+};
+var gen = function* (){
+   var f1 = yield readFile('/etc/fstab'); 
+   var f2 = yield readFile('/etc/shells');
+   console.log(f1.toString()); 
+   console.log(f2.toString());
+};
+// 自动执行器
+function run(gen){ 
+  var g = gen();
+  function next(data){
+  var result = g.next(data);
+  if (result.done) return result.value; 
+    result.value.then(function(data){
+      next(data);
+   });
+  }
+  next();
+ }
+run(gen);
+
+// 这么操作的话无疑给我们添加了很多麻烦，所以es7给我提供了async/await，用来规避generator的一些不便之处。
+
+
+
+// async/await
+// async函数基于Generator又做了几点改进：
+// 1、内置执行器，将Generator函数和自动执行器进一步包装。
+// 2、语义更清楚，async表示函数中有异步操作，await表示等待着紧跟在后边的表达式的结果。
+// 3、适用性更广泛，await后面可以跟promise对象和原始类型的值(Generator中不支持)
+
+// 它基于Promise使用async/await来优化then链的调用,其实也是Generator函数的语法糖。 async 会将其后的函数（函数表达式或 Lambda）的返回值封装成一个 Promise 对象，而 await 会等待这个 Promise 完成，并将其 resolve 的结果返回出来
+
+// await得到的就是返回值，其内部已经执行promise中resolve方法，然后将结果返回。使用async/await的方式重写前面的回调任务：
+
+async function asyncAwaitFn(str) {
+    return await new Promise((resolve, reject) => {
+        setTimeout(() => {
+            resolve(str)
+        }, 1000);
+    })
+}
+const serialFn = async () => { //串行执行
+    console.time('serialFn')
+    console.log(await asyncAwaitFn('string 1'));
+    console.log(await asyncAwaitFn('string 2'));
+    console.timeEnd('serialFn')
+}
+serialFn();
+
+    
+        
+    </script>
+</body>
+</html>

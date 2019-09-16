@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    var ajax = function(url){
+        return new Promise(function (resolve, reject){
+            // if(Math.random() < 0.5){
+            //     resolve();
+            // }else{
+            //     reject();
+            // }
+
+            // setTimeout(() => {
+            //    var res = {"data" : "我是数据"}
+            //    resolve(res);
+            // }, 500)
+
+            var xhr = new XMLHttpRequest();
+            xhr.open("GET", url);
+            xhr.onload = function(event){
+                resolve(event.target.response);
+            };
+            xhr.onerror = function(event){
+                reject(event);
+            };
+            xhr.send();
+        })
+    }    
+    
+    // console.log("a")
+    ajax("/promise/api.json").then((res) => {
+        console.log(res)
+    }).catch(() => {
+        console.log("失败")
+    }).finally(() => {
+        console.log("无论结果都会执行")
+    })
+    // console.log("b")
+</script>
+</body>
+</html>
