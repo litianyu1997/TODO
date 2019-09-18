@@ -65,7 +65,7 @@ console.log('Hi!');
 // resolved
 // Promise 新建后立即执行，所以首先输出的是Promise。然后，then方法指定的回调函数，将在当前脚本所有同步任务执行完才会执行，所以resolved最后输出。
 
-异步加载图片你的例子
+// 异步加载图片你的例子
 
 function loadImageAsync (url) {
       return new Promise( function( resolve, reject){
@@ -84,7 +84,8 @@ loadImageAsync(url).then( function (value) {
 })
 // 使用Promise包装了一个图片加载的异步操作。如果加载成功，就调用resolve方法，否则就调用reject方法。
 
-promise对象实现ajax操作的例子
+// promise对象实现ajax操作的例子
+
 
 var getJSON = function (url) {
      var promise = new Promise( function(resolve,reject ) {

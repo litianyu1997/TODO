@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script>
+// 对象属性简写   
+const name = 'Ming', age = '18', city = 'Kunming';
+const student = {
+    name,
+    age,
+    city
+}
+console.log(student);
+
+
+// 异步请求嵌套两个setTimeout回调函数
+setTimeout(() => {
+    console.log('Hello');
+    setTimeout(() => {
+        console.log('Hi');
+    }, 1000)
+}, 1000)
+
+
+// 异步请求使用ES6(promise)
+var waitSecond = new Promise(function(resolve, reject){
+    setTimeout(resolve, 1000);
+});
+waitSecond.then(function(){
+    console.log('Hello');
+    return waitSecond;
+}).then(function(){
+    console.log('hi');
+})
+
+
+// Array.prototype.include(x)  数组是否包含x
+let arr = ['react', 'angular', 'vue'];
+if(arr.indexOf('react') !== -1){
+    console.log('存在');
+}else{
+    console.log('不存在');
+}
+
+promise.then(res => {
+    console.log(res);
+}).catch(err => {
+    console.log(err);
+})
+
+new Promise((resolve, reject) => {
+    reject('aaa')
+});
+
+let p1 = Promise.resolve('aaa');
+let p2 = Promise.resolve('bbb');
+let p3 = Promise.resolve('ccc');
+
+// Promise.all([p1, p2, p3]);把promise打包，扔到一个数组里面，打包完还是一个promise对象，必须确保所有的promise对象，都是resolve状态
+Promise.all([p1, p2 ,p3]).then(res => {
+    //console.log(res);
+    let[res1, res2, res3] = res;
+    
+})
+
+</script>
+</body>
+</html>
