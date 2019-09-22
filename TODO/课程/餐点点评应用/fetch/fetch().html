@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script>
+/* Fetch API
+Fetch API 旨在用来简化 HTTP 请求，它包含以下类和方法：
+
+fetch 方法：用于发起 HTTP 请求
+
+Request 类：用来描述请求
+
+Response 类：用来表示响应
+
+Headers 类：用来表示 HTTP 头部信息
+
+基本用法
+fetch 方法接受一个表示 url 的字符串或者 一个 Request 对象作为参数，返回 Promise 对象。请求成功后将结果封装为 Response 对象。Response 对象上具有 json、text 等方法，调用这些方法后可以获得不同类型的结果。Response 对象上的这些方法同样返回 Promise 对象。
+
+因此基本的使用方法如下：*/
+
+// 发起请求
+fetch('https://api.github.com/repos/facebook/react').then(function(res){
+    // 请求成功，得到 response 对象，调用 response 对象的 json 方法并返回
+    return res.json();
+}).then(function(data){
+    // response 对象的 json 方法执行成功，得到结果
+    console.log(data)
+});    
+
+/*更多高级用法和配置，详见下面介绍。
+
+fetch 方法
+fetch 方法的第一个参数可以是 Request 对象，也可以是一个 url，第二个参数可选，包含一些配置信息。fetch 方法返回 Promise。
+
+Promise fetch(String url [, Object options]);
+Promise fetch(Request req [, Object options]);
+
+配置信息包含下列内容：
+
+method：请求的方法，如： GET、 POST
+
+headers：请求头部信息，可以是一个 Headers 对象的实例，也可以是一个简单对象
+
+body: 需要发送的数据，可以是 Blob, BufferSource, FormData, URLSearchParams, 或者 USVString。需要注意的是 GET 和 HEAD 方法不能包含 body。
+
+mode：请求的模式，常见取值如下：
+
+same-origin：只允许同源的请求，否则直接报错
+
+cors：允许跨域，但要求响应中包含 Access-Control-Allow-* 这类表示 CORS 的头部信息，且响应中只有部分头部信息（ Cache-Control, Content-Language, Content-Type, Expires, Last-Modified, Pragma）可以读取，但响应内容可以不受限地读取。
+
+no-cors：允许跨域请求那些响应中没有包含 CORS 头信息的域，但是响应内容是不可读取的。使用使用这种模式配合 ServiceWorkers 可以实现预加载一些资源。
+
+credentials：表示是否发送 cookie，有三个可选值 omit, same-origin, include
+
+omit：不发生 cookie
+
+same-origin： 仅在同源时发生 cookie
+
+include：发送 cookie
+
+cache：表示处理缓存的策略，可选值为 default、no-store、reload、no-cache、force-cache、only-if-cached，关于此可以参考https://fetch.spec.whatwg.org
+
+redirect：发生重定向时候的策略。有以下可选值：
+
+follow：跟随
+
+error：发生错误
+
+manual：需要用户手动跟随
+
+referrer： 一个字符串，可以是 no-referrer, client, 或者是一个 URL。默认值是 client。
+
+integrity：包含一个用于验证子资源完整性的字符串。关于此，可以参看 Subresource Integrity 介绍
+
+该函数返回一个 Promise 对象，若请求成功会用 Response 的实例作为参数调用 resolve ，若请求失败会用一个错误对象来调用 reject。*/
+
+
+
+</script>
+</body>
+</html>
