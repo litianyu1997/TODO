@@ -65,5 +65,14 @@ Instructions:
     pass 'unknown' to addSearchHeader if it rejects.
      */
     // get('../data/earth-like-results.json')
+
+    getJSON('http://udacity.github.io/exoplanet-explorer/site/app/data/earth-like-results.json').then(function(response){
+      addSearchHeader(response.query);
+      console.log(response);
+    }).catch(function(error){
+      addSearchHeader('unknown');
+      console.log(error)
+    })
+
   });
 })(document);

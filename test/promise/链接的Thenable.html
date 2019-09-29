@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    
+var urls = [];
+async('example.json')
+.then(function(data){
+    urls = data.urls;
+    return async(urls[0]);
+})    
+.then(undefined, function(e){
+    console.log(1);
+    return recovery(); 
+})
+.catch(function(){
+    console.log(2);
+    return recovery();
+})
+.then(function(){
+    console.log(3);
+    return async(urls[1]);
+})
+.then(async, function(e){
+    console.log(4);
+    ahhhIGiveUp();
+})
+</script>
+</body>
+</html>

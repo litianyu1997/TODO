@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    var promise = function(url){
+        return new Promise(function (resolve, reject){
+            if(Math.random() < 0.5){
+                resolve();
+            }else{
+                reject();
+            }
+        })
+    }.then((res) => {
+        console.log(res)
+    }).catch(() => {
+        console.log("失败")
+    }).finally(() => {
+        console.log("无论结果都会执行")
+    })
+    
+
+    // 写法一
+
+    doSomething().then(function () {
+
+      return doSomethingElse();
+
+    });
+
+     
+
+    // 写法二
+
+    doSomething().then(function () {
+
+      doSomethingElse();
+
+    });
+
+     
+
+    // 写法三
+
+    doSomething().then(doSomethingElse());
+
+     
+
+    // 写法四
+
+    doSomething().then(doSomethingElse);
+</script>
+</body>
+</html>

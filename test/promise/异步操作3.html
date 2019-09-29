@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    
+    new Promise(function(resolve,reject){
+        /*异步操作 ajax 定时器等*/{
+            if(结果满意){
+                resolve(value)
+            }else{
+                reject(error)
+            }
+        }
+    })
+     
+
+
+
+
+
+
+    function timeout(ms) {
+        return new Promise((resolve, reject) => {
+            if(ms>=100){
+                setTimeout(resolve, ms, 'done'); //setTimeout的第三个参数用于给第一个参数(函数)传参
+            }else{
+                setTimeout(reject, ms, 'error'); //setTimeout的第三个参数用于给第一个参数(函数)传参
+            }
+        });
+    }
+    timeout(100).then((value) => {
+        console.log(value);  //done
+    },(error)=>{
+        console.log(error)
+    });
+    timeout(100).then((value) => {
+        console.log(value);
+    },(error)=>{
+        console.log(error)  //error
+    });
+
+
+
+
+    // Promise 新建后就会立即执行
+    let promise = new Promise(function(resolve, reject) {
+        console.log('Promise');
+        resolve();
+    });
+
+    promise.then(function() {
+        console.log('resolved.');
+    });
+
+    console.log('Hi!');
+
+    // Promise
+    // Hi!
+    // resolved
+
+
+    // 调用resolve或reject并不会终结 Promise 的参数函数的执行。
+    new Promise((resolve, reject) => {
+        resolve(1);
+        console.log(2);
+    }).then(r => {
+        console.log(r);
+    });
+    // 2
+    // 1
+    //这是因为立即 resolved 的 Promise 是在本轮事件循环的末尾执行，
+    //总是晚于本轮循环的同步任务
+
+
+
+    // 最好在resolve或reject前面加上return语句
+    new Promise((resolve, reject) => {
+        return resolve(1);
+        // 后面的语句不会执行
+        console.log(2);
+    })
+
+
+    // then方法返回的是一个新的Promise实例，第一个回调函数完成以后，会将返回结果作为参数，传入第二个回调函数。
+    getJSON("/posts.json").then(function(json) {
+        return json.post;
+    }).then(function(post) {
+        // ...
+    }).catch(function(error) {
+        //...
+    }).finally(function(){});
+    //方式一
+    f1().then(function () {
+        return f2();
+    }).then(f3);//f3回调函数的参数是f2函数的运行结果
+
+    //方式二
+    f1().then(function () {
+        f2();
+        return;
+    }).then(f3);//f3回调函数的参数是undefined
+
+    //方式三
+    f1().then(f2())
+    .then(f3);//f3回调函数的参数是f2函数返回的函数的运行结果
+
+    //方式四
+    f1().then(f2)
+    .then(f3);//f2会接收到f1()返回的结果
+
+</script>
+</body>
+</html>
