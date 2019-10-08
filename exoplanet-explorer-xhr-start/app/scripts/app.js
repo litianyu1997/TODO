@@ -66,6 +66,8 @@ Instructions:
      */
     // get('../data/earth-like-results.json')
 
+
+
     getJSON('http://udacity.github.io/exoplanet-explorer/site/app/data/earth-like-results.json').then(function(response){
       addSearchHeader(response.query);
       console.log(response);
@@ -74,5 +76,32 @@ Instructions:
       console.log(error)
     })
 
+
+
+    getJSON('../data/earth-like-results.json')
+    .then(function(response){
+      var sequence = Promise.resolve();
+      response.results.forEach(function(){
+        return getJSON(url)
+      })
+      .then(createPlanetThumb);
+    });
+
+
+
+
+    getJSON('http://udacity.github.io/exoplanet-explorer/site/app/data/earth-like-results.json')
+    .then(function(response){
+      response.results.map(function(url){
+        getJSON(url).then(createPlanetThumb);
+      });
+    });
+
+
   });
 })(document);
+
+
+
+
+

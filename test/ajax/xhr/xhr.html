@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    const asyncRequestObject = new XMLHttpRequest()
+    xhrReq.open(method, url);
+    xhrReq.open(method, url, async);
+    xhrReq.open(method, url, async, user);
+    xhrReq.open(method, url, async, user, password);
+
+/*
+method
+要使用的HTTP方法，比如「GET」、「POST」、「PUT」、「DELETE」、等。对于非HTTP(S) URL被忽略。
+
+url
+一个DOMString表示要向其发送请求的URL。
+
+async 可选
+一个可选的布尔参数，默认为true，表示要不要异步执行操作。如果值为false，send()方法直到收到答复前不会返回。如果true，已完成事务的通知可供事件监听器使用。如果multipart属性为true则这个必须为true，否则将引发异常。
+注意：主线程上的同步请求很容易破坏用户体验，应该避免；实际上，许多浏览器已完全弃用主线程上的同步XHR支持。在 Worker中允许同步请求
+
+user 可选
+可选的用户名用于认证用途；默认为null。
+
+password 可选
+可选的密码用于认证用途，默认为null。
+*/
+
+
+(function (){
+    const form = document.querySelector('#search-form');
+    const searchField = document.querySelector('#search-keyword');
+    let searchedForText;
+    const responseContainer = document.querySelector('#response-container');
+
+    form.addEventListener('submit', function(e){
+        e.preventDefault();
+        responseContainer.innerHTML = '';
+        searchedForText = searchField.value;
+    });
+});
+
+
+
+</script>
+</body>
+</html>

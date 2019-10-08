@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <button id="btn_show" data-showType = 'show'>click变色</button>
+        <button id="btn_goodShow" data-showType = 'goodShow'>click更炫的变色</button>
+    </div>
+<script>
+
+showBtn.addEventListener('click', toggleClass.bind(showBtn, 'red'));
+
+goodShowBtn.addEventListener('click', toggleClass.bind(goodShowBtn, 'goodShow'));
+
+function toggleClass(className, ev){
+
+    // var classType = this.getAttribute("data-show-type");
+    // var className = classType === 'show' ? 'red' : 'goodShow';
+    // this.classList.toggle(className)
+    // this.classList.toggle('white')
+
+    console.log(this);
+    console.log(ev);
+    this.classList.toggle(className)
+    this.classList.toggle('white')
+
+}
+
+</script>
+</body>
+</html>
