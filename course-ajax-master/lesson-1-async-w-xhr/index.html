@@ -27,3 +27,68 @@
     <script src="app.js"></script>
 </body>
 </html>
+
+<script>
+    $(function(){
+        $('#coverModal').modal('show');
+        $.ajax({
+            url: '',
+            type: '',
+            data: '',
+            success: function(data){
+                $('coverModal').modal('hide');  
+            }
+        })
+    })
+
+
+/* 完整请求
+function handleSuccess () { 
+  console.log( this.responseText ); 
+  // https://unsplash.com/ 的 HTML
+}
+
+function handleError () { 
+  console.log( '出现错误 😭' );
+}
+const asyncRequestObject = new XMLHttpRequest();
+asyncRequestObject.open('GET', 'https://unsplash.com');
+asyncRequestObject.onload = handleSuccess;
+asyncRequestObject.onerror = handleError;
+asyncRequestObject.send();
+*/
+
+
+/* 设置请求标头
+const searchedForText = 'hippos';
+const unsplashRequest = new XMLHttpRequest();
+
+unsplashRequest.open('GET', `https://api.unsplash.com/search/photos?page=1&query=${searchedForText}`);
+unsplashRequest.onload = addImage;
+unsplashRequest.setRequestHeader('Authorization', 'Client-ID <你的客户端id>');
+unsplashRequest.send();
+
+function addImage(){
+}
+
+**
+XHR 用法回顾
+你需要完成多个步骤，才能在 JavaScript 中发出异步 HTTP 请求。
+
+要发出异步请求
+使用 XMLHttpRequest 构造函数创建 XHR 对象
+
+使用 .open() 方法 - 设置 HTTP 方法和要获取的资源的 URL
+
+设置 .onload 属性 - 将此属性设为成功获取数据后将运行的函数
+
+设置 .onerror 属性 - 将此属性设为出现错误后将运行的函数
+
+使用 .send() 方法 - 发送请求
+
+要使用响应
+使用 .responseText 属性 - 存储异步请求响应的文本
+*/
+</script>
+
+
